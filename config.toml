@@ -126,7 +126,7 @@ rel = "alternate"
 type = "application/rss+xml"
 
 [languages.en]
-languageName = ":en:"
+languageName = ":uk:"
 
 [[languages.en.menu.main]]
 name = "About"
@@ -145,36 +145,68 @@ url = "projects/"
 
 [[languages.en.menu.main]]
 name = "Contact me"
-weight = 5
+weight = 4
 url = "contact/"
 
-[languages.pt-br]
-languageName = ":brazil:"
-title = "João Ninguém"
 
-[languages.pt-br.params]
-author = "João Ninguém"
-info = "Full Stack DevOps e Mágico"
-description = "Sítio pessoal de João Ninguém"
+[languages.ja]
+languageName = ":jp:"
+title = "DUAN DAHAI"
+
+[[languages.ja.params]]
+author = "段大海"
+info = "IT技術者"
+description = "私のブログです。"
 keywords = "blog,desenvolvedor,pessoal"
-footerContent = "Coloque algum texto aqui."
+footerContent = "よこそ!"
 
-[[languages.pt-br.menu.main]]
-name = "Sobre"
+[[languages.ja.menu.main]]
+name = "ホーム"
 weight = 1
 url = "about/"
 
-[[languages.pt-br.menu.main]]
-name = "Blog"
+[[languages.ja.menu.main]]
+name = "ブログ"
 weight = 2
 url = "posts/"
 
-[[languages.pt-br.menu.main]]
-name = "Projetos"
+[[languages.ja.menu.main]]
+name = "プロジェクト"
 weight = 3
 url = "projects/"
 
-[[languages.pt-br.menu.main]]
-name = "Contato"
-weight = 5
+[[languages.ja.menu.main]]
+name = "連絡"
+weight = 4
+url = "contact/"
+
+[languages.cn]
+languageName = ":cn:"
+title = "段大海"
+
+[[languages.cn.params]]
+author = "段大海"
+info = "全栈开发者"
+description = "我的博客"
+keywords = "blog,desenvolvedor,pessoal"
+footerContent = "欢迎来到我的博客!"
+
+[[languages.cn.menu.main]]
+name = "关于我"
+weight = 1
+url = "about/"
+
+[[languages.cn.menu.main]]
+name = "博客"
+weight = 2
+url = "posts/"
+
+[[languages.cn.menu.main]]
+name = "项目"
+weight = 3
+url = "projects/"
+
+[[languages.cn.menu.main]]
+name = "联系方式"
+weight = 4
 url = "contact/"
