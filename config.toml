@@ -166,7 +166,7 @@ weight = 1
 url = "about/"
 
 [[languages.ja.menu.main]]
-name = "ブログ"
+name = "文章"
 weight = 2
 url = "posts/"
 
@@ -176,7 +176,7 @@ weight = 3
 url = "projects/"
 
 [[languages.ja.menu.main]]
-name = "連絡"
+name = "私について"
 weight = 4
 url = "contact/"
 
@@ -192,12 +192,12 @@ keywords = "blog,desenvolvedor,pessoal"
 footerContent = "欢迎来到我的博客!"
 
 [[languages.zh-cn.menu.main]]
-name = "关于我"
+name = "主页"
 weight = 1
 url = "about/"
 
 [[languages.zh-cn.menu.main]]
-name = "博客"
+name = "文章"
 weight = 2
 url = "posts/"
 
@@ -207,6 +207,6 @@ weight = 3
 url = "projects/"
 
 [[languages.zh-cn.menu.main]]
-name = "联系方式"
+name = "关于"
 weight = 4
 url = "contact/"
