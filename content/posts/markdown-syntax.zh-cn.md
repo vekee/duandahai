@@ -73,7 +73,7 @@ Tabelas não fazem parte do cerne da especificação do Markdown, mas o Hugo ofe
 
 ```html
 <!doctype html>
-<html lang="pt-br">
+<html lang="zh-cn">
 <head>
   <meta charset="utf-8">
   <title>Exemplo de Documento HTML5</title>
@@ -87,7 +87,7 @@ Tabelas não fazem parte do cerne da especificação do Markdown, mas o Hugo ofe
 #### Blocos de código com quatro espaços
 
     <!doctype html>
-    <html lang="pt-br">
+    <html lang="zh-cn">
     <head>
       <meta charset="utf-8">
       <title>Exemplo de Documento HTML5</title>
@@ -101,7 +101,7 @@ Tabelas não fazem parte do cerne da especificação do Markdown, mas o Hugo ofe
 
 {{< highlight html >}}
 <!doctype html>
-<html lang="pt-br">
+<html lang="zh-cn">
 <head>
   <meta charset="utf-8">
   <title>Exemplo de Documento HTML5</title>
