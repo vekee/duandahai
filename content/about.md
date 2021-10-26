@@ -1,12 +1,12 @@
 +++
 title = "About"
 description = "This is about dan's blog"
-date = "2019-02-28"
+date = "2021-10-25"
 aliases = ["about-us", "about-hugo", "contact"]
 author = "DUAN DAHAI"
 +++
 
-This is about dan's multilingual blog, record problems and solutions about work, and those stories saved in my note book. If you like it, please click RSS in home page.
+This is about Dan's multilingual blog, record problems and solutions about my skills grow process , and those stories saved in my note book. If you like it, please click RSS in home page.
 
 The blogs of recommendation:
 

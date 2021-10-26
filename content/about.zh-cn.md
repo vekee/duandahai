@@ -6,9 +6,9 @@ aliases = ["about-us", "about-hugo", "contact"]
 author = "段大海"
 +++
 
-这是一个关于我个人的多语言博客，记录我工作中遇到的问题，还有那些被我一直保存在记事本中的故事，如果您喜欢请点击主页的订阅。
+这是一个关于我个人的多语言博客，记录我在技术进阶过程中遇到的问题，还有那些被我一直保存在记事本中的故事，如果您喜欢请点击主页的订阅。
 
-下面是我为您推荐的一些文章:
+下面是我为您推荐的一些文章：
 
 * https://github.com/yuin/goldmark
 * https://github.com/alecthomas/chroma
@@ -17,7 +17,7 @@ author = "段大海"
 * https://github.com/spf13/viper
 
 
-下面是我的一些个人项目:
+下面是我的一些个人项目：
 
 * https://github.com/vekee/timecard-online
 * https://github.com/vekee/DBMerge

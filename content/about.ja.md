@@ -1,14 +1,14 @@
 +++
-title = "About"
-description = "Hugo, the world's fastest framework for building websites"
-date = "2019-02-28"
+title = "ホーム"
+description = "段大海のブログです。"
+date = "2021-10-25"
 aliases = ["about-us", "about-hugo", "contact"]
-author = "Hugo Authors"
+author = "段大海"
 +++
 
-Escrito em Go, Hugo é um gerador de sites estáticos de código aberto disponível sobre a licença [Apache Licence 2.0.](https://github.com/gohugoio/hugo/blob/master/LICENSE) O Hugo suporta TOML, YAML e JSON como arquivos de dados, Markdown e HTML como arquivos de conteúdo, e usa shortcodes para adicionar conteúdos ricos. Outras funcionalidades notaveis são taxonomias, modo multilingual, processamento de imagens, formatos de saída customizaveis, minificação de HTML/CSS/JS e suporte a fluxos SASS/SCSS.
+段大海の個人多言語ブログです。技術成長中に解決した問題、ソリューションを記録すると思います。また、ノートに記載している自分の過去のことをブログに移行する予定です。好きな文章があれば、ホームページのRSSをクリックして頂ければ幸いです。
 
-O Hugo faz o uso de vários projetos de código aberto incluíndo:
+お薦め文章：
 
 * https://github.com/yuin/goldmark
 * https://github.com/alecthomas/chroma
@@ -16,10 +16,11 @@ O Hugo faz o uso de vários projetos de código aberto incluíndo:
 * https://github.com/spf13/cobra
 * https://github.com/spf13/viper
 
-O Hugo é ideal para blogs, sites corporativos, protfólio criativos, revistas online, aplicações de página única ou até sites com milhares de páginas.
+個人のプロジェクトについて：
 
-O Hugo é para pessoas que querem cuidar do seu próprio site sem se preocupar com a configuração ambientes complicados, dependências e bancos de dados.
+* https://github.com/vekee/timecard-online
+* https://github.com/vekee/DBMerge
+* https://formsendbox.com
 
-Sites contru;idos com Hugo são extremamente rápidos, seguros e podem ser implantados em qualquer lugar, incluíndo AWS, GitHub Pages, Heroku, Netlify e outros provedores de hospedagem.
 
-Saiba mais e contribua em [GitHub](https://github.com/gohugoio).
+私のプロジェクトに趣味があれば、またもっと知りたいであれば、[GitHub](https://github.com/vekee)をご覧ください
