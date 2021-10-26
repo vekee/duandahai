@@ -1,6 +1,6 @@
 +++
-title = "Projetos"
+title = "项目"
 slug = "projects"
 +++
 
-Nada para ver aqui.. Circulando!
+我的项目正在整理更新中，稍后奉上。
