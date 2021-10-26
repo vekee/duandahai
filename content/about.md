@@ -1,14 +1,14 @@
 +++
 title = "About"
-description = "Hugo, the world's fastest framework for building websites"
+description = "This is about dan's blog"
 date = "2019-02-28"
 aliases = ["about-us", "about-hugo", "contact"]
-author = "Hugo Authors"
+author = "DUAN DAHAI"
 +++
 
-Written in Go, Hugo is an open source static site generator available under the [Apache Licence 2.0.](https://github.com/gohugoio/hugo/blob/master/LICENSE) Hugo supports TOML, YAML and JSON data file types, Markdown and HTML content files and uses shortcodes to add rich content. Other notable features are taxonomies, multilingual mode, image processing, custom output formats, HTML/CSS/JS minification and support for Sass SCSS workflows.
+This is about dan's multilingual blog, record problems and solutions about work, and those stories saved in my note book. If you like it, please click RSS in home page.
 
-Hugo makes use of a variety of open source projects including:
+The blogs of recommendation:
 
 * https://github.com/yuin/goldmark
 * https://github.com/alecthomas/chroma
@@ -16,10 +16,10 @@ Hugo makes use of a variety of open source projects including:
 * https://github.com/spf13/cobra
 * https://github.com/spf13/viper
 
-Hugo is ideal for blogs, corporate websites, creative portfolios, online magazines, single page applications or even a website with thousands of pages.
+The open projects by Dan:
 
-Hugo is for people who want to hand code their own website without worrying about setting up complicated runtimes, dependencies and databases.
+* https://github.com/vekee/timecard-online
+* https://github.com/vekee/DBMerge
+* https://formsendbox.com
 
-Websites built with Hugo are extremely fast, secure and can be deployed anywhere including, AWS, GitHub Pages, Heroku, Netlify and any other hosting provider.
-
-Learn more and contribute on [GitHub](https://github.com/gohugoio).
+If you are interesting in my project or want to know more, see at my [GitHub](https://github.com/vekee).

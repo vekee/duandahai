@@ -24,4 +24,4 @@ author = "段大海"
 * https://formsendbox.com
 
 
-如果您对我的项目感兴趣，请关注我的 [GitHub](https://github.com/vekee).
+如果您对我的项目感兴趣并想了解更多，请关注我的[GitHub](https://github.com/vekee)。
