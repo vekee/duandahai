@@ -1,7 +1,7 @@
 +++
 author = "Hugo Authors"
-title = "Texto de Exemplo"
-date = "2019-03-09"
+title = "Placeholder Text"
+date = "2021-10-25"
 description = "Lorem Ipsum Dolor Si Amet"
 tags = [
     "markdown",
