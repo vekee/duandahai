@@ -3,4 +3,4 @@ title = "Projects"
 slug = "projects"
 +++
 
-My blog is updating, please access after a time.
+My Projects is updating, please wait for a moment.
