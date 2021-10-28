@@ -86,7 +86,8 @@ def lambda_handler(event, context):
 ```
 
 #### 業務処理
-Tiam, ad mint andaepu dandae nostion secatur sequo quae.
+更新中.
+
 **Note** that you can use *Markdown syntax* within a blockquote.
 {{< highlight html >}}
 <!doctype html>
@@ -102,7 +103,8 @@ Tiam, ad mint andaepu dandae nostion secatur sequo quae.
 {{< /highlight >}}
 
 #### ステートマシン
-Tiam, ad mint andaepu dandae nostion secatur sequo quae.
+更新中.
+
 **Note** that you can use *Markdown syntax* within a blockquote.
 {{< highlight html >}}
 <!doctype html>
