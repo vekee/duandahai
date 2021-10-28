@@ -18,7 +18,6 @@ categories = [
 Lambda実行時間の最大15分制限より、15分以内に処理完了するために、同一Lambdaを並行で処理する対策を説明します。
 
 #### 対策概要
-
 1. AWS Lambda 関数：動的並列数制御処理
 2. AWS Lambda 関数：業務処理
 3. AWS Step Functions ステートマシン
@@ -76,3 +75,7 @@ Tiam, ad mint andaepu dandae nostion secatur sequo quae.
 </body>
 </html>
 {{< /highlight >}}
+
+#### 参考資料
+* https://aws.amazon.com/jp/blogs/news/new-step-functions-support-for-dynamic-parallelism/
+* https://docs.aws.amazon.com/ja_jp/step-functions/latest/dg/amazon-states-language-map-state.html
