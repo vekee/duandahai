@@ -31,17 +31,36 @@ Map stateがJsonリストの要素ごとに、各並列起動情報を引数と�
 Tiam, ad mint andaepu dandae nostion secatur sequo quae.
 **Note** that you can use *Markdown syntax* within a blockquote.
 
-{{< highlight html >}}
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Example HTML5 Document</title>
-</head>
-<body>
-  <p>Test</p>
-</body>
-</html>
+{{< highlight python >}}
+import json
+
+def lambda_handler(event, context):
+    
+    totalProcessRecordCount = 105
+    oneJobProcessMaxCount = 10
+    
+    jobCount = totalProcessRecordCount // oneJobProcessMaxCount
+    
+    controlInfoList = []
+    for jobIndex in range(jobCount):
+        controlInfo = {
+            'oneJobProcessingCount': oneJobProcessMaxCount,
+            'offset': jobIndex * oneJobProcessMaxCount
+        }
+        controlInfoList.append(controlInfo)
+    
+    if totalProcessRecordCount % oneJobProcessMaxCount != 0:
+        controlInfo = {
+            'oneJobProcessingCount': totalProcessRecordCount % oneJobProcessMaxCount,
+            'offset': jobCount * oneJobProcessMaxCount
+        }
+        controlInfoList.append(controlInfo)
+    
+    return {
+        'statusCode': 200,
+        'body': json.dumps(controlInfoList)
+    }
+
 {{< /highlight >}}
 
 #### 業務処理
