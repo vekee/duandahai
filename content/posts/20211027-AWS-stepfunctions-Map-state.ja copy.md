@@ -28,10 +28,33 @@ Map stateがJsonリストの要素ごとに、各並列起動情報を引数と�
 
 
 #### 動的並列数制御処理
-Tiam, ad mint andaepu dandae nostion secatur sequo quae.
-**Note** that you can use *Markdown syntax* within a blockquote.
+全件105のデータを多重で処理する、1ジョブに最大10件処理をする場合、
+以下の制御情報データリストを作成します。
+```JSON
+[
+  {
+    'oneJobProcessingCount': 10,
+    'offset': 0
+  },
+  {
+    'oneJobProcessingCount': 10,
+    'offset': 10
+  },
+  {
+    'oneJobProcessingCount': 10,
+    'offset': 20
+  }
+  ・・・・・・
+  {
+    'oneJobProcessingCount': 5,
+    'offset': 100
+  }
+]
+```
 
-{{< highlight python >}}
+**注** 下記は制御情報を返却する実装例です。
+
+```python
 import json
 
 def lambda_handler(event, context):
@@ -60,8 +83,7 @@ def lambda_handler(event, context):
         'statusCode': 200,
         'body': json.dumps(controlInfoList)
     }
-
-{{< /highlight >}}
+```
 
 #### 業務処理
 Tiam, ad mint andaepu dandae nostion secatur sequo quae.
