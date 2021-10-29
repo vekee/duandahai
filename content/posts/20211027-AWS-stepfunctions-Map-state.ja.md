@@ -79,27 +79,45 @@ def lambda_handler(event, context):
         }
         controlInfoList.append(controlInfo)
     
-    return {
-        'statusCode': 200,
-        'body': json.dumps(controlInfoList)
-    }
+    return controlInfoList
 ```
 
 #### 業務処理
-更新中.
+```python
+def lambda_handler(event, context):
+    oneJobProcessingCount = int(event['oneJobProcessingCount'])
+    offset = int(event['offset'])
+    
+    processed = []
+    for i in range(oneJobProcessingCount):
+        processed.append(offset + i)
+        
+    return processed
+```
 
 **Note** that you can use *Markdown syntax* within a blockquote.
 {{< highlight html >}}
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Example HTML5 Document</title>
-</head>
-<body>
-  <p>Test</p>
-</body>
-</html>
+{
+  "Comment": "A dynamically parallel process example of the Amazon States Language using Map",
+  "StartAt": "dynamically-parallel-processing-control",
+  "states": {
+    "dynamically-parallel-processing-control": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "OutputPath": "$.Payload",
+      "Parameters": "{
+        "FunctionsName": "arn:aws:lambda:XXXXXXX:function:dynamically-parallel-processing-control:$LATEST",
+
+      },
+      "Next": "dynamically-parallel-processing"
+    },
+    "World": {
+      "Type": "Pass",
+      "Result": "World",
+      "End": true
+    }
+  }
+}
 {{< /highlight >}}
 
 #### ステートマシン
