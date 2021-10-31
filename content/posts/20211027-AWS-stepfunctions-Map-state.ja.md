@@ -28,8 +28,8 @@ Map stateがJsonリストの要素ごとに、各並列起動情報を引数と�
 
 
 #### 動的並列数制御処理
-全件105のデータを多重で処理する、1ジョブに最大10件処理をする場合、
-以下の制御情報リストを作成します。
+全件105のデータを多重で処理して、1ジョブに最大10件を処理する場合、
+以下の制御情報リストを作成とします。
 ```JSON
 [
   {
@@ -100,20 +100,32 @@ def lambda_handler(event, context):
 {
   "Comment": "A dynamically parallel process example of the Amazon States Language using Map",
   "StartAt": "dynamically-parallel-processing-control",
-  "states": {
+  "States": {
     "dynamically-parallel-processing-control": {
       "Type": "Task",
       "Resource": "arn:aws:states:::lambda:invoke",
       "OutputPath": "$.Payload",
-      "Parameters": "{
-        "FunctionsName": "arn:aws:lambda:XXXXXXX:function:dynamically-parallel-processing-control:$LATEST",
-
+      "Parameters": {
+        "FunctionName": "arn:aws:lambda:ap-northeast-1:370382556331:function:dynamically-parallel-processing-control"
       },
-      "Next": "dynamically-parallel-processing"
+      "Next": "dynamically-parallel-processing-iterator"
     },
-    "World": {
-      "Type": "Pass",
-      "Result": "World",
+    "dynamically-parallel-processing-iterator": {
+      "Type": "Map",
+      "InputPath": "$",
+      "ItemsPath": "$",
+      "MaxConcurrency": 0,
+      "Iterator": {
+        "StartAt": "dynamically-parallel-processing",
+        "States": {
+          "dynamically-parallel-processing": {
+            "Type": "Task",
+            "Resource": "arn:aws:lambda:ap-northeast-1:370382556331:function:dynamically-parallel-processing-control",
+            "End": true
+          }
+        }
+      },
+      "ResultPath": "$",
       "End": true
     }
   }
