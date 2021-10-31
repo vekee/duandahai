@@ -140,7 +140,7 @@ Map stateがJsonリストの要素ごとに、各並列起動情報を引数と�
 <i class="fa fa-link" aria-hidden=true></i>
 </a>
 </h4>
-<p>全件105のデータを多重で処理して、1ジョブに最大10件を処理する場合、
+<p>全件105のデータを多重で処理して、1並行処理ジョブに最大10件を処理する場合、
 以下の制御情報リストを作成とします。</p>
 <div class=highlight><div style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
 <table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
@@ -186,7 +186,9 @@ Map stateがJsonリストの要素ごとに、各並列起動情報を引数と�
 ]
 </code></pre></td></tr></table>
 </div>
-</div><p><strong>注</strong> 下記は制御情報を返却する実装例です。</p>
+</div><p>下記は制御情報を返却する実装例です。</p>
+<p><strong>note</strong> 並行処理ジョブ数を指定することより、平均的に全てのデータを分割して、並行処理することも可能です。</p>
+<p><strong>note</strong> 1並行処理ジョブに、処理件数をできるだけ15分完了近くまでに調整すれば、Lambdaの利用料金を減らすことが可能です。</p>
 <div class=highlight><div style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
 <table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
 <pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
@@ -249,6 +251,8 @@ Map stateがJsonリストの要素ごとに、各並列起動情報を引数と�
 <i class="fa fa-link" aria-hidden=true></i>
 </a>
 </h4>
+<p>下記は業務処理の実装例です。</p>
+<p>並列実行しているLambdaに処理される対象レコードを返却する。</p>
 <div class=highlight><div style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
 <table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
 <pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
@@ -273,7 +277,14 @@ Map stateがJsonリストの要素ごとに、各並列起動情報を引数と�
     <span style=font-weight:700>return</span> processed
 </code></pre></td></tr></table>
 </div>
-</div><p><strong>Note</strong> that you can use <em>Markdown syntax</em> within a blockquote.
+</div><h4 id=ステートマシン>
+ステートマシン
+<a class=heading-link href=#%e3%82%b9%e3%83%86%e3%83%bc%e3%83%88%e3%83%9e%e3%82%b7%e3%83%b3>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h4>
+<p>Mapを利用して、以下のようなステートマシンを作成します。</p>
+<p><img src=/media/20211027-AWS-stepfunctions-Map-state-1.png alt=ステートマシン></p>
 <div class=highlight><div style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
 <table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
 <pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
@@ -311,75 +322,55 @@ Map stateがJsonリストの要素ごとに、各並列起動情報を引数と�
 </span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">33
 </span></code></pre></td>
 <td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
-<pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html>{
-  &#34;Comment&#34;: &#34;A dynamically parallel process example of the Amazon States Language using Map&#34;,
-  &#34;StartAt&#34;: &#34;dynamically-parallel-processing-control&#34;,
-  &#34;States&#34;: {
-    &#34;dynamically-parallel-processing-control&#34;: {
-      &#34;Type&#34;: &#34;Task&#34;,
-      &#34;Resource&#34;: &#34;arn:aws:states:::lambda:invoke&#34;,
-      &#34;OutputPath&#34;: &#34;$.Payload&#34;,
-      &#34;Parameters&#34;: {
-        &#34;FunctionName&#34;: &#34;arn:aws:lambda:ap-northeast-1:370382556331:function:dynamically-parallel-processing-control&#34;
+<pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-JSON data-lang=JSON>{
+  <span style=font-weight:700>&#34;Comment&#34;</span>: <span style=font-style:italic>&#34;A dynamically parallel process example of the Amazon States Language using Map&#34;</span>,
+  <span style=font-weight:700>&#34;StartAt&#34;</span>: <span style=font-style:italic>&#34;dynamically-parallel-processing-control&#34;</span>,
+  <span style=font-weight:700>&#34;States&#34;</span>: {
+    <span style=font-weight:700>&#34;dynamically-parallel-processing-control&#34;</span>: {
+      <span style=font-weight:700>&#34;Type&#34;</span>: <span style=font-style:italic>&#34;Task&#34;</span>,
+      <span style=font-weight:700>&#34;Resource&#34;</span>: <span style=font-style:italic>&#34;arn:aws:states:::lambda:invoke&#34;</span>,
+      <span style=font-weight:700>&#34;OutputPath&#34;</span>: <span style=font-style:italic>&#34;$.Payload&#34;</span>,
+      <span style=font-weight:700>&#34;Parameters&#34;</span>: {
+        <span style=font-weight:700>&#34;FunctionName&#34;</span>: <span style=font-style:italic>&#34;arn:aws:lambda:ap-northeast-1:XXXXXXXXXXX:function:dynamically-parallel-processing-control&#34;</span>
       },
-      &#34;Next&#34;: &#34;dynamically-parallel-processing-iterator&#34;
+      <span style=font-weight:700>&#34;Next&#34;</span>: <span style=font-style:italic>&#34;dynamically-parallel-processing-iterator&#34;</span>
     },
-    &#34;dynamically-parallel-processing-iterator&#34;: {
-      &#34;Type&#34;: &#34;Map&#34;,
-      &#34;InputPath&#34;: &#34;$&#34;,
-      &#34;ItemsPath&#34;: &#34;$&#34;,
-      &#34;MaxConcurrency&#34;: 0,
-      &#34;Iterator&#34;: {
-        &#34;StartAt&#34;: &#34;dynamically-parallel-processing&#34;,
-        &#34;States&#34;: {
-          &#34;dynamically-parallel-processing&#34;: {
-            &#34;Type&#34;: &#34;Task&#34;,
-            &#34;Resource&#34;: &#34;arn:aws:lambda:ap-northeast-1:370382556331:function:dynamically-parallel-processing-control&#34;,
-            &#34;End&#34;: true
+    <span style=font-weight:700>&#34;dynamically-parallel-processing-iterator&#34;</span>: {
+      <span style=font-weight:700>&#34;Type&#34;</span>: <span style=font-style:italic>&#34;Map&#34;</span>,
+      <span style=font-weight:700>&#34;InputPath&#34;</span>: <span style=font-style:italic>&#34;$&#34;</span>,
+      <span style=font-weight:700>&#34;ItemsPath&#34;</span>: <span style=font-style:italic>&#34;$&#34;</span>,
+      <span style=font-weight:700>&#34;MaxConcurrency&#34;</span>: 0,
+      <span style=font-weight:700>&#34;Iterator&#34;</span>: {
+        <span style=font-weight:700>&#34;StartAt&#34;</span>: <span style=font-style:italic>&#34;dynamically-parallel-processing&#34;</span>,
+        <span style=font-weight:700>&#34;States&#34;</span>: {
+          <span style=font-weight:700>&#34;dynamically-parallel-processing&#34;</span>: {
+            <span style=font-weight:700>&#34;Type&#34;</span>: <span style=font-style:italic>&#34;Task&#34;</span>,
+            <span style=font-weight:700>&#34;Resource&#34;</span>: <span style=font-style:italic>&#34;arn:aws:lambda:ap-northeast-1:XXXXXXXXXXX:function:dynamically-parallel-processing-control&#34;</span>,
+            <span style=font-weight:700>&#34;End&#34;</span>: <span style=font-weight:700>true</span>
           }
         }
       },
-      &#34;ResultPath&#34;: &#34;$&#34;,
-      &#34;End&#34;: true
+      <span style=font-weight:700>&#34;ResultPath&#34;</span>: <span style=font-style:italic>&#34;$&#34;</span>,
+      <span style=font-weight:700>&#34;End&#34;</span>: <span style=font-weight:700>true</span>
     }
   }
-}</code></pre></td></tr></table>
+}
+</code></pre></td></tr></table>
 </div>
-</div></p>
-<h4 id=ステートマシン>
-ステートマシン
-<a class=heading-link href=#%e3%82%b9%e3%83%86%e3%83%bc%e3%83%88%e3%83%9e%e3%82%b7%e3%83%b3>
+</div><h4 id=走行結果>
+走行結果
+<a class=heading-link href=#%e8%b5%b0%e8%a1%8c%e7%b5%90%e6%9e%9c>
 <i class="fa fa-link" aria-hidden=true></i>
 </a>
 </h4>
-<p>更新中.</p>
-<p><strong>Note</strong> that you can use <em>Markdown syntax</em> within a blockquote.
-<div class=highlight><div style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
-<table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
-<pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
-</span></code></pre></td>
-<td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
-<pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html><span>&lt;!doctype html&gt;</span>
-&lt;<span style=font-weight:700>html</span> lang=<span style=font-style:italic>&#34;en&#34;</span>&gt;
-&lt;<span style=font-weight:700>head</span>&gt;
-  &lt;<span style=font-weight:700>meta</span> charset=<span style=font-style:italic>&#34;utf-8&#34;</span>&gt;
-  &lt;<span style=font-weight:700>title</span>&gt;Example HTML5 Document&lt;/<span style=font-weight:700>title</span>&gt;
-&lt;/<span style=font-weight:700>head</span>&gt;
-&lt;<span style=font-weight:700>body</span>&gt;
-  &lt;<span style=font-weight:700>p</span>&gt;Test&lt;/<span style=font-weight:700>p</span>&gt;
-&lt;/<span style=font-weight:700>body</span>&gt;
-&lt;/<span style=font-weight:700>html</span>&gt;</code></pre></td></tr></table>
-</div>
-</div></p>
+<p>・更新中</p>
+<h4 id=mapオプション>
+Mapオプション
+<a class=heading-link href=#map%e3%82%aa%e3%83%97%e3%82%b7%e3%83%a7%e3%83%b3>
+<i class="fa fa-link" aria-hidden=true></i>
+</a>
+</h4>
+<p>・更新中</p>
 <h4 id=参考資料>
 参考資料
 <a class=heading-link href=#%e5%8f%82%e8%80%83%e8%b3%87%e6%96%99>
