@@ -28,7 +28,7 @@ Map stateがJsonリストの要素ごとに、各並列起動情報を引数と�
 
 
 #### 動的並列数制御処理
-全件105のデータを多重で処理して、1ジョブに最大10件を処理する場合、
+全件105のデータを多重で処理して、1並行処理ジョブに最大10件を処理する場合、
 以下の制御情報リストを作成とします。
 ```JSON
 [
@@ -52,7 +52,12 @@ Map stateがJsonリストの要素ごとに、各並列起動情報を引数と�
 ]
 ```
 
-**注** 下記は制御情報を返却する実装例です。
+下記は制御情報を返却する実装例です。
+
+**note** 並行処理ジョブ数を指定することより、平均的に全てのデータを分割して、並行処理することも可能です。
+
+**note** 1並行処理ジョブに、処理件数をできるだけ15分完了近くまでに調整すれば、Lambdaの利用料金を減らすことが可能です。
+
 
 ```python
 import json
@@ -83,6 +88,11 @@ def lambda_handler(event, context):
 ```
 
 #### 業務処理
+
+下記は業務処理の実装例です。
+
+並列実行しているLambdaに処理される対象レコードを返却する。
+
 ```python
 def lambda_handler(event, context):
     oneJobProcessingCount = int(event['oneJobProcessingCount'])
@@ -95,8 +105,14 @@ def lambda_handler(event, context):
     return processed
 ```
 
-**Note** that you can use *Markdown syntax* within a blockquote.
-{{< highlight html >}}
+
+#### ステートマシン
+
+Mapを利用して、以下のようなステートマシンを作成します。
+
+![ステートマシン](/media/20211027-AWS-stepfunctions-Map-state-1.png)
+
+```JSON
 {
   "Comment": "A dynamically parallel process example of the Amazon States Language using Map",
   "StartAt": "dynamically-parallel-processing-control",
@@ -106,7 +122,7 @@ def lambda_handler(event, context):
       "Resource": "arn:aws:states:::lambda:invoke",
       "OutputPath": "$.Payload",
       "Parameters": {
-        "FunctionName": "arn:aws:lambda:ap-northeast-1:370382556331:function:dynamically-parallel-processing-control"
+        "FunctionName": "arn:aws:lambda:ap-northeast-1:XXXXXXXXXXX:function:dynamically-parallel-processing-control"
       },
       "Next": "dynamically-parallel-processing-iterator"
     },
@@ -120,7 +136,7 @@ def lambda_handler(event, context):
         "States": {
           "dynamically-parallel-processing": {
             "Type": "Task",
-            "Resource": "arn:aws:lambda:ap-northeast-1:370382556331:function:dynamically-parallel-processing-control",
+            "Resource": "arn:aws:lambda:ap-northeast-1:XXXXXXXXXXX:function:dynamically-parallel-processing-control",
             "End": true
           }
         }
@@ -130,24 +146,15 @@ def lambda_handler(event, context):
     }
   }
 }
-{{< /highlight >}}
+```
 
-#### ステートマシン
-更新中.
+#### 走行結果
+・更新中
 
-**Note** that you can use *Markdown syntax* within a blockquote.
-{{< highlight html >}}
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Example HTML5 Document</title>
-</head>
-<body>
-  <p>Test</p>
-</body>
-</html>
-{{< /highlight >}}
+
+#### Mapオプション
+・更新中
+
 
 #### 参考資料
 * https://aws.amazon.com/jp/blogs/news/new-step-functions-support-for-dynamic-parallelism/
