@@ -140,8 +140,8 @@ Map stateがJsonリストの要素ごとに、各並列起動情報を引数と�
 <i class="fa fa-link" aria-hidden=true></i>
 </a>
 </h4>
-<p>全件105のデータを多重で処理する、1ジョブに最大10件処理をする場合、
-以下の制御情報リストを作成します。</p>
+<p>全件105のデータを多重で処理して、1ジョブに最大10件を処理する場合、
+以下の制御情報リストを作成とします。</p>
 <div class=highlight><div style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4>
 <table style=border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block><tr><td style=vertical-align:top;padding:0;margin:0;border:0>
 <pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
@@ -297,25 +297,49 @@ Map stateがJsonリストの要素ごとに、各並列起動情報を引数と�
 </span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
 </span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
 </span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">30
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">31
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">32
+</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">33
 </span></code></pre></td>
 <td style=vertical-align:top;padding:0;margin:0;border:0;width:100%>
 <pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-html data-lang=html>{
   &#34;Comment&#34;: &#34;A dynamically parallel process example of the Amazon States Language using Map&#34;,
   &#34;StartAt&#34;: &#34;dynamically-parallel-processing-control&#34;,
-  &#34;states&#34;: {
+  &#34;States&#34;: {
     &#34;dynamically-parallel-processing-control&#34;: {
       &#34;Type&#34;: &#34;Task&#34;,
       &#34;Resource&#34;: &#34;arn:aws:states:::lambda:invoke&#34;,
       &#34;OutputPath&#34;: &#34;$.Payload&#34;,
-      &#34;Parameters&#34;: &#34;{
-        &#34;FunctionsName&#34;: &#34;arn:aws:lambda:XXXXXXX:function:dynamically-parallel-processing-control:$LATEST&#34;,
-
+      &#34;Parameters&#34;: {
+        &#34;FunctionName&#34;: &#34;arn:aws:lambda:ap-northeast-1:370382556331:function:dynamically-parallel-processing-control&#34;
       },
-      &#34;Next&#34;: &#34;dynamically-parallel-processing&#34;
+      &#34;Next&#34;: &#34;dynamically-parallel-processing-iterator&#34;
     },
-    &#34;World&#34;: {
-      &#34;Type&#34;: &#34;Pass&#34;,
-      &#34;Result&#34;: &#34;World&#34;,
+    &#34;dynamically-parallel-processing-iterator&#34;: {
+      &#34;Type&#34;: &#34;Map&#34;,
+      &#34;InputPath&#34;: &#34;$&#34;,
+      &#34;ItemsPath&#34;: &#34;$&#34;,
+      &#34;MaxConcurrency&#34;: 0,
+      &#34;Iterator&#34;: {
+        &#34;StartAt&#34;: &#34;dynamically-parallel-processing&#34;,
+        &#34;States&#34;: {
+          &#34;dynamically-parallel-processing&#34;: {
+            &#34;Type&#34;: &#34;Task&#34;,
+            &#34;Resource&#34;: &#34;arn:aws:lambda:ap-northeast-1:370382556331:function:dynamically-parallel-processing-control&#34;,
+            &#34;End&#34;: true
+          }
+        }
+      },
+      &#34;ResultPath&#34;: &#34;$&#34;,
       &#34;End&#34;: true
     }
   }
