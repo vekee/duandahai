@@ -1,7 +1,7 @@
 +++
 author = "Hugo Authors"
 title = "More Rich Content"
-date = "2021-10-25"
+date = "2021-01-01"
 description = "A brief description about Hugo Coder's Custom Shortcodes"
 tags = [
     "shortcodes"
