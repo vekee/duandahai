@@ -1,6 +1,6 @@
 +++
 author = "DUAN DAHAI"
-title = ""
+title = "Workflow、Actions在Cloud中的应用场景小结"
 date = "2021-11-06"
 description = "Workflow、Actions的应用场景小结"
 tags = [
