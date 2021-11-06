@@ -11,7 +11,7 @@ tags = [
 ]
 categories = [
     "技術文章",
-    "AWS",
+    "AWS"
 ]
 +++
 
@@ -108,9 +108,13 @@ def lambda_handler(event, context):
 
 #### ステートマシン
 
-Mapを利用して、以下のようなステートマシンを作成します。
+動的並列数制御処理で、生成した並列情報リストをLoopして、非同期で業務処理を起動する。
+Mapを利用して、作成したステートマシンは、以下のようなイメージです。
 
 ![ステートマシン](/media/20211027-AWS-stepfunctions-Map-state-1.png)
+
+
+下記はステートマシンの記述です。
 
 ```JSON
 {
@@ -122,7 +126,7 @@ Mapを利用して、以下のようなステートマシンを作成します�
       "Resource": "arn:aws:states:::lambda:invoke",
       "OutputPath": "$.Payload",
       "Parameters": {
-        "FunctionName": "arn:aws:lambda:ap-northeast-1:XXXXXXXXXXX:function:dynamically-parallel-processing-control"
+        "FunctionName": "arn:aws:lambda:ap-northeast-1:370382556331:function:dynamically-parallel-processing-control"
       },
       "Next": "dynamically-parallel-processing-iterator"
     },
@@ -136,12 +140,14 @@ Mapを利用して、以下のようなステートマシンを作成します�
         "States": {
           "dynamically-parallel-processing": {
             "Type": "Task",
-            "Resource": "arn:aws:lambda:ap-northeast-1:XXXXXXXXXXX:function:dynamically-parallel-processing-control",
+            "Resource": "arn:aws:states:::lambda:invoke",
+            "Parameters": {
+              "FunctionName": "arn:aws:lambda:ap-northeast-1:370382556331:function:business-logic-process"
+            },
             "End": true
           }
         }
       },
-      "ResultPath": "$",
       "End": true
     }
   }
@@ -149,11 +155,121 @@ Mapを利用して、以下のようなステートマシンを作成します�
 ```
 
 #### 走行結果
-・更新中
+1. ステートマシンのログ出力より、動的並列数制御処理の並列数処理結果は、以下です。
+
+```JSON
+{
+  "name": "dynamically-parallel-processing-control",
+  "output": [
+    {
+      "oneJobProcessingCount": 10,
+      "offset": 0
+    },
+    {
+      "oneJobProcessingCount": 10,
+      "offset": 10
+    },
+    {
+      "oneJobProcessingCount": 10,
+      "offset": 20
+    },
+    {
+      "oneJobProcessingCount": 10,
+      "offset": 30
+    },
+    {
+      "oneJobProcessingCount": 10,
+      "offset": 40
+    },
+    {
+      "oneJobProcessingCount": 10,
+      "offset": 50
+    },
+    {
+      "oneJobProcessingCount": 10,
+      "offset": 60
+    },
+    {
+      "oneJobProcessingCount": 10,
+      "offset": 70
+    },
+    {
+      "oneJobProcessingCount": 10,
+      "offset": 80
+    },
+    {
+      "oneJobProcessingCount": 10,
+      "offset": 90
+    },
+    {
+      "oneJobProcessingCount": 5,
+      "offset": 100
+    }
+  ],
+  "outputDetails": {
+    "truncated": false
+  }
+}
+```
+
+2. 並列起動される業務処理の入力パラメーター例は以下となります。
+
+```JSON
+{
+  "name": "dynamically-parallel-processing",
+  "input": {
+    "ParallelIndex": 0,
+    "ParallelControlInfo": {
+      "oneJobProcessingCount": 10,
+      "offset": 0
+    }
+  },
+  "inputDetails": {
+    "truncated": false
+  }
+}
+```
+
+3. 並列で起動された業務処理の実行結果例は以下となります。
+
+```JSON
+{
+  "resourceType": "lambda",
+  "resource": "invoke",
+  "output": {
+    "ExecutedVersion": "$LATEST",
+    "Payload": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    ・・・
+```
+
+#### まとめ
+上記の簡単なサンプルより、MAPの利用で、Lambda処理を動的並行で処理されることを確認しました。
+実際の業務開発に、並行処理が複数、処理前後依存などケースがあるかもしれないので、状況よりご活用ください。
+
+#### Mapのオプション
+
+* ItemsPath
+
+    並行処理を実行するベースの配列要素。配列に格納されている要素ごとに、非同期で処理を起動する。
+いずれかの並行処理が失敗すると、全体の処理が失敗となり、ステートマシンが終了します。
 
 
-#### Mapオプション
-・更新中
+* MaxConcurrency
+
+    同時並行実行の最大数を定義する。
+デフォルト値は0です。この場合、同時並行実行数が無制限です。
+設定される場合、同時並行実行処理数がこの設定値を超える部分は、前処理が終了するまで待ちがます。
 
 
 #### 参考資料
