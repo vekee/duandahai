@@ -27,7 +27,7 @@ Workflow服务在Cloud中的应用场景小结 · 段大海
 <link rel=icon type=image/png href=/images/favicon-16x16.png sizes=16x16>
 <link rel=apple-touch-icon href=/images/apple-touch-icon.png>
 <link rel=apple-touch-icon sizes=180x180 href=/images/apple-touch-icon.png>
-<meta name=generator content="Hugo 0.89.2">
+<meta name=generator content="Hugo 0.89.4">
 </head>
 <body class="preload-transitions colorscheme-light">
 <div class=float-container>
@@ -120,32 +120,69 @@ Workflow服务的概念
 </h4>
 <p>英文：Workflow as a service。直接翻译为中文：工作流服务</p>
 <ul>
-<li>工作流可以简单理解为企业或者个人处理业务的一个流程、简单的工作流举例如下图：</li>
+<li>工作流可以简单理解为企业或者个人处理业务的一个流程。简单的工作流举例如下图：</li>
 </ul>
 <p><img src=/media/20211106-workflow-actions.zh-cn-1.png alt=工作流></p>
 <ul>
 <li>在Cloud中，即是将工作流转化为一种可提供的Cloud服务。该服务可能是固定形式的，也可能是根据具体业务场景自定义开发，后者支持范围广，服务场景多，在Cloud服务中比较常见。</li>
 </ul>
-<h4 id=aws中的workflow服务>
-AWS中的Workflow服务
-<a class=heading-link href=#aws%e4%b8%ad%e7%9a%84workflow%e6%9c%8d%e5%8a%a1>
+<h4 id=aws中的workflow服务-amazon-simple-workflow-service-swf>
+AWS中的Workflow服务-Amazon Simple Workflow Service (SWF)
+<a class=heading-link href=#aws%e4%b8%ad%e7%9a%84workflow%e6%9c%8d%e5%8a%a1-amazon-simple-workflow-service-swf>
 <i class="fa fa-link" aria-hidden=true></i>
 </a>
 </h4>
-<p>Amazon Simple Workflow Service (SWF)
-低代码可视化工作流服务，用于编排AWS服务、自动化业务流程或构建无服务器应用程序</p>
-<h4 id=salesforce中的workflow服务>
-Salesforce中的Workflow服务
-<a class=heading-link href=#salesforce%e4%b8%ad%e7%9a%84workflow%e6%9c%8d%e5%8a%a1>
+<p>AWS官网称SWF是一种低代码可视化工作流服务，用于编排AWS服务、自动化业务流程或构建无服务器应用程序。具有以下特点：</p>
+<ul>
+<li>
+<p>逻辑分隔</p>
+<p>流程控制、底层的状态结构和任务分派分开管理，降低耦合性，方便修改维护。</p>
+</li>
+<li>
+<p>可靠</p>
+<p>SWF在Amazon 的高可用性数据中心中运行，因此状态追踪和任务处理引擎可以在应用程序需要时随时可用。SWF还具有冗余存储任务，可将它们指派到应用程序组件，追踪进度并使其保持最新状态。</p>
+</li>
+<li>
+<p>简单</p>
+<p>SWF用全托管的云工作流Web服务替代复杂的定制代码，属于工作流解决方案和流程自动化软件。开发人员不再需要管理流程自动化的基础设施，可以将精力集中在应用程序的独特功能上。</p>
+</li>
+<li>
+<p>可扩展</p>
+<p>SWF可以随着应用程序的使用进行无缝调节。无需对工作流服务进行人工管理，即可在应用程序中添加更多云工作流或增加工作流复杂性。</p>
+</li>
+<li>
+<p>灵活</p>
+<p>SWF中可以使用多种编程语言进行应用程序组件和协作逻辑编写，并在云中或本地运行。</p>
+</li>
+</ul>
+<h4 id=salesforce中的workflow服务-workflow>
+Salesforce中的Workflow服务-workflow
+<a class=heading-link href=#salesforce%e4%b8%ad%e7%9a%84workflow%e6%9c%8d%e5%8a%a1-workflow>
 <i class="fa fa-link" aria-hidden=true></i>
 </a>
 </h4>
+<p>Salesforce对workflow解释为将企业标准的业务、程序进行自动化，以提高业务流程效率。</p>
 <h4 id=google中的workflow服务>
 Google中的Workflow服务
 <a class=heading-link href=#google%e4%b8%ad%e7%9a%84workflow%e6%9c%8d%e5%8a%a1>
 <i class="fa fa-link" aria-hidden=true></i>
 </a>
 </h4>
+<p>Google中的Workflow是一种对给定任务进行可编排的的服务平台。主要的应用场景：</p>
+<ul>
+<li>
+<p>各种服务的编排</p>
+</li>
+<li>
+<p>Batch Job处理</p>
+</li>
+<li>
+<p>业务流程处理</p>
+</li>
+<li>
+<p>业务自动化</p>
+</li>
+</ul>
 <h4 id=github中的workflow服务>
 Github中的Workflow服务
 <a class=heading-link href=#github%e4%b8%ad%e7%9a%84workflow%e6%9c%8d%e5%8a%a1>
