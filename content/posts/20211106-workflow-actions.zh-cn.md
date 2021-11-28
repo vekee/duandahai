@@ -65,11 +65,16 @@ Google中的Workflow是一种对给定任务进行可编排的的服务平台。
 
 #### Github中的Workflow服务
 
+Github中的Workflow是由GitHub Actions的事件触发而执行一系列针对Reposityd的处理。
+
 
 #### 其他企业提供的Workflow服务
+* 针对特定工作任务提供标准泛用功能服务
+* 低代码平台实现工作任务的电子化
 
 
-#### Workflow服务的需要的底层技术支持
+#### Workflow服务中需要的底层技术支持
+针对各种服务的最优资源调度是Workflow实现所要面对的共同问题。
 
 
 #### 为什么会用到Workflow服务，Workflow服务的优点缺点
