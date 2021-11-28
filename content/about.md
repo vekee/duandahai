@@ -6,7 +6,7 @@ aliases = ["about-us", "about-hugo", "contact"]
 author = "DUAN DAHAI"
 +++
 
-This is about Dan's multilingual blog, record problems and solutions about my skills grow process , and those stories saved in my note book. If you like it, please click RSS in home page.
+This is about Dan's multilingual blog, record problems and solutions in my tech grow process , and share my stories saved in my note book. If you like it, please click RSS in home page.
 
 The blogs of recommendation:
 
