@@ -1,230 +1,30 @@
-<!doctype html><html lang=ja>
-<head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta http-equiv=content-language content="ja">
-<meta name=color-scheme content="light dark">
-<meta http-equiv=content-security-policy content="upgrade-insecure-requests; block-all-mixed-content; default-src 'self'; child-src 'self'; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net/; form-action 'self'; frame-src 'self'; img-src 'self'; object-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com/ https://cdn.jsdelivr.net/; script-src 'self' 'unsafe-inline' https://www.google-analytics.com; prefetch-src 'self'; connect-src 'self' https://www.google-analytics.com;">
-<meta name=author content="DUAN DAHAI">
-<meta name=description content="深層学習を勉強したメモです">
-<meta name=keywords content="blog,developer,personal">
-<meta name=twitter:card content="summary">
-<meta name=twitter:title content="深層学習-第二章-線形代数">
-<meta name=twitter:description content="深層学習を勉強したメモです">
-<meta property="og:title" content="深層学習-第二章-線形代数">
-<meta property="og:description" content="深層学習を勉強したメモです">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://www.duandahai.com/ja/posts/20210815-deeplearning-chapter2/"><meta property="article:section" content="posts">
-<meta property="article:published_time" content="2021-08-15T00:00:00+00:00">
-<meta property="article:modified_time" content="2021-08-15T00:00:00+00:00"><meta property="og:site_name" content="DUAN DAHAI">
-<title>
-深層学習-第二章-線形代数 · DUAN DAHAI
-</title>
-<link rel=canonical href=https://www.duandahai.com/ja/posts/20210815-deeplearning-chapter2/>
-<link rel=preload href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as=font type=font/woff2 crossorigin>
-<link rel=stylesheet href=/css/coder.min.708686f8ab8176e91d44fcbe488a0fe0333b94f405cf18a52383d67ba22f0ccb.css integrity="sha256-cIaG+KuBdukdRPy+SIoP4DM7lPQFzxilI4PWe6IvDMs=" crossorigin=anonymous media=screen>
-<link rel=icon type=image/png href=/images/favicon-32x32.png sizes=32x32>
-<link rel=icon type=image/png href=/images/favicon-16x16.png sizes=16x16>
-<link rel=apple-touch-icon href=/images/apple-touch-icon.png>
-<link rel=apple-touch-icon sizes=180x180 href=/images/apple-touch-icon.png>
-<meta name=generator content="Hugo 0.89.4">
-</head>
-<body class="preload-transitions colorscheme-light">
-<div class=float-container>
-<a id=dark-mode-toggle class=colorscheme-toggle>
-<i class="fa fa-adjust fa-fw" aria-hidden=true></i>
-</a>
-</div>
-<main class=wrapper>
-<nav class=navigation>
-<section class=container>
-<a class=navigation-title href=/ja>
-DUAN DAHAI
-</a>
+<!doctype html><html lang=ja><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=content-language content="ja"><meta name=color-scheme content="light dark"><meta http-equiv=content-security-policy content="upgrade-insecure-requests; block-all-mixed-content; default-src 'self'; child-src 'self'; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net/; form-action 'self'; frame-src 'self'; img-src 'self'; object-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com/ https://cdn.jsdelivr.net/; script-src 'self' 'unsafe-inline' https://www.google-analytics.com; prefetch-src 'self'; connect-src 'self' https://www.google-analytics.com;"><meta name=author content="DUAN DAHAI"><meta name=description content="深層学習を勉強したメモです"><meta name=keywords content="blog,developer,personal"><meta name=twitter:card content="summary"><meta name=twitter:title content="深層学習-第二章-線形代数"><meta name=twitter:description content="深層学習を勉強したメモです"><meta property="og:title" content="深層学習-第二章-線形代数"><meta property="og:description" content="深層学習を勉強したメモです"><meta property="og:type" content="article"><meta property="og:url" content="https://www.duandahai.com/ja/posts/20210815-deeplearning-chapter2/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2021-08-15T00:00:00+00:00"><meta property="article:modified_time" content="2021-08-15T00:00:00+00:00"><meta property="og:site_name" content="DUAN DAHAI"><title>深層学習-第二章-線形代数 · DUAN DAHAI</title><link rel=canonical href=https://www.duandahai.com/ja/posts/20210815-deeplearning-chapter2/><link rel=preload href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as=font type=font/woff2 crossorigin><link rel=stylesheet href=/css/coder.min.708686f8ab8176e91d44fcbe488a0fe0333b94f405cf18a52383d67ba22f0ccb.css integrity="sha256-cIaG+KuBdukdRPy+SIoP4DM7lPQFzxilI4PWe6IvDMs=" crossorigin=anonymous media=screen><link rel=icon type=image/png href=/images/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=/images/favicon-16x16.png sizes=16x16><link rel=apple-touch-icon href=/images/apple-touch-icon.png><link rel=apple-touch-icon sizes=180x180 href=/images/apple-touch-icon.png><meta name=generator content="Hugo 0.100.1"></head><body class="preload-transitions colorscheme-light"><div class=float-container><a id=dark-mode-toggle class=colorscheme-toggle><i class="fa fa-adjust fa-fw" aria-hidden=true></i></a></div><main class=wrapper><nav class=navigation><section class=container><a class=navigation-title href=/ja>DUAN DAHAI</a>
 <input type=checkbox id=menu-toggle>
-<label class="menu-button float-right" for=menu-toggle>
-<i class="fa fa-bars fa-fw" aria-hidden=true></i>
-</label>
-<ul class=navigation-list>
-<li class=navigation-item>
-<a class=navigation-link href=/ja/about/>ホーム</a>
-</li>
-<li class=navigation-item>
-<a class=navigation-link href=/ja/posts/>文章</a>
-</li>
-<li class=navigation-item>
-<a class=navigation-link href=/ja/projects/>プロジェクト</a>
-</li>
-<li class=navigation-item>
-<a class=navigation-link href=/ja/contact/>私について</a>
-</li>
-<li class="navigation-item menu-separator">
-<span>|</span>
-</li>
-<li class=navigation-item>
-<a href=https://www.duandahai.com/zh-cn/>🇨🇳</a>
-</li>
-<li class=navigation-item>
-<a href=https://www.duandahai.com/>🇬🇧</a>
-</li>
-</ul>
-</section>
-</nav>
-<div class=content>
-<section class="container post">
-<article>
-<header>
-<div class=post-title>
-<h1 class=title>
-<a class=title-link href=https://www.duandahai.com/ja/posts/20210815-deeplearning-chapter2/>
-深層学習-第二章-線形代数
-</a>
-</h1>
-</div>
-<div class=post-meta>
-<div class=date>
-<span class=posted-on>
-<i class="fa fa-calendar" aria-hidden=true></i>
-<time datetime=2021-08-15T00:00:00Z>
-2021/08/15
-</time>
-</span>
-<span class=reading-time>
-<i class="fa fa-clock-o" aria-hidden=true></i>
-1分で読めます
-</span>
-</div>
-<div class=categories>
-<i class="fa fa-folder" aria-hidden=true></i>
+<label class="menu-button float-right" for=menu-toggle><i class="fa fa-bars fa-fw" aria-hidden=true></i></label><ul class=navigation-list><li class=navigation-item><a class=navigation-link href=/ja/about/>ホーム</a></li><li class=navigation-item><a class=navigation-link href=/ja/posts/>文章</a></li><li class=navigation-item><a class=navigation-link href=/ja/projects/>プロジェクト</a></li><li class=navigation-item><a class=navigation-link href=/ja/contact/>私について</a></li><li class="navigation-item menu-separator"><span>|</span></li><li class=navigation-item><a href=https://www.duandahai.com/zh-cn/>🇨🇳</a></li><li class=navigation-item><a href=https://www.duandahai.com/>🇬🇧</a></li></ul></section></nav><div class=content><section class="container post"><article><header><div class=post-title><h1 class=title><a class=title-link href=https://www.duandahai.com/ja/posts/20210815-deeplearning-chapter2/>深層学習-第二章-線形代数</a></h1></div><div class=post-meta><div class=date><span class=posted-on><i class="fa fa-calendar" aria-hidden=true></i>
+<time datetime=2021-08-15T00:00:00Z>2021/08/15</time></span>
+<span class=reading-time><i class="fa fa-clock-o" aria-hidden=true></i>
+1分で読めます</span></div><div class=categories><i class="fa fa-folder" aria-hidden=true></i>
 <a href=/ja/categories/%E6%B7%B1%E5%B1%A4%E5%AD%A6%E7%BF%92/>深層学習</a>
 <span class=separator>•</span>
-<a href=/ja/categories/%E7%AC%AC%E4%BA%8C%E7%AB%A0/>第二章</a></div>
-<div class=tags>
-<i class="fa fa-tag" aria-hidden=true></i>
-<span class=tag>
-<a href=/ja/tags/ai/>AI</a>
-</span>
+<a href=/ja/categories/%E7%AC%AC%E4%BA%8C%E7%AB%A0/>第二章</a></div><div class=tags><i class="fa fa-tag" aria-hidden=true></i>
+<span class=tag><a href=/ja/tags/ai/>AI</a></span>
 <span class=separator>•</span>
-<span class=tag>
-<a href=/ja/tags/deep-learning/>DEEP LEARNING</a>
-</span></div>
-</div>
-</header>
-<div>
-<p>深層学習を勉強したメモです</p>
-<h4 id=21-スカラーベクトル行列テンソル>
-2.1 スカラー、ベクトル、行列、テンソル
-<a class=heading-link href=#21-%e3%82%b9%e3%82%ab%e3%83%a9%e3%83%bc%e3%83%99%e3%82%af%e3%83%88%e3%83%ab%e8%a1%8c%e5%88%97%e3%83%86%e3%83%b3%e3%82%bd%e3%83%ab>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h4>
-<ul>
-<li>スカラー（scalars）：スカラーは単なる単一の数である。</li>
-<li>ヘクトル（vectors）：ベクトルは数値の配列である。</li>
-<li>行列（matrices）：行列は2-Dの数値配列なので、各成分は一つだけでなく２つのインデックスで示される。</li>
-<li>テンソル（tensors）：場合によっては、３つ以上の軸を持つ配列が必要になる。</li>
-</ul>
-<div class="notice tip">
-<div class=notice-title>
-<i class="fa fa-lightbulb-o" aria-hidden=true></i>Tip
-</div>
-<div class=notice-content><p>行列の転置（transpose）の概念。</p>
-<p>ブロードキャスティング（broadcasting）の概念.</p></div>
-</div>
-<h4 id=22-行列とベクトルの乗算>
-2.2 行列とベクトルの乗算
-<a class=heading-link href=#22-%e8%a1%8c%e5%88%97%e3%81%a8%e3%83%99%e3%82%af%e3%83%88%e3%83%ab%e3%81%ae%e4%b9%97%e7%ae%97>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h4>
-<h4 id=23-単位行列と逆行列>
-2.3 単位行列と逆行列
-<a class=heading-link href=#23-%e5%8d%98%e4%bd%8d%e8%a1%8c%e5%88%97%e3%81%a8%e9%80%86%e8%a1%8c%e5%88%97>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h4>
-<h4 id=24-線形従属と張る空間>
-2.4 線形従属と張る空間
-<a class=heading-link href=#24-%e7%b7%9a%e5%bd%a2%e5%be%93%e5%b1%9e%e3%81%a8%e5%bc%b5%e3%82%8b%e7%a9%ba%e9%96%93>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h4>
-<h4 id=25-ノルム>
-2.5 ノルム
-<a class=heading-link href=#25-%e3%83%8e%e3%83%ab%e3%83%a0>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h4>
-<h4 id=26-特殊な行列とベクトル>
-2.6 特殊な行列とベクトル
-<a class=heading-link href=#26-%e7%89%b9%e6%ae%8a%e3%81%aa%e8%a1%8c%e5%88%97%e3%81%a8%e3%83%99%e3%82%af%e3%83%88%e3%83%ab>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h4>
-<h4 id=27-固有値分解>
-2.7 固有値分解
-<a class=heading-link href=#27-%e5%9b%ba%e6%9c%89%e5%80%a4%e5%88%86%e8%a7%a3>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h4>
-<h4 id=28-特異値分解>
-2.8 特異値分解
-<a class=heading-link href=#28-%e7%89%b9%e7%95%b0%e5%80%a4%e5%88%86%e8%a7%a3>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h4>
-<h4 id=29-ムーアペンローズ擬似逆行列>
-2.9 ムーア・ペンローズ擬似逆行列
-<a class=heading-link href=#29-%e3%83%a0%e3%83%bc%e3%82%a2%e3%83%9a%e3%83%b3%e3%83%ad%e3%83%bc%e3%82%ba%e6%93%ac%e4%bc%bc%e9%80%86%e8%a1%8c%e5%88%97>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h4>
-<h4 id=210-トレース演算子>
-2.10 トレース演算子
-<a class=heading-link href=#210-%e3%83%88%e3%83%ac%e3%83%bc%e3%82%b9%e6%bc%94%e7%ae%97%e5%ad%90>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h4>
-<h4 id=211-行列式>
-2.11 行列式
-<a class=heading-link href=#211-%e8%a1%8c%e5%88%97%e5%bc%8f>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h4>
-<h4 id=212-例主成分分析>
-2.12 例：主成分分析
-<a class=heading-link href=#212-%e4%be%8b%e4%b8%bb%e6%88%90%e5%88%86%e5%88%86%e6%9e%90>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h4>
-<h4 id=参考資料>
-参考資料
-<a class=heading-link href=#%e5%8f%82%e8%80%83%e8%b3%87%e6%96%99>
-<i class="fa fa-link" aria-hidden=true></i>
-</a>
-</h4>
-<ul>
-<li>
-<p>DEEP LEARNING - IAN Goodfellow, Yoshua Bengio, Aaron Courville</p>
-<p>岩澤有祐, 鈴木雅大, 中山浩太郎, 松尾豊【監訳】</p>
-</li>
-</ul>
-</div>
-<footer>
-</footer>
-</article>
-</section>
-</div>
-<footer class=footer>
-<section class=container>
-©
-2021
+<span class=tag><a href=/ja/tags/deep-learning/>DEEP LEARNING</a></span></div></div></header><div><p>深層学習を勉強したメモです</p><h4 id=21-スカラーベクトル行列テンソル>2.1 スカラー、ベクトル、行列、テンソル
+<a class=heading-link href=#21-%e3%82%b9%e3%82%ab%e3%83%a9%e3%83%bc%e3%83%99%e3%82%af%e3%83%88%e3%83%ab%e8%a1%8c%e5%88%97%e3%83%86%e3%83%b3%e3%82%bd%e3%83%ab><i class="fa fa-link" aria-hidden=true></i></a></h4><ul><li>スカラー（scalars）：スカラーは単なる単一の数である。</li><li>ヘクトル（vectors）：ベクトルは数値の配列である。</li><li>行列（matrices）：行列は2-Dの数値配列なので、各成分は一つだけでなく２つのインデックスで示される。</li><li>テンソル（tensors）：場合によっては、３つ以上の軸を持つ配列が必要になる。</li></ul><div class="notice tip"><div class=notice-title><i class="fa fa-lightbulb-o" aria-hidden=true></i>Tip</div><div class=notice-content><p>行列の転置（transpose）の概念。</p><p>ブロードキャスティング（broadcasting）の概念.</p></div></div><h4 id=22-行列とベクトルの乗算>2.2 行列とベクトルの乗算
+<a class=heading-link href=#22-%e8%a1%8c%e5%88%97%e3%81%a8%e3%83%99%e3%82%af%e3%83%88%e3%83%ab%e3%81%ae%e4%b9%97%e7%ae%97><i class="fa fa-link" aria-hidden=true></i></a></h4><h4 id=23-単位行列と逆行列>2.3 単位行列と逆行列
+<a class=heading-link href=#23-%e5%8d%98%e4%bd%8d%e8%a1%8c%e5%88%97%e3%81%a8%e9%80%86%e8%a1%8c%e5%88%97><i class="fa fa-link" aria-hidden=true></i></a></h4><h4 id=24-線形従属と張る空間>2.4 線形従属と張る空間
+<a class=heading-link href=#24-%e7%b7%9a%e5%bd%a2%e5%be%93%e5%b1%9e%e3%81%a8%e5%bc%b5%e3%82%8b%e7%a9%ba%e9%96%93><i class="fa fa-link" aria-hidden=true></i></a></h4><h4 id=25-ノルム>2.5 ノルム
+<a class=heading-link href=#25-%e3%83%8e%e3%83%ab%e3%83%a0><i class="fa fa-link" aria-hidden=true></i></a></h4><h4 id=26-特殊な行列とベクトル>2.6 特殊な行列とベクトル
+<a class=heading-link href=#26-%e7%89%b9%e6%ae%8a%e3%81%aa%e8%a1%8c%e5%88%97%e3%81%a8%e3%83%99%e3%82%af%e3%83%88%e3%83%ab><i class="fa fa-link" aria-hidden=true></i></a></h4><h4 id=27-固有値分解>2.7 固有値分解
+<a class=heading-link href=#27-%e5%9b%ba%e6%9c%89%e5%80%a4%e5%88%86%e8%a7%a3><i class="fa fa-link" aria-hidden=true></i></a></h4><h4 id=28-特異値分解>2.8 特異値分解
+<a class=heading-link href=#28-%e7%89%b9%e7%95%b0%e5%80%a4%e5%88%86%e8%a7%a3><i class="fa fa-link" aria-hidden=true></i></a></h4><h4 id=29-ムーアペンローズ擬似逆行列>2.9 ムーア・ペンローズ擬似逆行列
+<a class=heading-link href=#29-%e3%83%a0%e3%83%bc%e3%82%a2%e3%83%9a%e3%83%b3%e3%83%ad%e3%83%bc%e3%82%ba%e6%93%ac%e4%bc%bc%e9%80%86%e8%a1%8c%e5%88%97><i class="fa fa-link" aria-hidden=true></i></a></h4><h4 id=210-トレース演算子>2.10 トレース演算子
+<a class=heading-link href=#210-%e3%83%88%e3%83%ac%e3%83%bc%e3%82%b9%e6%bc%94%e7%ae%97%e5%ad%90><i class="fa fa-link" aria-hidden=true></i></a></h4><h4 id=211-行列式>2.11 行列式
+<a class=heading-link href=#211-%e8%a1%8c%e5%88%97%e5%bc%8f><i class="fa fa-link" aria-hidden=true></i></a></h4><h4 id=212-例主成分分析>2.12 例：主成分分析
+<a class=heading-link href=#212-%e4%be%8b%e4%b8%bb%e6%88%90%e5%88%86%e5%88%86%e6%9e%90><i class="fa fa-link" aria-hidden=true></i></a></h4><h4 id=参考資料>参考資料
+<a class=heading-link href=#%e5%8f%82%e8%80%83%e8%b3%87%e6%96%99><i class="fa fa-link" aria-hidden=true></i></a></h4><ul><li><p>DEEP LEARNING - IAN Goodfellow, Yoshua Bengio, Aaron Courville</p><p>岩澤有祐, 鈴木雅大, 中山浩太郎, 松尾豊【監訳】</p></li></ul></div><footer></footer></article></section></div><footer class=footer><section class=container>©
+2021 -
+2022
 DUAN DAHAI
 ·
-利用技術 <a href=https://gohugo.io/>Hugo</a> & <a href=https://github.com/luizdepra/hugo-coder/>Coder</a>.
-</section>
-</footer>
-</main>
-<script src=/js/coder.min.03b17769f4f91ae35667e1f2a1ca8c16f50562576cf90ff32b3179926914daa5.js integrity="sha256-A7F3afT5GuNWZ+HyocqMFvUFYlds+Q/zKzF5kmkU2qU="></script>
-</body>
-</html>
+利用技術 <a href=https://gohugo.io/>Hugo</a> & <a href=https://github.com/luizdepra/hugo-coder/>Coder</a>.</section></footer></main><script src=/js/coder.min.1e7ed4c0db4e8708b345265f5fcd5fbbd6753672f2f79f33c5dacbd22f524208.js integrity="sha256-Hn7UwNtOhwizRSZfX81fu9Z1NnLy958zxdrL0i9SQgg="></script></body></html>
