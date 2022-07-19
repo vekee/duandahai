@@ -115,7 +115,7 @@ url = "https://twitter.com/duandahai/"
 name = "LinkedIn"
 icon = "fa fa-linkedin"
 weight = 4
-url = "https://www.linkedin.com/in/dand-c130bc/"
+url = "https://www.linkedin.com/in/duandahai/"
 
 [[params.social]]
 name = "RSS"
