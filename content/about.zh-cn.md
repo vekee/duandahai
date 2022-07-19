@@ -10,11 +10,7 @@ author = "段大海"
 
 下面是我为您推荐的一些文章：
 
-* https://github.com/yuin/goldmark
-* https://github.com/alecthomas/chroma
-* https://github.com/muesli/smartcrop
-* https://github.com/spf13/cobra
-* https://github.com/spf13/viper
+* https://duandahai.com/zh-cn/posts/20211106-workflow-actions/
 
 
 下面是我的一些个人项目：

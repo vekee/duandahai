@@ -10,11 +10,7 @@ author = "段大海"
 
 お薦め文章：
 
-* https://github.com/yuin/goldmark
-* https://github.com/alecthomas/chroma
-* https://github.com/muesli/smartcrop
-* https://github.com/spf13/cobra
-* https://github.com/spf13/viper
+* https://duandahai.com/ja/posts/20211027-aws-stepfunctions-map-state/
 
 個人のプロジェクトについて：
 

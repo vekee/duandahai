@@ -10,11 +10,7 @@ This is about Dan's multilingual blog, record problems and solutions in my tech 
 
 The blogs of recommendation:
 
-* https://github.com/yuin/goldmark
-* https://github.com/alecthomas/chroma
-* https://github.com/muesli/smartcrop
-* https://github.com/spf13/cobra
-* https://github.com/spf13/viper
+* https://duandahai.com/posts/20210607-real-time-monitoring-db/
 
 The open projects by Dan:
 
