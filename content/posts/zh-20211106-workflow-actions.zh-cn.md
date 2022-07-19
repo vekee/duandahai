@@ -20,7 +20,7 @@ categories = [
 
 * 工作流可以简单理解为企业或者个人处理业务的一个流程。简单的工作流举例如下图：
 
-![工作流](/media/20211106-workflow-actions.zh-cn-1.png)
+![工作流](/media/zh/20211106-workflow-actions.zh-cn-1.png)
 
 * 在Cloud中，即是将工作流转化为一种可提供的Cloud服务。该服务可能是固定形式的，也可能是根据具体业务场景自定义开发，后者支持范围广，服务场景多，在Cloud服务中比较常见。
 

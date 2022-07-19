@@ -25,5 +25,5 @@ class类文件加载后，static和static以外的对象，分别保存在不同
 
 如下图：
 
-![static内存领域](/media/20211230-java-static.zh-cn-1.png)
+![static内存领域](/media/zh/20211230-java-static.zh-cn-1.png)
 

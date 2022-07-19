@@ -15,5 +15,5 @@ categories = [
 #### The design of monitoring system
 
 
-![ステートマシン](/media/20210607-real-time-monitoring-db-1.png)
+![ステートマシン](/media/en/20210607-real-time-monitoring-db-1.png)
 
