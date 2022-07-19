@@ -10,7 +10,7 @@ author = "段大海"
 
 お薦め文章：
 
-* https://duandahai.com/ja/posts/20211027-aws-stepfunctions-map-state/
+* https://duandahai.com/ja/posts/jp-20211027-AWS-stepfunctions-Map-state/
 
 個人のプロジェクトについて：
 

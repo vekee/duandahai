@@ -12,7 +12,7 @@ categories = [
 ]
 +++
 
-#### The simple flow of monitoring system
+#### The design of monitoring system
 
 
 ![ステートマシン](/media/20210607-real-time-monitoring-db-1.png)
