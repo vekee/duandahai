@@ -10,12 +10,7 @@ This is about Dan's multilingual blog, record problems and solutions in my tech 
 
 The blogs of recommendation:
 
-* https://duandahai.com/posts/20210607-real-time-monitoring-db/
+* [Database monitoring system](https://duandahai.com/posts/en-20210607-real-time-monitoring-db/)
 
-The open projects by Dan:
-
-* https://github.com/vekee/timecard-online
-* https://github.com/vekee/DBMerge
-* https://formsendbox.com
 
 If you are interesting in my project or want to know more, see at my [GitHub](https://github.com/vekee).

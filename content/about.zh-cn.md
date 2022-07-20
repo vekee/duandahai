@@ -10,14 +10,7 @@ author = "段大海"
 
 下面是我为您推荐的一些文章：
 
-* https://duandahai.com/zh-cn/posts/20211106-workflow-actions/
-
-
-下面是我的一些个人项目：
-
-* https://github.com/vekee/timecard-online
-* https://github.com/vekee/DBMerge
-* https://formsendbox.com
+* [Workflow在Cloud服务中的应用场景小结](https://duandahai.com/zh-cn/posts/zh-20211106-workflow-actions/)
 
 
 如果您对我的项目感兴趣并想了解更多，请关注我的[GitHub](https://github.com/vekee)。

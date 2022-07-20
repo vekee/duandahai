@@ -10,13 +10,7 @@ author = "段大海"
 
 お薦め文章：
 
-* https://duandahai.com/ja/posts/jp-20211027-AWS-stepfunctions-Map-state/
-
-個人のプロジェクトについて：
-
-* https://github.com/vekee/timecard-online
-* https://github.com/vekee/DBMerge
-* https://formsendbox.com
+* [StepFunctionsにLambda動的並列実行](https://duandahai.com/ja/posts/jp-20211027-aws-stepfunctions-map-state/)
 
 
 私のプロジェクトに趣味があれば、またもっと知りたいであれば、[GitHub](https://github.com/vekee)をご覧ください
