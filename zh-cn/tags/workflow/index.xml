@@ -19,4 +19,5 @@ Batch Job处理
 业务自动化
 Github中的Workflow服务 Github中的Workflow是由GitHub Actions的事件触发而执行一系列针对Reposityd的处理。
 其他企业提供的Workflow服务 针对特定工作任务提供标准泛用功能服务 低代码平台实现工作任务的电子化 Workflow服务中需要的底层技术支持 针对各种服务的最优资源调度是Workflow实现所要面对的共同问题。
-为什么会用到Workflow服务，Workflow服务的优点缺点 参考資料 https://www.sciencedirect.com/science/article/pii/S1877050914002269</description></item></channel></rss>
+为什么会用到Workflow服务，Workflow服务的优点缺点 更新中
+参考資料 https://www.sciencedirect.com/science/article/pii/S1877050914002269</description></item></channel></rss>

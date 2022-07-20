@@ -24,10 +24,10 @@ Batch Job处理
 业务自动化
 Github中的Workflow服务 Github中的Workflow是由GitHub Actions的事件触发而执行一系列针对Reposityd的处理。
 其他企业提供的Workflow服务 针对特定工作任务提供标准泛用功能服务 低代码平台实现工作任务的电子化 Workflow服务中需要的底层技术支持 针对各种服务的最优资源调度是Workflow实现所要面对的共同问题。
-为什么会用到Workflow服务，Workflow服务的优点缺点 参考資料 https://www.sciencedirect.com/science/article/pii/S1877050914002269</description></item><item><title>主页</title><link>https://www.duandahai.com/zh-cn/about/</link><pubDate>Mon, 25 Oct 2021 00:00:00 +0000</pubDate><guid>https://www.duandahai.com/zh-cn/about/</guid><description>这是一个关于我个人的多语言博客，记录我在技术进阶过程中遇到的问题，还有那些被我一直保存在记事本中的故事，如果您喜欢请点击主页的订阅。
+为什么会用到Workflow服务，Workflow服务的优点缺点 更新中
+参考資料 https://www.sciencedirect.com/science/article/pii/S1877050914002269</description></item><item><title>主页</title><link>https://www.duandahai.com/zh-cn/about/</link><pubDate>Mon, 25 Oct 2021 00:00:00 +0000</pubDate><guid>https://www.duandahai.com/zh-cn/about/</guid><description>这是一个关于我个人的多语言博客，记录我在技术进阶过程中遇到的问题，还有那些被我一直保存在记事本中的故事，如果您喜欢请点击主页的订阅。
 下面是我为您推荐的一些文章：
-https://duandahai.com/zh-cn/posts/20211106-workflow-actions/ 下面是我的一些个人项目：
-https://github.com/vekee/timecard-online https://github.com/vekee/DBMerge https://formsendbox.com 如果您对我的项目感兴趣并想了解更多，请关注我的GitHub。</description></item><item><title>关于我</title><link>https://www.duandahai.com/zh-cn/contact/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://www.duandahai.com/zh-cn/contact/</guid><description>我是一位居住在日本的华人IT工程师，喜欢阅读和音乐，最近有些书荒，有好书的朋友可以推荐给我，谢谢！
+Workflow在Cloud服务中的应用场景小结 如果您对我的项目感兴趣并想了解更多，请关注我的GitHub。</description></item><item><title>关于我</title><link>https://www.duandahai.com/zh-cn/contact/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://www.duandahai.com/zh-cn/contact/</guid><description>我是一位居住在日本的华人IT工程师，喜欢阅读和音乐，最近有些书荒，有好书的朋友可以推荐给我，谢谢！
 如果您对我的文章，项目，故事感兴趣，请联系我, duandahai66@gmail.com。</description></item><item><title>项目</title><link>https://www.duandahai.com/zh-cn/projects/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://www.duandahai.com/zh-cn/projects/</guid><description>DBMerge Diff tables in Oracle database with high speed.
 formsendbox Send mail web service.
 timecard-online Create and send timecard pdf by online.</description></item></channel></rss>
