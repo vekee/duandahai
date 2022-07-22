@@ -24,5 +24,5 @@ we can build the monitoring system like this:
 - Output new inserted data into Queque(like AWS SQS) by trigger 
 - Get new data from Queque and execute your monitoring app in dynamic multiple process 
 
-![ステートマシン](/media/en/20210607-real-time-monitoring-db-1.png)
+![design](/media/en/20210607-real-time-monitoring-db-1.png)
 

@@ -225,3 +225,6 @@ url = "projects/"
 name = "关于"
 weight = 4
 url = "contact/"
+
+[markup.goldmark.renderer]
+unsafe = true
