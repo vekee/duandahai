@@ -10,7 +10,7 @@ This is about Dan's multilingual blog, record problems and solutions in my tech 
 
 The blogs of recommendation:
 
-* [Database monitoring system](https://duandahai.com/posts/en-20210607-real-time-monitoring-db/)
+* [Database monitoring system](https://duandahai.com/posts/en/20210607-real-time-monitoring-db/)
 
 
 If you are interesting in my project or want to know more, see at my [GitHub](https://github.com/vekee).

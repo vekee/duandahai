@@ -10,7 +10,7 @@ author = "段大海"
 
 お薦め文章：
 
-* [StepFunctionsにLambda動的並列実行](https://duandahai.com/ja/posts/jp-20211027-aws-stepfunctions-map-state/)
+* [StepFunctionsにLambda動的並列実行](https://duandahai.com/ja/posts/jp/20211027-aws-stepfunctions-map-state/)
 
 
 私のプロジェクトに趣味があれば、またもっと知りたいであれば、[GitHub](https://github.com/vekee)をご覧ください
