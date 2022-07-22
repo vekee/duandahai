@@ -8,4 +8,5 @@ In this case, to handle a large of new data per second with high-performance, we
 Output new inserted data into monitoring system database by trigger Output new inserted data into Queque(like AWS SQS) by trigger Get new data from Queque and execute your monitoring app in dynamic multiple process</description></item><item><title>Contact</title><link>https://www.duandahai.com/contact/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://www.duandahai.com/contact/</guid><description>I&amp;rsquo;m a software engineer living with my family in Japan. I like read and music, I will very happy if you can share interesting books to me.
 If you are interesting in my bolgs or projects, please contact me. duandahai66@gmail.com.</description></item><item><title>Projects</title><link>https://www.duandahai.com/projects/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://www.duandahai.com/projects/</guid><description>DBMerge Diff tables in Oracle database with high speed.
 formsendbox Send mail web service.
-timecard-online Create and send timecard pdf by online.</description></item></channel></rss>
+timecard-online Create and send timecard pdf by online.
+D-Tools Useful and efficiently VBA Tools in develop work.</description></item></channel></rss>
