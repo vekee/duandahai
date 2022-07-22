@@ -1,8 +1,8 @@
 +++
 author = "DUAN DAHAI"
-title = "Sample SBL in Agile develop"
+title = "My SBL in Agile develop"
 date = "2022-01-05"
-description = "Sample SBL in Agile develop"
+description = "My SBL in Agile develop"
 tags = [
     "Agile",
     "Management"
@@ -28,4 +28,4 @@ The burndown sheet is look like this:
 
 You can click 
 <a href="/media/en/En-SBL-202203.xlsx" >here</a>
-to download Sample SBL Excle.
+to download my SBL Excle.
