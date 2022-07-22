@@ -8,7 +8,9 @@ One-minute read</span></div><div class=categories><i class="fa fa-folder" aria-h
 <span class=separator>•</span>
 <a href=/categories/monitoringtable/>MonitoringTable</a></div><div class=tags><i class="fa fa-tag" aria-hidden=true></i>
 <span class=tag><a href=/tags/database/>database</a></span></div></div></header><div><h4 id=the-design-of-monitoring-system>The design of monitoring system
-<a class=heading-link href=#the-design-of-monitoring-system><i class="fa fa-link" aria-hidden=true></i></a></h4><p><img src=/media/en/20210607-real-time-monitoring-db-1.png alt=ステートマシン></p></div><footer></footer></article></section></div><footer class=footer><section class=container>©
+<a class=heading-link href=#the-design-of-monitoring-system><i class="fa fa-link" aria-hidden=true></i></a></h4><p>In some case we need monitor application&rsquo;s latest data in database on time.
+We could built a monitoring system out of the application.</p><p>In this case, to handle a large of new data per second with high-performance,
+we can build the monitoring system like this:</p><ul><li>Output new inserted data into monitoring system database by trigger</li><li>Output new inserted data into Queque(like AWS SQS) by trigger</li><li>Get new data from Queque and execute your monitoring app in dynamic multiple process</li></ul><p><img src=/media/en/20210607-real-time-monitoring-db-1.png alt=ステートマシン></p></div><footer></footer></article></section></div><footer class=footer><section class=container>©
 2021 -
 2022
 DUAN DAHAI
