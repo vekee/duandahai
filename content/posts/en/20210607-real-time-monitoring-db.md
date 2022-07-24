@@ -1,8 +1,8 @@
 +++
 author = "DUAN DAHAI"
-title = "The solutions for real time monitoring abnormal data in database"
+title = "One solution for real time monitoring abnormal data in database"
 date = "2021-06-07"
-description = "The solutions for real time monitoring abnormal data in database"
+description = "One solution for real time monitoring abnormal data in database"
 tags = [
     "database"
 ]
