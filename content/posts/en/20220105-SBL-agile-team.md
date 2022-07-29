@@ -27,5 +27,6 @@ The burndown sheet is look like this:
 ![BurnDown](/media/en/20220105-agile-team-SBL-2.png)
 
 You can click 
-<a href="/media/en/En-SBL-202203.xlsx" >here</a>
-to download my SBL Excle.
+<a href="/media/en/En-SBL-202203.xlsx" >here(En)</a>
+<a href="/media/en/JP-SBL-202203.xlsx" >here(JP)</a>
+to download the SBL Excle.
