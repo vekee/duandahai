@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>database on DUAN DAHAI</title>
+    <link>https://www.duandahai.com/tags/database/</link>
+    <description>Recent content in database on DUAN DAHAI</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 07 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.duandahai.com/tags/database/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>One solution for real time monitoring abnormal data in database</title>
+      <link>https://www.duandahai.com/posts/en/20210607-real-time-monitoring-db/</link>
+      <pubDate>Mon, 07 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.duandahai.com/posts/en/20210607-real-time-monitoring-db/</guid>
+      <description>The design of monitoring system    In some case we need monitor application&amp;rsquo;s latest data in database on time. We could built a monitoring system out of the application.
+In this case, to handle a large of new data per second with high-performance, we can build the monitoring system like this:
+ Output new inserted data into monitoring system database by trigger Output new inserted data into Queque(like AWS SQS) by trigger Get new data from Queque and execute your monitoring app in dynamic multiple process  </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -6,59 +6,46 @@
     <description>Recent content on 段大海</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 25 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.duandahai.com/zh-cn/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 30 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://www.duandahai.com/zh-cn/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Emoji Support</title>
-      <link>https://www.duandahai.com/zh-cn/posts/emoji-support/</link>
-      <pubDate>Mon, 25 Oct 2021 00:00:00 +0000</pubDate>
+      <title>Java中static关键字</title>
+      <link>https://www.duandahai.com/zh-cn/posts/zh/20211230-java-static/</link>
+      <pubDate>Thu, 30 Dec 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://www.duandahai.com/zh-cn/posts/emoji-support/</guid>
-      <description>&lt;p&gt;Emoji can be enabled in a Hugo project in a number of ways.&lt;/p&gt;</description>
+      <guid>https://www.duandahai.com/zh-cn/posts/zh/20211230-java-static/</guid>
+      <description>本文介绍关于Java中static对象(static修饰的变量或者方法)的一些特点
+内存加载    static对象和需要初期化对象的保存内存领域是不同的。
+class类文件加载后，static和static以外的对象，分别保存在不同的内存空间中。static对象保存在称为[static领域]的内存中，static以外的对象保存在[heap领域]中，heap领域的class会被初期化生成。因为static对象，在class文件加载后立马进行内存分配，所以static对象被访问时，可以直接调用(Class名.static对象名)，当然也可以被生成的初期化对象调用(instanceOBJ.static对象名)。
+由同一个Class生成的不同初期化对象中，所持有以及操作的同一个static对象是完全相同的,不会因调用对象而不同。
+由于static对象是无需初期化生成即可使用的，因此在static方法中可以调用static对象，却不能调用还需要初期化生成的对象。相反，在初期化生成的对象中，可以随意调用static对象。
+如下图：</description>
     </item>
     
     <item>
-      <title>External Page: Hugo Coder Wiki</title>
-      <link>https://www.duandahai.com/zh-cn/posts/hugo-coder-wiki/</link>
-      <pubDate>Mon, 25 Oct 2021 00:00:00 +0000</pubDate>
+      <title>Workflow服务在Cloud中的应用场景小结</title>
+      <link>https://www.duandahai.com/zh-cn/posts/zh/20211106-workflow-actions/</link>
+      <pubDate>Sat, 06 Nov 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://www.duandahai.com/zh-cn/posts/hugo-coder-wiki/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Markdown Syntax Guide</title>
-      <link>https://www.duandahai.com/zh-cn/posts/markdown-syntax/</link>
-      <pubDate>Mon, 25 Oct 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.duandahai.com/zh-cn/posts/markdown-syntax/</guid>
-      <description>&lt;p&gt;This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Math Typesetting</title>
-      <link>https://www.duandahai.com/zh-cn/posts/math-typesetting/</link>
-      <pubDate>Mon, 25 Oct 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.duandahai.com/zh-cn/posts/math-typesetting/</guid>
-      <description>&lt;p&gt;Mathematical notation in a Hugo project can be enabled by using third party JavaScript libraries.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>More Rich Content</title>
-      <link>https://www.duandahai.com/zh-cn/posts/more-rich-content/</link>
-      <pubDate>Mon, 25 Oct 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.duandahai.com/zh-cn/posts/more-rich-content/</guid>
-      <description>&lt;p&gt;Hugo Coder provides some Custom Shortcodes.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Placeholder Text</title>
-      <link>https://www.duandahai.com/zh-cn/posts/placeholder-text/</link>
-      <pubDate>Mon, 25 Oct 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.duandahai.com/zh-cn/posts/placeholder-text/</guid>
-      <description>&lt;p&gt;Lorem est tota propiore conpellat pectoribus de pectora summo.&lt;/p&gt;</description>
+      <guid>https://www.duandahai.com/zh-cn/posts/zh/20211106-workflow-actions/</guid>
+      <description>本文介绍关于Workflow在Cloud服务中的一些应用场景。
+Workflow服务的概念    英文：Workflow as a service。直接翻译为中文：工作流服务
+ 工作流可以简单理解为企业或者个人处理业务的一个流程。简单的工作流举例如下图：   在Cloud中，即是将工作流转化为一种可提供的Cloud服务。该服务可能是固定形式的，也可能是根据具体业务场景自定义开发，后者支持范围广，服务场景多，在Cloud服务中比较常见。  AWS中的Workflow服务-Amazon Simple Workflow Service (SWF)    AWS官网称SWF是一种低代码可视化工作流服务，用于编排AWS服务、自动化业务流程或构建无服务器应用程序。具有以下特点：
+  逻辑分隔
+流程控制、底层的状态结构和任务分派分开管理，降低耦合性，方便修改维护。
+  可靠
+SWF在Amazon 的高可用性数据中心中运行，因此状态追踪和任务处理引擎可以在应用程序需要时随时可用。SWF还具有冗余存储任务，可将它们指派到应用程序组件，追踪进度并使其保持最新状态。
+  简单
+SWF用全托管的云工作流Web服务替代复杂的定制代码，属于工作流解决方案和流程自动化软件。开发人员不再需要管理流程自动化的基础设施，可以将精力集中在应用程序的独特功能上。
+  可扩展
+SWF可以随着应用程序的使用进行无缝调节。无需对工作流服务进行人工管理，即可在应用程序中添加更多云工作流或增加工作流复杂性。
+  灵活
+SWF中可以使用多种编程语言进行应用程序组件和协作逻辑编写，并在云中或本地运行。
+  Salesforce中的Workflow服务-workflow    Salesforce对workflow解释为将企业标准的业务、程序进行自动化，以提高业务流程效率。
+Google中的Workflow服务    Google中的Workflow是一种对给定任务进行可编排的的服务平台。主要的应用场景：
+  各种服务的编排
+  Batch Job处理
+  业务流程处理
+  业务自动化</description>
     </item>
     
     <item>
@@ -69,17 +56,7 @@
       <guid>https://www.duandahai.com/zh-cn/about/</guid>
       <description>这是一个关于我个人的多语言博客，记录我在技术进阶过程中遇到的问题，还有那些被我一直保存在记事本中的故事，如果您喜欢请点击主页的订阅。
 下面是我为您推荐的一些文章：
- https://github.com/yuin/goldmark https://github.com/alecthomas/chroma https://github.com/muesli/smartcrop https://github.com/spf13/cobra https://github.com/spf13/viper  下面是我的一些个人项目：
- https://github.com/vekee/timecard-online https://github.com/vekee/DBMerge https://formsendbox.com  如果您对我的项目感兴趣并想了解更多，请关注我的GitHub。</description>
-    </item>
-    
-    <item>
-      <title>Conteúdo Rico</title>
-      <link>https://www.duandahai.com/zh-cn/rich-content/</link>
-      <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.duandahai.com/zh-cn/rich-content/</guid>
-      <description>&lt;p&gt;O Hugo vem com vários &lt;a href=&#34;https://gohugo.io/content-management/shortcodes/#use-hugos-built-in-shortcodes&#34;&gt;Shortcodes Internos&lt;/a&gt; para conteúdo rico, assim como uma &lt;a href=&#34;https://gohugo.io/about/hugo-and-gdpr/&#34;&gt;Configuração de Privacidade&lt;/a&gt; e uma gama de Shortcodes simples que permitem embutir versões estáticas e sem JS de várias de redes sociais.&lt;/p&gt;</description>
+ Workflow在Cloud服务中的应用场景小结  如果您对我的项目感兴趣并想了解更多，请关注我的GitHub。</description>
     </item>
     
     <item>
@@ -98,7 +75,11 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.duandahai.com/zh-cn/projects/</guid>
-      <description>我的项目正在整理更新中，稍后奉上。</description>
+      <description>DBMerge     Diff tables in Oracle database with high speed.
+ formsendbox     Send mail web service.
+ timecard-online     Create and send timecard pdf by online.
+ D-Tools     Useful and efficiently VBA Tools in develop work.
+ </description>
     </item>
     
   </channel>

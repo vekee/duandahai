@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.duandahai.com/zh-cn/categories/</loc>
-    <lastmod>2021-10-25T00:00:00+00:00</lastmod>
+    <lastmod>2021-12-30T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -20,242 +20,17 @@
                 href="https://www.duandahai.com/zh-cn/categories/"
                 />
   </url><url>
-    <loc>https://www.duandahai.com/zh-cn/tags/css/</loc>
-    <lastmod>2021-10-25T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.duandahai.com/tags/css/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="https://www.duandahai.com/ja/tags/css/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://www.duandahai.com/zh-cn/tags/css/"
-                />
+    <loc>https://www.duandahai.com/zh-cn/tags/java/</loc>
+    <lastmod>2021-12-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.duandahai.com/zh-cn/categories/development/</loc>
-    <lastmod>2021-10-25T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.duandahai.com/categories/development/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="https://www.duandahai.com/ja/categories/development/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://www.duandahai.com/zh-cn/categories/development/"
-                />
+    <loc>https://www.duandahai.com/zh-cn/categories/java/</loc>
+    <lastmod>2021-12-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.duandahai.com/zh-cn/tags/development/</loc>
-    <lastmod>2021-10-25T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.duandahai.com/tags/development/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="https://www.duandahai.com/ja/tags/development/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://www.duandahai.com/zh-cn/tags/development/"
-                />
-  </url><url>
-    <loc>https://www.duandahai.com/zh-cn/tags/emoji/</loc>
-    <lastmod>2021-10-25T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.duandahai.com/tags/emoji/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="https://www.duandahai.com/ja/tags/emoji/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://www.duandahai.com/zh-cn/tags/emoji/"
-                />
-  </url><url>
-    <loc>https://www.duandahai.com/zh-cn/posts/emoji-support/</loc>
-    <lastmod>2021-10-25T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="https://www.duandahai.com/ja/posts/emoji-support/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.duandahai.com/posts/emoji-support/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://www.duandahai.com/zh-cn/posts/emoji-support/"
-                />
-  </url><url>
-    <loc>https://www.duandahai.com/zh-cn/posts/hugo-coder-wiki/</loc>
-    <lastmod>2021-10-25T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="https://www.duandahai.com/ja/posts/hugo-coder-wiki/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.duandahai.com/posts/hugo-coder-wiki/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://www.duandahai.com/zh-cn/posts/hugo-coder-wiki/"
-                />
-  </url><url>
-    <loc>https://www.duandahai.com/zh-cn/tags/html/</loc>
-    <lastmod>2021-10-25T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.duandahai.com/tags/html/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="https://www.duandahai.com/ja/tags/html/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://www.duandahai.com/zh-cn/tags/html/"
-                />
-  </url><url>
-    <loc>https://www.duandahai.com/zh-cn/tags/hugo/</loc>
-    <lastmod>2021-10-25T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.duandahai.com/tags/hugo/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="https://www.duandahai.com/ja/tags/hugo/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://www.duandahai.com/zh-cn/tags/hugo/"
-                />
-  </url><url>
-    <loc>https://www.duandahai.com/zh-cn/tags/markdown/</loc>
-    <lastmod>2021-10-25T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.duandahai.com/tags/markdown/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="https://www.duandahai.com/ja/tags/markdown/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://www.duandahai.com/zh-cn/tags/markdown/"
-                />
-  </url><url>
-    <loc>https://www.duandahai.com/zh-cn/posts/markdown-syntax/</loc>
-    <lastmod>2021-10-25T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="https://www.duandahai.com/ja/posts/markdown-syntax/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.duandahai.com/posts/markdown-syntax/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://www.duandahai.com/zh-cn/posts/markdown-syntax/"
-                />
-  </url><url>
-    <loc>https://www.duandahai.com/zh-cn/posts/math-typesetting/</loc>
-    <lastmod>2021-10-25T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="https://www.duandahai.com/ja/posts/math-typesetting/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.duandahai.com/posts/math-typesetting/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://www.duandahai.com/zh-cn/posts/math-typesetting/"
-                />
-  </url><url>
-    <loc>https://www.duandahai.com/zh-cn/posts/more-rich-content/</loc>
-    <lastmod>2021-10-25T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="https://www.duandahai.com/ja/posts/more-rich-content/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.duandahai.com/posts/more-rich-content/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://www.duandahai.com/zh-cn/posts/more-rich-content/"
-                />
-  </url><url>
-    <loc>https://www.duandahai.com/zh-cn/posts/placeholder-text/</loc>
-    <lastmod>2021-10-25T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="https://www.duandahai.com/ja/posts/placeholder-text/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.duandahai.com/posts/placeholder-text/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://www.duandahai.com/zh-cn/posts/placeholder-text/"
-                />
+    <loc>https://www.duandahai.com/zh-cn/posts/zh/20211230-java-static/</loc>
+    <lastmod>2021-12-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.duandahai.com/zh-cn/posts/</loc>
-    <lastmod>2021-10-25T00:00:00+00:00</lastmod>
+    <lastmod>2021-12-30T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -272,62 +47,11 @@
                 href="https://www.duandahai.com/zh-cn/posts/"
                 />
   </url><url>
-    <loc>https://www.duandahai.com/zh-cn/series/</loc>
-    <lastmod>2021-10-25T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.duandahai.com/series/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="https://www.duandahai.com/ja/series/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://www.duandahai.com/zh-cn/series/"
-                />
-  </url><url>
-    <loc>https://www.duandahai.com/zh-cn/tags/shortcodes/</loc>
-    <lastmod>2021-10-25T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.duandahai.com/tags/shortcodes/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="https://www.duandahai.com/ja/tags/shortcodes/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://www.duandahai.com/zh-cn/tags/shortcodes/"
-                />
-  </url><url>
-    <loc>https://www.duandahai.com/zh-cn/categories/syntax/</loc>
-    <lastmod>2021-10-25T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.duandahai.com/categories/syntax/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="https://www.duandahai.com/ja/categories/syntax/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://www.duandahai.com/zh-cn/categories/syntax/"
-                />
+    <loc>https://www.duandahai.com/zh-cn/tags/static/</loc>
+    <lastmod>2021-12-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.duandahai.com/zh-cn/tags/</loc>
-    <lastmod>2021-10-25T00:00:00+00:00</lastmod>
+    <lastmod>2021-12-30T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -344,77 +68,38 @@
                 href="https://www.duandahai.com/zh-cn/tags/"
                 />
   </url><url>
-    <loc>https://www.duandahai.com/zh-cn/tags/text/</loc>
-    <lastmod>2021-10-25T00:00:00+00:00</lastmod>
+    <loc>https://www.duandahai.com/zh-cn/</loc>
+    <lastmod>2021-12-30T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://www.duandahai.com/tags/text/"
+                href="https://www.duandahai.com/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
-                href="https://www.duandahai.com/ja/tags/text/"
+                href="https://www.duandahai.com/ja/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh-cn"
-                href="https://www.duandahai.com/zh-cn/tags/text/"
+                href="https://www.duandahai.com/zh-cn/"
                 />
   </url><url>
-    <loc>https://www.duandahai.com/zh-cn/tags/themes/</loc>
-    <lastmod>2021-10-25T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.duandahai.com/tags/themes/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="https://www.duandahai.com/ja/tags/themes/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://www.duandahai.com/zh-cn/tags/themes/"
-                />
+    <loc>https://www.duandahai.com/zh-cn/tags/actions/</loc>
+    <lastmod>2021-11-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.duandahai.com/zh-cn/categories/themes/</loc>
-    <lastmod>2021-10-25T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.duandahai.com/categories/themes/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="https://www.duandahai.com/ja/categories/themes/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://www.duandahai.com/zh-cn/categories/themes/"
-                />
+    <loc>https://www.duandahai.com/zh-cn/categories/cloud/</loc>
+    <lastmod>2021-11-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.duandahai.com/zh-cn/series/themes-guide/</loc>
-    <lastmod>2021-10-25T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.duandahai.com/series/themes-guide/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="https://www.duandahai.com/ja/series/themes-guide/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://www.duandahai.com/zh-cn/series/themes-guide/"
-                />
+    <loc>https://www.duandahai.com/zh-cn/categories/knowhow/</loc>
+    <lastmod>2021-11-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.duandahai.com/zh-cn/tags/workflow/</loc>
+    <lastmod>2021-11-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.duandahai.com/zh-cn/posts/zh/20211106-workflow-actions/</loc>
+    <lastmod>2021-11-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.duandahai.com/zh-cn/about/</loc>
     <lastmod>2021-10-25T00:00:00+00:00</lastmod>
@@ -434,60 +119,6 @@
                 href="https://www.duandahai.com/zh-cn/about/"
                 />
   </url><url>
-    <loc>https://www.duandahai.com/zh-cn/</loc>
-    <lastmod>2021-10-25T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.duandahai.com/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="https://www.duandahai.com/ja/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://www.duandahai.com/zh-cn/"
-                />
-  </url><url>
-    <loc>https://www.duandahai.com/zh-cn/rich-content/</loc>
-    <lastmod>2019-03-10T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="https://www.duandahai.com/ja/rich-content/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.duandahai.com/rich-content/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://www.duandahai.com/zh-cn/rich-content/"
-                />
-  </url><url>
-    <loc>https://www.duandahai.com/zh-cn/tags/privacy/</loc>
-    <lastmod>2019-03-10T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.duandahai.com/tags/privacy/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="ja"
-                href="https://www.duandahai.com/ja/tags/privacy/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh-cn"
-                href="https://www.duandahai.com/zh-cn/tags/privacy/"
-                />
-  </url><url>
     <loc>https://www.duandahai.com/zh-cn/authors/</loc>
     <xhtml:link
                 rel="alternate"
@@ -503,6 +134,23 @@
                 rel="alternate"
                 hreflang="zh-cn"
                 href="https://www.duandahai.com/zh-cn/authors/"
+                />
+  </url><url>
+    <loc>https://www.duandahai.com/zh-cn/series/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.duandahai.com/series/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://www.duandahai.com/ja/series/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://www.duandahai.com/zh-cn/series/"
                 />
   </url><url>
     <loc>https://www.duandahai.com/zh-cn/contact/</loc>
