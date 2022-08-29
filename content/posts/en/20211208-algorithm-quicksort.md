@@ -15,14 +15,14 @@ categories = [
 +++
 
 In a quick sort algorithm, 
-It picks an element as a pivot and partitions the given array around the picked pivot. (For sort by ascending, it moves smaller number to the pivot's left, and it moves bigger number to the pivot's right)
+It picks an element as a pivot and partitions the given array around the picked pivot. (For sort by ascending, it moves smaller number to the pivot's left, and moves bigger number to the pivot's right)
 
 I wrote two classic samples by use python.
 - Always pick the first element as a pivot.
 - Always pick the last element as a pivot.
 
 
-#### This is a sample for quick sort that start from left value as pivot
+#### This is a sample for quick sort that start from first value as pivot
 ```PYTHON
 # change the position on each number
 def swapEachOther(arr, leftIndex, rightIndex):
@@ -68,7 +68,7 @@ print(arr)
 sort(arr, 0, len(arr) -1)
 ```
 
-#### This is a sample for quick sort that start from right number as pivot
+#### This is a sample for quick sort that start from last number as pivot
 
 ```PYTHON
 # change the position on each number

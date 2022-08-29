@@ -13,7 +13,7 @@ categories = [
 ]
 +++
 
-When we want to scp files from Windows to linux in our application,and there is a limit to install a software,we can use the WinSCP Command-line in Windows command prompt.
+When we want to scp files from Windows to linux in our application, and there is a limit to install a software, we can use the WinSCP Command-line in Windows command prompt.
 
 
 WinSCP Command-line have two modes (Console/scripting mode),
