@@ -23,7 +23,7 @@ This post introduce one API that can help you make it simple and easily.
 You can just set your form action like this:
 
 ```
-<form action="https://formsendbox.com/duandahai66@gmail.com" method="post">
+<form action="https://formsendbox.com/sendto/duandahai66@gmail.com" method="post">
 some input contents
 </from>
 ```
