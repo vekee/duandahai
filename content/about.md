@@ -11,6 +11,8 @@ This is about Dan's multilingual blog, record problems and solutions in my tech 
 The blogs of recommendation:
 
 * [Database monitoring system](https://duandahai.com/posts/en/20210607-real-time-monitoring-db/)
+* [StepFunctionsにLambda動的並列実行](https://duandahai.com/ja/posts/jp/20211027-aws-stepfunctions-map-state/)
+* [Simple setup spark in windows OS](https://duandahai.com/posts/en/20221028-setup-spark-in-windows/)
 
 
 If you are interesting in my project or want to know more, see at my [GitHub](https://github.com/vekee).

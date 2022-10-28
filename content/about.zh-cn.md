@@ -10,6 +10,9 @@ author = "段大海"
 
 下面是我为您推荐的一些文章：
 
+* [Database monitoring system](https://duandahai.com/posts/en/20210607-real-time-monitoring-db/)
+* [StepFunctionsにLambda動的並列実行](https://duandahai.com/ja/posts/jp/20211027-aws-stepfunctions-map-state/)
+* [Simple setup spark in windows OS](https://duandahai.com/posts/en/20221028-setup-spark-in-windows/)
 * [Workflow在Cloud服务中的应用场景小结](https://duandahai.com/zh-cn/posts/zh/20211106-workflow-actions/)
 
 
