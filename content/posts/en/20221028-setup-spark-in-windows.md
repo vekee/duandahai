@@ -19,11 +19,11 @@ you needn't confuse that you don't have a linux environment or a cloud service a
 Just take the integrated spark environment into your own PC, only one step setup, then you can use it.
 and even you needn't to install anything in your PC.
 
-This solution is win-spark-env, You can find it on <a href="https://github.com/vekee/win-spark-env" >github.</a>
+This solution is win-spark-env, You can find it on <a href="https://github.com/vekee/win-spark-env" >Github.</a>
 
 Under the article, I will show how I use it.
 
-### Download from <a href="https://github.com/vekee/win-spark-env" >github.</a>
+### Download from <a href="https://github.com/vekee/win-spark-env" >Github.</a>
 
 - Copy the root folder Apache under C:¥
 ![save](/media/en/20220928-run-spark-in-windows-1.png)
@@ -60,7 +60,7 @@ C:\Apache\Spark3.3\source
 ### Other
 You can change the root director to avoid permission problem.
 1. Change the setted environment variable path
-2. Grep all the files under `C:\Apache\Spark3.3\source`, update the path as you want change.
+2. Grep all the files under `C:\Apache\Spark3.3\source`, update the path as you want to change.
 
 #### Reference
-You can find more information on <a href="https://github.com/vekee/win-spark-env" >github.</a> If you have any question, you can submit an Issue on it.
+You can find more information on <a href="https://github.com/vekee/win-spark-env" >Github.</a> If you have any question, you can submit an Issue on it.
