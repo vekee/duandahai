@@ -21,7 +21,7 @@ and even you needn't to install anything in your PC.
 
 This solution is win-spark-env, You can find it on <a href="https://github.com/vekee/win-spark-env" >Github.</a>
 
-Under the article, I will show how I use it.
+In this article, I will show how I use it.
 
 ### Download from <a href="https://github.com/vekee/win-spark-env" >Github.</a>
 
