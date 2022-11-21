@@ -113,7 +113,7 @@ sort(arr, 0, len(arr) -1)
 ```
 
 You can click 
-<a href="/media/en/20211208-QuickSort1.py" >here(QuickSort1)</a>
+<a href="20211208-QuickSort1.py" >here(QuickSort1)</a>
 , 
-<a href="/media/en/20211208-QuickSort2.py" >here(QuickSort2)</a>
+<a href="20211208-QuickSort2.py" >here(QuickSort2)</a>
 to download the source file.

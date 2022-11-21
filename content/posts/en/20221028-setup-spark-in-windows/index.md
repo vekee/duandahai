@@ -26,12 +26,12 @@ In this article, I will show how I use it.
 ### Download from <a href="https://github.com/vekee/win-spark-env" >Github.</a>
 
 - Copy the root folder Apache under C:¥
-![save](/media/en/20220928-run-spark-in-windows-1.png)
+![save](20221028-run-spark-in-windows-1.png)
 
 
 ### Set Up
 - Open the Command Prompt as administrator, execute the __environment_variable_setup.bat__  under C:¥Apache¥Spark3.3¥tools
-![run](/media/en/20220928-run-spark-in-windows-3.png)
+![run](20221028-run-spark-in-windows-3.png)
 
 ### Run your spark script
 - Run the example pyspark script by spark-submit in Command Prompt.
@@ -39,7 +39,7 @@ In this article, I will show how I use it.
 python C:¥Apache¥Spark3.3¥tools¥spark-3.3.0-bin-hadoop3¥bin¥spark-submit.py C:\Apache\Spark3.3\source\example.py
 ```
 - Avoid the ouput folder permission problem, Suggest you open the Command Prompt as administrator.
-![run](/media/en/20220928-run-spark-in-windows-5.png)
+![run](20221028-run-spark-in-windows-5.png)
 
 ### Develop IDE
 - Start the VSCode as administrator, install Python extension for VSCode.
@@ -51,11 +51,11 @@ C:\Apache\Spark3.3\tools\VSCode-win32-x64-1.72.0¥Code.exe
 C:\Apache\Spark3.3\source
 `
 - Run the example pyspark script in DEBUG model by spark-submit.
-![run](/media/en/20220928-run-spark-in-windows-6.png)
+![run](20221028-run-spark-in-windows-6.png)
 
 ### Example script result
 - When executed the example script successfully, the result file will be create under output folder.
-![run](/media/en/20220928-run-spark-in-windows-7.png)
+![run](20221028-run-spark-in-windows-7.png)
 
 ### Other
 You can change the root director to avoid permission problem.

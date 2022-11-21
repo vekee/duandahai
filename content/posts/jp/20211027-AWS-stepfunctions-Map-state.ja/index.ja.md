@@ -111,7 +111,7 @@ def lambda_handler(event, context):
 動的並列数制御処理で、生成した並列情報リストをLoopして、非同期で業務処理を起動する。
 Mapを利用して、作成したステートマシンは、以下のようなイメージです。
 
-![ステートマシン](/media/jp/20211027-AWS-stepfunctions-Map-state-1.png)
+![ステートマシン](20211027-AWS-stepfunctions-Map-state.png)
 
 
 下記はステートマシンの記述です。

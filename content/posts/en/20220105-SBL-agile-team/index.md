@@ -19,14 +19,14 @@ Share my SBL in agile develop team.
 
 The task items sheet is look like this:
 
-![SBL](/media/en/20220105-agile-team-SBL-1.png)
+![SBL](20220105-agile-team-SBL-1.png)
 
 
 The burndown sheet is look like this:
 
-![BurnDown](/media/en/20220105-agile-team-SBL-2.png)
+![BurnDown](20220105-agile-team-SBL-2.png)
 
 You can click 
-<a href="/media/en/En-SBL-202203.xlsx" >here(En)</a>
-<a href="/media/en/JP-SBL-202203.xlsx" >here(JP)</a>
+<a href="En-SBL-202203.xlsx" >here(En)</a>
+<a href="JP-SBL-202203.xlsx" >here(JP)</a>
 to download the SBL Excle.
