@@ -1,0 +1,379 @@
+<!doctype html><html lang=ja><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=content-language content="ja"><meta name=color-scheme content="light dark"><meta http-equiv=content-security-policy content="upgrade-insecure-requests; block-all-mixed-content; default-src 'self'; child-src 'self'; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net/; form-action 'self'; frame-src 'self'; img-src 'self'; object-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com/ https://cdn.jsdelivr.net/; script-src 'self' 'unsafe-inline' https://www.google-analytics.com; prefetch-src 'self'; connect-src 'self' https://www.google-analytics.com;"><meta name=author content="DUAN DAHAI"><meta name=description content="Lambda実行時間の最大15分制限より、15分以内に処理完了するために、同一Lambdaを並行で処理する対策方法を説明しました。"><meta name=keywords content="blog,developer,personal"><meta name=twitter:card content="summary"><meta name=twitter:title content="マップ状態を利用して、動的並列にLambdaを多重で実行する"><meta name=twitter:description content="Lambda実行時間の最大15分制限より、15分以内に処理完了するために、同一Lambdaを並行で処理する対策方法を説明しました。"><meta property="og:title" content="マップ状態を利用して、動的並列にLambdaを多重で実行する"><meta property="og:description" content="Lambda実行時間の最大15分制限より、15分以内に処理完了するために、同一Lambdaを並行で処理する対策方法を説明しました。"><meta property="og:type" content="article"><meta property="og:url" content="https://www.duandahai.com/ja/posts/jp/20211027-aws-stepfunctions-map-state.ja/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2021-10-27T00:00:00+00:00"><meta property="article:modified_time" content="2021-10-27T00:00:00+00:00"><meta property="og:site_name" content="DUAN DAHAI"><title>マップ状態を利用して、動的並列にLambdaを多重で実行する · DUAN DAHAI</title><link rel=canonical href=https://www.duandahai.com/ja/posts/jp/20211027-aws-stepfunctions-map-state.ja/><link rel=preload href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as=font type=font/woff2 crossorigin><link rel=stylesheet href=/css/coder.min.708686f8ab8176e91d44fcbe488a0fe0333b94f405cf18a52383d67ba22f0ccb.css integrity="sha256-cIaG+KuBdukdRPy+SIoP4DM7lPQFzxilI4PWe6IvDMs=" crossorigin=anonymous media=screen><link rel=icon type=image/png href=/images/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=/images/favicon-16x16.png sizes=16x16><link rel=apple-touch-icon href=/images/apple-touch-icon.png><link rel=apple-touch-icon sizes=180x180 href=/images/apple-touch-icon.png><meta name=generator content="Hugo 0.106.0"></head><body class="preload-transitions colorscheme-light"><div class=float-container><a id=dark-mode-toggle class=colorscheme-toggle><i class="fa fa-adjust fa-fw" aria-hidden=true></i></a></div><main class=wrapper><nav class=navigation><section class=container><a class=navigation-title href=/ja>DUAN DAHAI</a>
+<input type=checkbox id=menu-toggle>
+<label class="menu-button float-right" for=menu-toggle><i class="fa fa-bars fa-fw" aria-hidden=true></i></label><ul class=navigation-list><li class=navigation-item><a class=navigation-link href=/ja/about/>ホーム</a></li><li class=navigation-item><a class=navigation-link href=/ja/posts/>文章</a></li><li class=navigation-item><a class=navigation-link href=/ja/projects/>プロジェクト</a></li><li class=navigation-item><a class=navigation-link href=/ja/contact/>私について</a></li><li class="navigation-item menu-separator"><span>|</span></li><li class=navigation-item><a href=https://www.duandahai.com/>🇬🇧</a></li><li class=navigation-item><a href=https://www.duandahai.com/zh-cn/>🇨🇳</a></li></ul></section></nav><div class=content><section class="container post"><article><header><div class=post-title><h1 class=title><a class=title-link href=https://www.duandahai.com/ja/posts/jp/20211027-aws-stepfunctions-map-state.ja/>マップ状態を利用して、動的並列にLambdaを多重で実行する</a></h1></div><div class=post-meta><div class=date><span class=posted-on><i class="fa fa-calendar" aria-hidden=true></i>
+<time datetime=2021-10-27T00:00:00Z>2021/10/27</time></span>
+<span class=reading-time><i class="fa fa-clock-o" aria-hidden=true></i>
+3分で読めます</span></div><div class=categories><i class="fa fa-folder" aria-hidden=true></i>
+<a href=/ja/categories/%E6%8A%80%E8%A1%93%E6%96%87%E7%AB%A0/>技術文章</a>
+<span class=separator>•</span>
+<a href=/ja/categories/aws/>AWS</a></div><div class=tags><i class="fa fa-tag" aria-hidden=true></i>
+<span class=tag><a href=/ja/tags/aws/>AWS</a></span>
+<span class=separator>•</span>
+<span class=tag><a href=/ja/tags/lambda/>Lambda</a></span>
+<span class=separator>•</span>
+<span class=tag><a href=/ja/tags/stepfunctions/>Stepfunctions</a></span>
+<span class=separator>•</span>
+<span class=tag><a href=/ja/tags/map/>Map</a></span></div></div></header><div><p>Lambda実行時間の最大15分制限より、15分以内に処理完了するために、同一Lambdaを並行で処理する対策を説明します。</p><h4 id=対策概要>対策概要
+<a class=heading-link href=#%e5%af%be%e7%ad%96%e6%a6%82%e8%a6%81><i class="fa fa-link" aria-hidden=true></i></a></h4><ol><li>AWS Lambda 関数：動的並列数制御処理</li><li>AWS Lambda 関数：業務処理</li><li>AWS Step Functions ステートマシン</li></ol><p>動的並列数制御処理に処理する全体のデータ量より、並列数、各並列起動で処理するデータを決めて、Step Functions の OutputPathに並列数と同じなサイズのJsonリストで返却します。
+Map stateがJsonリストの要素ごとに、各並列起動情報を引数として、業務処理を起動します。
+業務処理に振り分けされたそれぞれの処理対象を処理して、15分以内に完了するように実現できます。</p><h4 id=動的並列数制御処理>動的並列数制御処理
+<a class=heading-link href=#%e5%8b%95%e7%9a%84%e4%b8%a6%e5%88%97%e6%95%b0%e5%88%b6%e5%be%a1%e5%87%a6%e7%90%86><i class="fa fa-link" aria-hidden=true></i></a></h4><p>全件105のデータを多重で処理して、一つ並行処理ジョブに最大10件を処理する場合、
+以下の制御情報リストを作成とします。</p><div class=highlight><div style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-JSON data-lang=JSON><span style=display:flex><span>[
+</span></span><span style=display:flex><span>  {
+</span></span><span style=display:flex><span>    <span>&#39;oneJobProcessingCount&#39;:</span> <span>10,</span>
+</span></span><span style=display:flex><span>    <span>&#39;offset&#39;:</span> <span>0</span>
+</span></span><span style=display:flex><span>  },
+</span></span><span style=display:flex><span>  {
+</span></span><span style=display:flex><span>    <span>&#39;oneJobProcessingCount&#39;:</span> <span>10,</span>
+</span></span><span style=display:flex><span>    <span>&#39;offset&#39;:</span> <span>10</span>
+</span></span><span style=display:flex><span>  },
+</span></span><span style=display:flex><span>  {
+</span></span><span style=display:flex><span>    <span>&#39;oneJobProcessingCount&#39;:</span> <span>10,</span>
+</span></span><span style=display:flex><span>    <span>&#39;offset&#39;:</span> <span>20</span>
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  <span>・・・・・・</span>
+</span></span><span style=display:flex><span>  {
+</span></span><span style=display:flex><span>    <span>&#39;oneJobProcessingCount&#39;:</span> <span>5,</span>
+</span></span><span style=display:flex><span>    <span>&#39;offset&#39;:</span> <span>100</span>
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>]
+</span></span></code></pre></td></tr></table></div></div><p>下記は制御情報を返却する実装例です。</p><p><strong>note</strong> 並行処理ジョブ数を指定することより、平均的に全てのデータを分割して、並行処理することも可能です。</p><p><strong>note</strong> 一つ並行処理ジョブに、処理件数をできるだけ15分完了近くまでに調整すれば、Lambdaの利用料金を減らすことが可能です。</p><div class=highlight><div style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=font-weight:700>import</span> <span style=font-weight:700>json</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=font-weight:700>def</span> lambda_handler(event, context):
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    totalProcessRecordCount = 105
+</span></span><span style=display:flex><span>    oneJobProcessMaxCount = 10
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    jobCount = totalProcessRecordCount // oneJobProcessMaxCount
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    controlInfoList = []
+</span></span><span style=display:flex><span>    <span style=font-weight:700>for</span> jobIndex <span style=font-weight:700>in</span> range(jobCount):
+</span></span><span style=display:flex><span>        controlInfo = {
+</span></span><span style=display:flex><span>            <span style=font-style:italic>&#39;oneJobProcessingCount&#39;</span>: oneJobProcessMaxCount,
+</span></span><span style=display:flex><span>            <span style=font-style:italic>&#39;offset&#39;</span>: jobIndex * oneJobProcessMaxCount
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>        controlInfoList.append(controlInfo)
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=font-weight:700>if</span> totalProcessRecordCount % oneJobProcessMaxCount != 0:
+</span></span><span style=display:flex><span>        controlInfo = {
+</span></span><span style=display:flex><span>            <span style=font-style:italic>&#39;oneJobProcessingCount&#39;</span>: totalProcessRecordCount % oneJobProcessMaxCount,
+</span></span><span style=display:flex><span>            <span style=font-style:italic>&#39;offset&#39;</span>: jobCount * oneJobProcessMaxCount
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>        controlInfoList.append(controlInfo)
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=font-weight:700>return</span> controlInfoList
+</span></span></code></pre></td></tr></table></div></div><h4 id=業務処理>業務処理
+<a class=heading-link href=#%e6%a5%ad%e5%8b%99%e5%87%a6%e7%90%86><i class="fa fa-link" aria-hidden=true></i></a></h4><p>下記は業務処理の実装例です。</p><p>並列実行しているLambdaに処理される対象レコードを返却する。</p><div class=highlight><div style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">5
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">6
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">7
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">8
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">9
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=font-weight:700>def</span> lambda_handler(event, context):
+</span></span><span style=display:flex><span>    oneJobProcessingCount = int(event[<span style=font-style:italic>&#39;oneJobProcessingCount&#39;</span>])
+</span></span><span style=display:flex><span>    offset = int(event[<span style=font-style:italic>&#39;offset&#39;</span>])
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    processed = []
+</span></span><span style=display:flex><span>    <span style=font-weight:700>for</span> i <span style=font-weight:700>in</span> range(oneJobProcessingCount):
+</span></span><span style=display:flex><span>        processed.append(offset + i)
+</span></span><span style=display:flex><span>        
+</span></span><span style=display:flex><span>    <span style=font-weight:700>return</span> processed
+</span></span></code></pre></td></tr></table></div></div><h4 id=ステートマシン>ステートマシン
+<a class=heading-link href=#%e3%82%b9%e3%83%86%e3%83%bc%e3%83%88%e3%83%9e%e3%82%b7%e3%83%b3><i class="fa fa-link" aria-hidden=true></i></a></h4><p>動的並列数制御処理で、生成した並列情報リストをLoopして、非同期で業務処理を起動する。
+Mapを利用して、作成したステートマシンは、以下のようなイメージです。</p><p><img src=20211027-AWS-stepfunctions-Map-state.png alt=ステートマシン></p><p>下記はステートマシンの記述です。</p><div class=highlight><div style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">30
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">31
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">32
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">33
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">34
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">35
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-JSON data-lang=JSON><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=font-weight:700>&#34;Comment&#34;</span>: <span style=font-style:italic>&#34;A dynamically parallel process example of the Amazon States Language using Map&#34;</span>,
+</span></span><span style=display:flex><span>  <span style=font-weight:700>&#34;StartAt&#34;</span>: <span style=font-style:italic>&#34;dynamically-parallel-processing-control&#34;</span>,
+</span></span><span style=display:flex><span>  <span style=font-weight:700>&#34;States&#34;</span>: {
+</span></span><span style=display:flex><span>    <span style=font-weight:700>&#34;dynamically-parallel-processing-control&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=font-weight:700>&#34;Type&#34;</span>: <span style=font-style:italic>&#34;Task&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=font-weight:700>&#34;Resource&#34;</span>: <span style=font-style:italic>&#34;arn:aws:states:::lambda:invoke&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=font-weight:700>&#34;OutputPath&#34;</span>: <span style=font-style:italic>&#34;$.Payload&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=font-weight:700>&#34;Parameters&#34;</span>: {
+</span></span><span style=display:flex><span>        <span style=font-weight:700>&#34;FunctionName&#34;</span>: <span style=font-style:italic>&#34;arn:aws:lambda:ap-northeast-1:370382556331:function:dynamically-parallel-processing-control&#34;</span>
+</span></span><span style=display:flex><span>      },
+</span></span><span style=display:flex><span>      <span style=font-weight:700>&#34;Next&#34;</span>: <span style=font-style:italic>&#34;dynamically-parallel-processing-iterator&#34;</span>
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    <span style=font-weight:700>&#34;dynamically-parallel-processing-iterator&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=font-weight:700>&#34;Type&#34;</span>: <span style=font-style:italic>&#34;Map&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=font-weight:700>&#34;InputPath&#34;</span>: <span style=font-style:italic>&#34;$&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=font-weight:700>&#34;ItemsPath&#34;</span>: <span style=font-style:italic>&#34;$&#34;</span>,
+</span></span><span style=display:flex><span>      <span style=font-weight:700>&#34;MaxConcurrency&#34;</span>: 0,
+</span></span><span style=display:flex><span>      <span style=font-weight:700>&#34;Iterator&#34;</span>: {
+</span></span><span style=display:flex><span>        <span style=font-weight:700>&#34;StartAt&#34;</span>: <span style=font-style:italic>&#34;dynamically-parallel-processing&#34;</span>,
+</span></span><span style=display:flex><span>        <span style=font-weight:700>&#34;States&#34;</span>: {
+</span></span><span style=display:flex><span>          <span style=font-weight:700>&#34;dynamically-parallel-processing&#34;</span>: {
+</span></span><span style=display:flex><span>            <span style=font-weight:700>&#34;Type&#34;</span>: <span style=font-style:italic>&#34;Task&#34;</span>,
+</span></span><span style=display:flex><span>            <span style=font-weight:700>&#34;Resource&#34;</span>: <span style=font-style:italic>&#34;arn:aws:states:::lambda:invoke&#34;</span>,
+</span></span><span style=display:flex><span>            <span style=font-weight:700>&#34;Parameters&#34;</span>: {
+</span></span><span style=display:flex><span>              <span style=font-weight:700>&#34;FunctionName&#34;</span>: <span style=font-style:italic>&#34;arn:aws:lambda:ap-northeast-1:370382556331:function:business-logic-process&#34;</span>
+</span></span><span style=display:flex><span>            },
+</span></span><span style=display:flex><span>            <span style=font-weight:700>&#34;End&#34;</span>: <span style=font-weight:700>true</span>
+</span></span><span style=display:flex><span>          }
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>      },
+</span></span><span style=display:flex><span>      <span style=font-weight:700>&#34;End&#34;</span>: <span style=font-weight:700>true</span>
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></td></tr></table></div></div><h4 id=走行結果>走行結果
+<a class=heading-link href=#%e8%b5%b0%e8%a1%8c%e7%b5%90%e6%9e%9c><i class="fa fa-link" aria-hidden=true></i></a></h4><ol><li>ステートマシンのログ出力より、動的並列数制御処理の並列数処理結果は、以下です。</li></ol><div class=highlight><div style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">24
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">25
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">26
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">27
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">28
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">29
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">30
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">31
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">32
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">33
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">34
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">35
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">36
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">37
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">38
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">39
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">40
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">41
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">42
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">43
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">44
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">45
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">46
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">47
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">48
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">49
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">50
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">51
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">52
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-JSON data-lang=JSON><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=font-weight:700>&#34;name&#34;</span>: <span style=font-style:italic>&#34;dynamically-parallel-processing-control&#34;</span>,
+</span></span><span style=display:flex><span>  <span style=font-weight:700>&#34;output&#34;</span>: [
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>      <span style=font-weight:700>&#34;oneJobProcessingCount&#34;</span>: 10,
+</span></span><span style=display:flex><span>      <span style=font-weight:700>&#34;offset&#34;</span>: 0
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>      <span style=font-weight:700>&#34;oneJobProcessingCount&#34;</span>: 10,
+</span></span><span style=display:flex><span>      <span style=font-weight:700>&#34;offset&#34;</span>: 10
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>      <span style=font-weight:700>&#34;oneJobProcessingCount&#34;</span>: 10,
+</span></span><span style=display:flex><span>      <span style=font-weight:700>&#34;offset&#34;</span>: 20
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>      <span style=font-weight:700>&#34;oneJobProcessingCount&#34;</span>: 10,
+</span></span><span style=display:flex><span>      <span style=font-weight:700>&#34;offset&#34;</span>: 30
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>      <span style=font-weight:700>&#34;oneJobProcessingCount&#34;</span>: 10,
+</span></span><span style=display:flex><span>      <span style=font-weight:700>&#34;offset&#34;</span>: 40
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>      <span style=font-weight:700>&#34;oneJobProcessingCount&#34;</span>: 10,
+</span></span><span style=display:flex><span>      <span style=font-weight:700>&#34;offset&#34;</span>: 50
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>      <span style=font-weight:700>&#34;oneJobProcessingCount&#34;</span>: 10,
+</span></span><span style=display:flex><span>      <span style=font-weight:700>&#34;offset&#34;</span>: 60
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>      <span style=font-weight:700>&#34;oneJobProcessingCount&#34;</span>: 10,
+</span></span><span style=display:flex><span>      <span style=font-weight:700>&#34;offset&#34;</span>: 70
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>      <span style=font-weight:700>&#34;oneJobProcessingCount&#34;</span>: 10,
+</span></span><span style=display:flex><span>      <span style=font-weight:700>&#34;offset&#34;</span>: 80
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>      <span style=font-weight:700>&#34;oneJobProcessingCount&#34;</span>: 10,
+</span></span><span style=display:flex><span>      <span style=font-weight:700>&#34;offset&#34;</span>: 90
+</span></span><span style=display:flex><span>    },
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>      <span style=font-weight:700>&#34;oneJobProcessingCount&#34;</span>: 5,
+</span></span><span style=display:flex><span>      <span style=font-weight:700>&#34;offset&#34;</span>: 100
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  ],
+</span></span><span style=display:flex><span>  <span style=font-weight:700>&#34;outputDetails&#34;</span>: {
+</span></span><span style=display:flex><span>    <span style=font-weight:700>&#34;truncated&#34;</span>: <span style=font-weight:700>false</span>
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></td></tr></table></div></div><ol start=2><li>並列起動される業務処理の入力パラメーター例は以下となります。</li></ol><div class=highlight><div style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-JSON data-lang=JSON><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=font-weight:700>&#34;name&#34;</span>: <span style=font-style:italic>&#34;dynamically-parallel-processing&#34;</span>,
+</span></span><span style=display:flex><span>  <span style=font-weight:700>&#34;input&#34;</span>: {
+</span></span><span style=display:flex><span>    <span style=font-weight:700>&#34;ParallelIndex&#34;</span>: 0,
+</span></span><span style=display:flex><span>    <span style=font-weight:700>&#34;ParallelControlInfo&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=font-weight:700>&#34;oneJobProcessingCount&#34;</span>: 10,
+</span></span><span style=display:flex><span>      <span style=font-weight:700>&#34;offset&#34;</span>: 0
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  },
+</span></span><span style=display:flex><span>  <span style=font-weight:700>&#34;inputDetails&#34;</span>: {
+</span></span><span style=display:flex><span>    <span style=font-weight:700>&#34;truncated&#34;</span>: <span style=font-weight:700>false</span>
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></td></tr></table></div></div><ol start=3><li>並列で起動された業務処理の実行結果例は以下となります。</li></ol><div class=highlight><div style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><table style=border-spacing:0;padding:0;margin:0;border:0><tr><td style=vertical-align:top;padding:0;margin:0;border:0><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17
+</span><span style="white-space:pre;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18
+</span></code></pre></td><td style=vertical-align:top;padding:0;margin:0;border:0;width:100%><pre tabindex=0 style=background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-JSON data-lang=JSON><span style=display:flex><span>{
+</span></span><span style=display:flex><span>  <span style=font-weight:700>&#34;resourceType&#34;</span>: <span style=font-style:italic>&#34;lambda&#34;</span>,
+</span></span><span style=display:flex><span>  <span style=font-weight:700>&#34;resource&#34;</span>: <span style=font-style:italic>&#34;invoke&#34;</span>,
+</span></span><span style=display:flex><span>  <span style=font-weight:700>&#34;output&#34;</span>: {
+</span></span><span style=display:flex><span>    <span style=font-weight:700>&#34;ExecutedVersion&#34;</span>: <span style=font-style:italic>&#34;$LATEST&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=font-weight:700>&#34;Payload&#34;</span>: [
+</span></span><span style=display:flex><span>      0,
+</span></span><span style=display:flex><span>      1,
+</span></span><span style=display:flex><span>      2,
+</span></span><span style=display:flex><span>      3,
+</span></span><span style=display:flex><span>      4,
+</span></span><span style=display:flex><span>      5,
+</span></span><span style=display:flex><span>      6,
+</span></span><span style=display:flex><span>      7,
+</span></span><span style=display:flex><span>      8,
+</span></span><span style=display:flex><span>      9
+</span></span><span style=display:flex><span>    ],
+</span></span><span style=display:flex><span>    <span>・・・</span>
+</span></span></code></pre></td></tr></table></div></div><h4 id=まとめ>まとめ
+<a class=heading-link href=#%e3%81%be%e3%81%a8%e3%82%81><i class="fa fa-link" aria-hidden=true></i></a></h4><p>上記の簡単なサンプルより、MAPの利用で、Lambda処理を動的並行で処理されることを確認しました。
+実際の業務開発に、並行処理が複数、処理前後依存などケースがあるかもしれないので、状況よりご活用ください。</p><h4 id=mapのオプション>Mapのオプション
+<a class=heading-link href=#map%e3%81%ae%e3%82%aa%e3%83%97%e3%82%b7%e3%83%a7%e3%83%b3><i class="fa fa-link" aria-hidden=true></i></a></h4><ul><li><p>ItemsPath</p><p>並行処理を実行するベースの配列要素。配列に格納されている要素ごとに、非同期で処理を起動する。
+いずれかの並行処理が失敗すると、全体の処理が失敗となり、ステートマシンが終了します。</p></li><li><p>MaxConcurrency</p><p>同時並行実行の最大数を定義する。
+デフォルト値は0です。この場合、同時並行実行数が無制限です。
+設定される場合、同時並行実行処理数がこの設定値を超える部分は、前処理が終了するまで待ちがます。</p></li></ul><h4 id=参考資料>参考資料
+<a class=heading-link href=#%e5%8f%82%e8%80%83%e8%b3%87%e6%96%99><i class="fa fa-link" aria-hidden=true></i></a></h4><ul><li><a href=https://aws.amazon.com/jp/blogs/news/new-step-functions-support-for-dynamic-parallelism/>https://aws.amazon.com/jp/blogs/news/new-step-functions-support-for-dynamic-parallelism/</a></li><li><a href=https://docs.aws.amazon.com/ja_jp/step-functions/latest/dg/amazon-states-language-map-state.html>https://docs.aws.amazon.com/ja_jp/step-functions/latest/dg/amazon-states-language-map-state.html</a></li></ul></div><footer></footer></article></section></div><footer class=footer><section class=container>©
+2021 -
+2022
+DUAN DAHAI
+·
+利用技術 <a href=https://gohugo.io/>Hugo</a> & <a href=https://github.com/luizdepra/hugo-coder/>Coder</a>.</section></footer></main><script src=/js/coder.min.cb0c595e02234420f3ad3886bf4a9bd2874d0e1e78e090138a9ef158b35aaf17.js integrity="sha256-ywxZXgIjRCDzrTiGv0qb0odNDh544JATip7xWLNarxc="></script></body></html>
