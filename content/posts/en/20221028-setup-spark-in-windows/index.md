@@ -1,8 +1,8 @@
 +++
 author = "DUAN DAHAI"
-title = "Simple setup spark in windows OS"
+title = "Simply setup spark in windows OS"
 date = "2022-10-28"
-description = "Simple setup spark in windows OS"
+description = "Simply setup spark in windows OS"
 tags = [
     "spark-submit",
     "PySpark",
