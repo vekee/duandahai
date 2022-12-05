@@ -52,7 +52,7 @@ Mastodon的搭建教程都是放在官方的<a href="https://docs.joinmastodon.o
     当然你也可以选择其他的邮件服务，管理各种账号太麻烦，而且云服务的邮件服务免费额度也很大，扩展性更不用说，所以我首先使用云服务商的邮件服务。  
     但是，AWS的SES默认是有送信限制，以及需要事前登录被送信者邮箱地址的，这根本不符合需求啊，但是请记住，AWS的SES是可以申请解除该限制的。  
     关于如何解除该限制，我会在另外一篇文章中介绍。  
-    [《使用AWS的SES作为Mastodon的邮件送信服务》](https://www.onamae.com/)
+    [《使用AWS的SES作为Mastodon的邮件送信服务》](https://duandahai.com/zh-cn/posts/zh/20221130-mastodon-ses-dns.zh-cn/)
 
 
 + 存储服务(Object storage provider)
@@ -60,7 +60,7 @@ Mastodon的搭建教程都是放在官方的<a href="https://docs.joinmastodon.o
     我这边就直接使用AWS S3的存储服务了。  
     不建议将文件的存储放在主机上。  
     在设定AWS S3时，会出现访问S3被拒的问题，解决方法我也放在另外一篇文章中介绍了。  
-    [《使用AWS的S3服务来保存Mastodon的媒体文件》](https://www.onamae.com/)
+    [《使用AWS的S3服务来保存Mastodon的媒体文件》](https://duandahai.com/zh-cn/posts/zh/20221205-mastodon-s3.zh-cn/)
 
 
 #### [Preparing your machine](https://docs.joinmastodon.org/admin/prerequisites/)

@@ -14,7 +14,7 @@ categories = [
 
 #### 概要
 
-本文为[基于云服务的Mastodon站点搭建]()的关于使用AWS的S3来保存媒体文件的介绍。
+本文为[基于云服务的Mastodon站点搭建](https://duandahai.com/zh-cn/posts/zh/20221125-mastodon-site-create.zh-cn/)的关于使用AWS的S3来保存媒体文件的介绍。
 
 #### IAM User
 
