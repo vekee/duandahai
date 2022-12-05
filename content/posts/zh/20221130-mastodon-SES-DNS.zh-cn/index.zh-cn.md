@@ -55,7 +55,7 @@ categories = [
 ![Github](6_add_DNS.png)
 
 
-#### 申请接触SES的送信限制
+#### 申请解除SES的送信限制
 在上面的Identity验证成功的基础上，向AWS support发送增加送信次数的申请[申请](https://docs.aws.amazon.com/ses/latest/dg/manage-sending-quotas-request-increase.html)。
 
 #### 其他
