@@ -19,7 +19,7 @@ categories = [
 #### IAM User
 
 - 创建User，并为User增加SES的送信权限。  
-    我的账户中只有一个SES服务，下面的权限设置中没有区分Resource。
+    我的AWS账户中只有一个SES服务，下面的权限设置中没有区分Resource。
 
 ```json
 {
@@ -36,7 +36,7 @@ categories = [
 
 #### 创建SES的Identity
 
-- 创建identity，设置domain为你的域名  
+- 创建identity，设置Domain为你的域名  
 ![identity details](1_identity_details.PNG)
 
 - 设置你送信用的邮箱地址   
@@ -51,13 +51,12 @@ categories = [
 - 将生成的MX和TXT记录，追加到你域名的DNS记录中  
 ![Github](5_MX_TXT_DNS_records.PNG)
 
-- 追加后的DNS记录如下  
+- 追加后的DNS记录里面，CNAME,MX和TXT记录如下  
 ![Github](6_add_DNS.png)
 
 
 #### 申请接触SES的送信限制
-在上面的Identity验证成功的基础上，向AWS support发送增加送信次数的申请。  
-[申请方法](https://docs.aws.amazon.com/ses/latest/dg/manage-sending-quotas-request-increase.html)
+在上面的Identity验证成功的基础上，向AWS support发送增加送信次数的申请[申请](https://docs.aws.amazon.com/ses/latest/dg/manage-sending-quotas-request-increase.html)。
 
 #### 其他
 Identity验证最多会花费72小时，建议仔细检查CNAME，MX,TXT的DNS记录是否设置正确，以免耽误等待时间。

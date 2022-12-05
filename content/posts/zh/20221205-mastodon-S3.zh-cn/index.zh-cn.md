@@ -14,11 +14,11 @@ categories = [
 
 #### 概要
 
-本文为[基于云服务的Mastodon站点搭建](https://duandahai.com/zh-cn/posts/zh/20221125-mastodon-site-create.zh-cn/)的关于使用AWS的S3来保存媒体文件的介绍。
+本文为[基于云服务的Mastodon站点搭建](https://duandahai.com/zh-cn/posts/zh/20221125-mastodon-site-create.zh-cn/)的关于使用AWS的S3来保存媒体文件的扩展介绍。
 
 #### IAM User
 
-- 创建User，并为User增加你存放文件bucket的访问权限
+- 创建User，并为User增加你存放文件bucket的访问权限如下。
 
 ```json
 {
@@ -33,16 +33,16 @@ categories = [
     ]
 }
 ```
-- 生成User的access Key
+- 生成该User的access Key
 
 #### S3的访问权限设置
-设置bucket的访问权限为允许ACL访问，否则会出现访问被拒的error。
-下图设置后的样子，我用的是日语，各位对照看一下好了。  
+设置bucket的访问权限为允许ACL访问，否则会出现访问被拒的Error。
+下图设置后的样子。  
 ![Github](S3_allow_acl_access.PNG)
 
 #### Mastodon配置文件更新（.env.production）
 如果你是按照官方教程配置的话，你的.env.production在/home/mastodon/live下面放着。  
-文件存储的设置请参考下表。
+更新.env.production里面关于文件存储的以下设置。
 
 | 参数名 | 设定值 |
 | ------ | ------ |
