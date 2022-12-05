@@ -10,7 +10,7 @@ IAM User 创建User，并为User增加SES的送信权限。
 将生成的CNAME记录，追加到你域名的DNS记录中
 将生成的MX和TXT记录，追加到你域名的DNS记录中
 追加后的DNS记录里面，CNAME,MX和TXT记录如下
-申请接触SES的送信限制 在上面的Identity验证成功的基础上，向AWS support发送增加送信次数的申请申请。
+申请解除SES的送信限制 在上面的Identity验证成功的基础上，向AWS support发送增加送信次数的申请申请。
 其他 Identity验证最多会花费72小时，建议仔细检查CNAME，MX,TXT的DNS记录是否设置正确，以免耽误等待时间。</description></item><item><title>基于云服务的Mastodon站点搭建</title><link>https://www.duandahai.com/zh-cn/posts/zh/20221125-mastodon-site-create.zh-cn/</link><pubDate>Fri, 25 Nov 2022 00:00:00 +0000</pubDate><guid>https://www.duandahai.com/zh-cn/posts/zh/20221125-mastodon-site-create.zh-cn/</guid><description>Mastodon简介 一言蔽之就是一个去中心化的开源社交媒体。 详细内容请参看mastodon官方介绍。
 能够看到这篇文章的人，我相信已经对Mastodon有了一定的了解，我就直入主题，讲讲我是如何搭建Mastodon站点的，过程中遇到的那些坑以及我会给打算尝试朋友的一些建议。
 Mastodon的搭建教程 Mastodon的instance搭建教程都是放在官方的documentation里面，搭建教程主要是以下章节。
