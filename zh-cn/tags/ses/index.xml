@@ -9,4 +9,5 @@ IAM User 创建User，并为User增加SES的送信权限。
 申请解除SES的送信限制 在上面的Identity验证成功的基础上，向AWS support发送增加送信次数的申请申请。
 Mastodon配置文件更新（.env.production） 如果你是按照官方教程配置的话，你的.env.production在/home/mastodon/live下面放着。
 更新.env.production里面关于文件存储的以下设置。
-参数名 设定值 SMTP_SERVER SMTP主机服务器，例：email-smtp.ap-northeast-1.amazonaws.com SMTP_PORT 587 SMTP_LOGIN 你为使用SES创建的User的access key id SMTP_PASSWORD 你为使用SES创建的User的access key secret SMTP_AUTH_METHOD none SMTP_OPENSSL_VERIFY_MODE none SMTP_FROM_ADDRESS 验证过的送信邮箱，例：noreply@mas2don.org (https://docs.joinmastodon.org/admin/config/#s3_alias_host)的介绍 其他 Identity验证最多会花费72小时，建议仔细检查CNAME，MX,TXT的DNS记录是否设置正确，以免耽误等待时间。</description></item></channel></rss>
+参数名 设定值 SMTP_SERVER SMTP主机服务器，例：email-smtp.ap-northeast-1.amazonaws.com SMTP_PORT 587 SMTP_LOGIN 你为使用SES创建的User的access key id SMTP_PASSWORD 你为使用SES创建的User的access key secret SMTP_AUTH_METHOD none SMTP_OPENSSL_VERIFY_MODE none SMTP_FROM_ADDRESS 验证过的送信邮箱，例：noreply@mas2don.org 如需更多详细设置可参考官方文档的介绍
+其他 Identity验证最多会花费72小时，建议仔细检查CNAME，MX,TXT的DNS记录是否设置正确，以免耽误等待时间。</description></item></channel></rss>
