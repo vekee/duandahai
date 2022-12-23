@@ -12,10 +12,10 @@ categories = [
 ]
 +++
  
-In an auto complete task VBA tool, I find that instead of VBA scripts,  
+In an auto task VBA tool, I find that instead of VBA scripts,  
 call a powershell file can use some more effective solutions.
 
-This is an example that call a Powershell file in VBA.
+So I share an example that call a Powershell file in VBA.
 ```VB
 Dim command As String
 Dim wsh As Object
