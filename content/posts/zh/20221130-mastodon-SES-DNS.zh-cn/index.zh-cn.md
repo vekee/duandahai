@@ -72,7 +72,8 @@ categories = [
 | SMTP_AUTH_METHOD | none |
 | SMTP_OPENSSL_VERIFY_MODE | none |
 | SMTP_FROM_ADDRESS | 验证过的送信邮箱，例：noreply@mas2don.org |
-(https://docs.joinmastodon.org/admin/config/#s3_alias_host)的介绍 |
+
+如需更多详细设置可参考[官方文档](https://docs.joinmastodon.org/admin/config/#smtp)的介绍 
 
 #### 其他
 Identity验证最多会花费72小时，建议仔细检查CNAME，MX,TXT的DNS记录是否设置正确，以免耽误等待时间。
