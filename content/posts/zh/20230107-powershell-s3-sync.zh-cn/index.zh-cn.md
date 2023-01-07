@@ -31,7 +31,7 @@ categories = [
 Powershell中可以使用FileSystemWatcher对文件夹进行动作监听，动作分类为
 `Created`，`Changed`，`Deleted`，`Renamed`，所以我在各个动作中进行各自的S3文件同期操作。
 
-由于担心不小心删除同期文件夹，S3上的所有文件也被删除了的情况，所以在`Deleted`动作中，会先把要删除的文件备份到其他bucket中。
+由于担心不小心删除本地同期文件夹，S3上的所有文件也被删除了的情况，所以在`Deleted`动作中，会先把要删除的文件备份到其他bucket中。
 
 代码中将下面必要的项目作为参数传入了，当然你也可以直接写进代码中。  
 watchPath： 同期的文件夹  
@@ -130,7 +130,7 @@ try {
 #### 本文未言及事项
 + AWS S3创建、AWS IAM设置
 + Windows下AWS CLI安装设置、S3同期command介绍
-+ Powershell运行，调试
++ Powershell中的函数说明，ps1文件运行，调试
 
 #### 上述代码未实现事项
 + 多个客户端对同一个文件变更时的Lock处理
