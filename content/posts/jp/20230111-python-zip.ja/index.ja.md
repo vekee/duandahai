@@ -21,7 +21,7 @@ Pythonでファイルを圧縮する際のファイル名文字化け対策を�
 私がAWS LambdaのPythonスクリプトに、7-zipのコマンドラインコマンドでzip処理を実施しています。
 利用している7-zipツールの`7zzs`は以下のページからダウンロードしました。
 + [7zipのコマンドライン](https://www.7-zip.org/download.html)  
-![ステートマシン](20220111-7zip-download.png)
+![ステートマシン](20230111-7zip-download.png)
 
 Windows環境にコマンドラインの利用はもちろんできます。
 
