@@ -2,13 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://www.duandahai.com/zh-cn/categories/</loc>
-    <lastmod>2021-12-30T00:00:00+00:00</lastmod>
+    <loc>https://www.duandahai.com/zh-cn/tags/aws/</loc>
+    <lastmod>2023-01-07T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://www.duandahai.com/categories/"
+                href="https://www.duandahai.com/tags/aws/"
                 />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://www.duandahai.com/ja/tags/aws/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://www.duandahai.com/zh-cn/tags/aws/"
+                />
+  </url><url>
+    <loc>https://www.duandahai.com/zh-cn/categories/</loc>
+    <lastmod>2023-01-07T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
@@ -16,26 +29,17 @@
                 />
     <xhtml:link
                 rel="alternate"
+                hreflang="en"
+                href="https://www.duandahai.com/categories/"
+                />
+    <xhtml:link
+                rel="alternate"
                 hreflang="zh-cn"
                 href="https://www.duandahai.com/zh-cn/categories/"
                 />
   </url><url>
-    <loc>https://www.duandahai.com/zh-cn/tags/java/</loc>
-    <lastmod>2021-12-30T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.duandahai.com/zh-cn/categories/java/</loc>
-    <lastmod>2021-12-30T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.duandahai.com/zh-cn/posts/zh/20211230-java-static/</loc>
-    <lastmod>2021-12-30T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://www.duandahai.com/zh-cn/posts/</loc>
-    <lastmod>2021-12-30T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.duandahai.com/posts/"
-                />
+    <lastmod>2023-01-07T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
@@ -43,20 +47,38 @@
                 />
     <xhtml:link
                 rel="alternate"
+                hreflang="en"
+                href="https://www.duandahai.com/posts/"
+                />
+    <xhtml:link
+                rel="alternate"
                 hreflang="zh-cn"
                 href="https://www.duandahai.com/zh-cn/posts/"
                 />
   </url><url>
-    <loc>https://www.duandahai.com/zh-cn/tags/static/</loc>
-    <lastmod>2021-12-30T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://www.duandahai.com/zh-cn/tags/</loc>
-    <lastmod>2021-12-30T00:00:00+00:00</lastmod>
+    <loc>https://www.duandahai.com/zh-cn/tags/powershell/</loc>
+    <lastmod>2023-01-07T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://www.duandahai.com/tags/"
+                href="https://www.duandahai.com/tags/powershell/"
                 />
+    <xhtml:link
+                rel="alternate"
+                hreflang="ja"
+                href="https://www.duandahai.com/ja/tags/powershell/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://www.duandahai.com/zh-cn/tags/powershell/"
+                />
+  </url><url>
+    <loc>https://www.duandahai.com/zh-cn/tags/s3/</loc>
+    <lastmod>2023-01-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.duandahai.com/zh-cn/tags/</loc>
+    <lastmod>2023-01-07T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
@@ -64,17 +86,20 @@
                 />
     <xhtml:link
                 rel="alternate"
+                hreflang="en"
+                href="https://www.duandahai.com/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
                 hreflang="zh-cn"
                 href="https://www.duandahai.com/zh-cn/tags/"
                 />
   </url><url>
+    <loc>https://www.duandahai.com/zh-cn/posts/zh/20230107-powershell-s3-sync.zh-cn/</loc>
+    <lastmod>2023-01-07T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://www.duandahai.com/zh-cn/</loc>
-    <lastmod>2021-12-30T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://www.duandahai.com/"
-                />
+    <lastmod>2023-01-07T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="ja"
@@ -82,9 +107,57 @@
                 />
     <xhtml:link
                 rel="alternate"
+                hreflang="en"
+                href="https://www.duandahai.com/"
+                />
+    <xhtml:link
+                rel="alternate"
                 hreflang="zh-cn"
                 href="https://www.duandahai.com/zh-cn/"
                 />
+  </url><url>
+    <loc>https://www.duandahai.com/zh-cn/categories/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</loc>
+    <lastmod>2023-01-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.duandahai.com/zh-cn/categories/mastodon/</loc>
+    <lastmod>2022-12-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.duandahai.com/zh-cn/posts/zh/20221205-mastodon-s3.zh-cn/</loc>
+    <lastmod>2022-12-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.duandahai.com/zh-cn/tags/ses/</loc>
+    <lastmod>2022-11-30T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://www.duandahai.com/tags/ses/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh-cn"
+                href="https://www.duandahai.com/zh-cn/tags/ses/"
+                />
+  </url><url>
+    <loc>https://www.duandahai.com/zh-cn/posts/zh/20221130-mastodon-ses-dns.zh-cn/</loc>
+    <lastmod>2022-11-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.duandahai.com/zh-cn/tags/mastodon/</loc>
+    <lastmod>2022-11-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.duandahai.com/zh-cn/posts/zh/20221125-mastodon-site-create.zh-cn/</loc>
+    <lastmod>2022-11-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.duandahai.com/zh-cn/tags/java/</loc>
+    <lastmod>2021-12-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.duandahai.com/zh-cn/categories/java/</loc>
+    <lastmod>2021-12-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.duandahai.com/zh-cn/posts/zh/20211230-java-static.zh-cn/</loc>
+    <lastmod>2021-12-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://www.duandahai.com/zh-cn/tags/static/</loc>
+    <lastmod>2021-12-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.duandahai.com/zh-cn/tags/actions/</loc>
     <lastmod>2021-11-06T00:00:00+00:00</lastmod>
@@ -98,7 +171,7 @@
     <loc>https://www.duandahai.com/zh-cn/tags/workflow/</loc>
     <lastmod>2021-11-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.duandahai.com/zh-cn/posts/zh/20211106-workflow-actions/</loc>
+    <loc>https://www.duandahai.com/zh-cn/posts/zh/20211106-workflow-actions.zh-cn/</loc>
     <lastmod>2021-11-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://www.duandahai.com/zh-cn/about/</loc>

@@ -6,7 +6,34 @@
     <description>Recent content in Categories on DUAN DAHAI</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 29 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.duandahai.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 15 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.duandahai.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>solutions</title>
+      <link>https://www.duandahai.com/categories/solutions/</link>
+      <pubDate>Thu, 15 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.duandahai.com/categories/solutions/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>html</title>
+      <link>https://www.duandahai.com/categories/html/</link>
+      <pubDate>Thu, 16 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.duandahai.com/categories/html/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>solution</title>
+      <link>https://www.duandahai.com/categories/solution/</link>
+      <pubDate>Thu, 16 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.duandahai.com/categories/solution/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Linux</title>
       <link>https://www.duandahai.com/categories/linux/</link>
@@ -44,20 +71,29 @@
     </item>
     
     <item>
+      <title>algorithm</title>
+      <link>https://www.duandahai.com/categories/algorithm/</link>
+      <pubDate>Wed, 08 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.duandahai.com/categories/algorithm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>https://www.duandahai.com/categories/python/</link>
+      <pubDate>Wed, 08 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.duandahai.com/categories/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>MonitoringTable</title>
       <link>https://www.duandahai.com/categories/monitoringtable/</link>
       <pubDate>Mon, 07 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>https://www.duandahai.com/categories/monitoringtable/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>solutions</title>
-      <link>https://www.duandahai.com/categories/solutions/</link>
-      <pubDate>Mon, 07 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://www.duandahai.com/categories/solutions/</guid>
       <description></description>
     </item>
     

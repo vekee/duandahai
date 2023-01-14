@@ -6,19 +6,61 @@
     <description>Recent content on DUAN DAHAI</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 29 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.duandahai.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 15 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.duandahai.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>One solutions for scp files from windowsOS to linuxOS</title>
+      <title>Use VBA to run a Powershell</title>
+      <link>https://www.duandahai.com/posts/en/20221215-call-powershell-in-vba/</link>
+      <pubDate>Thu, 15 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.duandahai.com/posts/en/20221215-call-powershell-in-vba/</guid>
+      <description>In an auto task VBA tool, I find that instead of VBA scripts,
+call a powershell file can use some more effective solutions.
+So I share an example that call a Powershell file in VBA.
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18  Dim command As String Dim wsh As Object Dim result As Long command = &amp;#34;powershell -NoProfile -ExecutionPolicy Unrestricted &amp;#34; command = command &amp;amp; &amp;#34;C:¥yourPowershellFile.</description>
+    </item>
+    
+    <item>
+      <title>Use custom domain to send emails by AWS SES</title>
+      <link>https://www.duandahai.com/posts/en/20221205-use-custom-domain-on-aws-ses/</link>
+      <pubDate>Mon, 05 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.duandahai.com/posts/en/20221205-use-custom-domain-on-aws-ses/</guid>
+      <description>In most applications, you may need SMTP service for send some system notifications, you need not hosting your own SMTP server, because it is much more difficult to do reliably than to use a third-party provider.
+In this article, I will show how I use the AWS SES on my own domain.
+Get a domain    You can get one from onamae, also you can get one from godaddy.</description>
+    </item>
+    
+    <item>
+      <title>Simply setup spark in windows OS</title>
+      <link>https://www.duandahai.com/posts/en/20221028-setup-spark-in-windows/</link>
+      <pubDate>Fri, 28 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.duandahai.com/posts/en/20221028-setup-spark-in-windows/</guid>
+      <description>When you want to start learning about spark and try to write or run some scripts, you needn&amp;rsquo;t spent time to search the integration solution about spark environment, you needn&amp;rsquo;t confuse that you don&amp;rsquo;t have a linux environment or a cloud service account. Just take the integrated spark environment into your own PC, only one step setup, then you can use it. and even you needn&amp;rsquo;t to install anything in your PC.</description>
+    </item>
+    
+    <item>
+      <title>How to send html form via email</title>
+      <link>https://www.duandahai.com/posts/en/20220616-send-html-via-email/</link>
+      <pubDate>Thu, 16 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.duandahai.com/posts/en/20220616-send-html-via-email/</guid>
+      <description>Use API for send html form via email.    For an online html site, in some case ,it has no hosted server or just want to get the information submitted in the form via email without backend program.
+This post introduce one API that can help you make it simple and easily.
+You can just set your form action like this:
+1 2 3  &amp;lt;form action=&amp;#34;https://formsendbox.com/sendto/duandahai66@gmail.com&amp;#34; method=&amp;#34;post&amp;#34;&amp;gt; some input contents &amp;lt;/from&amp;gt;   When one submit was on this form, the API will send the input information to your setted email.</description>
+    </item>
+    
+    <item>
+      <title>Scp files from windowsOS to linuxOS</title>
       <link>https://www.duandahai.com/posts/en/20220329-win-scpto-linux/</link>
       <pubDate>Tue, 29 Mar 2022 00:00:00 +0000</pubDate>
       
       <guid>https://www.duandahai.com/posts/en/20220329-win-scpto-linux/</guid>
-      <description>When we want to scp files from Windows to linux in our application,
-and there is a limit to install a software,
-we can use the WinSCP Command-line in Windows command prompt.
+      <description>When we want to scp files from Windows to linux in our application, and there is a limit to install a software, we can use the WinSCP Command-line in Windows command prompt.
 WinSCP Command-line have two modes (Console/scripting mode),
-I listed the Console mode sample below.
-1  C:¥winscp¥winscp.com /command &amp;#34;option batch on&amp;#34; &amp;#34;option confirm off&amp;#34; &amp;#34;open sftp://[scp user]:[scp password]@[scp to ipaddress]&amp;#34; &amp;#34;put C:¥test¥test01.txt&amp;#34; &amp;#34;/temp/&amp;#34; &amp;#34;option transfer binary&amp;#34; &amp;#34;close&amp;#34; &amp;#34;exit&amp;#34;   Reference    We can also use any other options in WinSCP Command-line Options.</description>
+I listed the console mode basic sample below.
+1 2  C:¥winscp¥winscp.com /command &amp;#34;option batch on&amp;#34; &amp;#34;option confirm off&amp;#34; &amp;#34;open sftp://[scp user]:[scp password]@[scp to ipaddress]&amp;#34; &amp;#34;put C:¥test¥test01.txt&amp;#34; &amp;#34;/temp/&amp;#34; &amp;#34;option transfer binary&amp;#34; &amp;#34;close&amp;#34; &amp;#34;exit&amp;#34;   Reference    We can also use any other options in WinSCP Command-line Options.</description>
     </item>
     
     <item>
@@ -34,15 +76,14 @@ You can click here(En) here(JP) to download the SBL Excle.</description>
     </item>
     
     <item>
-      <title>My SBL in Agile develop</title>
-      <link>https://www.duandahai.com/posts/en/20220208-arigoric-quicksort-copy/</link>
-      <pubDate>Wed, 05 Jan 2022 00:00:00 +0000</pubDate>
+      <title>Two ways of create a quicksort algorithm by Python</title>
+      <link>https://www.duandahai.com/posts/en/20211208-algorithm-quicksort/</link>
+      <pubDate>Wed, 08 Dec 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://www.duandahai.com/posts/en/20220208-arigoric-quicksort-copy/</guid>
-      <description>Share my SBL in agile develop team.
-The task items sheet is look like this:
-The burndown sheet is look like this:
-You can click here(En) here(JP) to download the SBL Excle.</description>
+      <guid>https://www.duandahai.com/posts/en/20211208-algorithm-quicksort/</guid>
+      <description>In a quick sort algorithm, It picks an element as a pivot and partitions the given array around the picked pivot. (For sort by ascending, it moves smaller number to the pivot&amp;rsquo;s left, and moves bigger number to the pivot&amp;rsquo;s right)
+I wrote two classic samples by use python.
+ Always pick the first element as a pivot. Always pick the last element as a pivot.  This is a sample for quick sort that start from first value as pivot    1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42  # change the position on each number def swapEachOther(arr, leftIndex, rightIndex): tmp = arr[leftIndex] arr[leftIndex] = arr[rightIndex] arr[rightIndex] = tmp print(arr) # quck sort method : start from first number by pivot def sort(arr, startIndex, endIndex): if startIndex &amp;gt;= endIndex: return leftIndex = startIndex rightIndex = endIndex # set the first pivot by first number compareValue = arr[startIndex] while leftIndex &amp;lt; rightIndex: # find the next pivot that was smaller than compareValue from right while leftIndex &amp;lt; rightIndex and arr[rightIndex] &amp;gt; compareValue: rightIndex = rightIndex - 1 # find the next pivot that was bigger than compareValue from left while leftIndex &amp;lt; rightIndex and arr[leftIndex] &amp;lt;= compareValue: leftIndex = leftIndex + 1 # while finding the next pivot, move smaller number to left and move bigger number to right if leftIndex &amp;lt; rightIndex: swapEachOther(arr, leftIndex, rightIndex) # move the pivot to the middle posotion swapEachOther(arr, startIndex, rightIndex) # use the sort method on left half array sort(arr, startIndex, rightIndex - 1) # use the sort method on right half array sort(arr, rightIndex + 1, endIndex) arr = [3, 1, 2, 9, 4, 10, 5, 8, 6, 7] print(arr) sort(arr, 0, len(arr) -1)   This is a sample for quick sort that start from last number as pivot    1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39  # change the position on each number def swapEachOther(arr, leftIndex, rightIndex): tmp = arr[leftIndex] arr[leftIndex] = arr[rightIndex] arr[rightIndex] = tmp print(arr) # quck sort method :  def sort(arr, startIndex, endIndex): if startIndex &amp;gt;= endIndex: return # set the last number as the pivot number pivotIndex = endIndex # set the partitionIndex before the startIndex partitionIndex = startIndex -1 # change the positon when it smaller than pivot number from left for i in range(startIndex, endIndex): if arr[i] &amp;lt;= arr[pivotIndex]: # move the smaller number to the left of bigger number than pivot partitionIndex = partitionIndex + 1 swapEachOther(arr, partitionIndex, i) # get the partitionIndex that will be cut the array in half partitionIndex = partitionIndex + 1 # move the pivot to the middle posotion swapEachOther(arr, partitionIndex, pivotIndex) # use the sort method on left half array sort(arr, startIndex, partitionIndex - 1) # use the sort method on right half array sort(arr, partitionIndex + 1, endIndex) arr = [3, 1, 2, 9, 4, 10, 5, 8, 6, 7] print(arr) sort(arr, 0, len(arr) -1)   You can click here(QuickSort1) , here(QuickSort2) to download the source file.</description>
     </item>
     
     <item>
@@ -53,7 +94,7 @@ You can click here(En) here(JP) to download the SBL Excle.</description>
       <guid>https://www.duandahai.com/about/</guid>
       <description>This is about Dan&amp;rsquo;s multilingual blog, record problems and solutions in my tech grow process , and share my stories saved in my note book. If you like it, please click RSS in home page.
 The blogs of recommendation:
- Database monitoring system  If you are interesting in my project or want to know more, see at my GitHub.</description>
+ Database monitoring system StepFunctionsにLambda動的並列実行 Simple setup spark in windows OS  If you are interesting in my project or want to know more, see at my GitHub.</description>
     </item>
     
     <item>
@@ -73,7 +114,7 @@ In this case, to handle a large of new data per second with high-performance, we
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.duandahai.com/contact/</guid>
-      <description>I&amp;rsquo;m a software engineer living with my family in Japan. I like read and music, I will very happy if you can share interesting books to me.
+      <description>I&amp;rsquo;m a software engineer living with my family in Japan. I like reading and music, I&amp;rsquo;m very happy if you can share interesting books with me.
 If you are interesting in my bolgs or projects, please contact me. duandahai66@gmail.com.</description>
     </item>
     

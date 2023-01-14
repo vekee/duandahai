@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AWS on 段大海</title>
+    <link>https://www.duandahai.com/zh-cn/tags/aws/</link>
+    <description>Recent content in AWS on 段大海</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 07 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://www.duandahai.com/zh-cn/tags/aws/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Windows下使用Powershell同步S3上的存储文件</title>
+      <link>https://www.duandahai.com/zh-cn/posts/zh/20230107-powershell-s3-sync.zh-cn/</link>
+      <pubDate>Sat, 07 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.duandahai.com/zh-cn/posts/zh/20230107-powershell-s3-sync.zh-cn/</guid>
+      <description>概要    一直想利用AWS S3作为文件服务器，并可以和本地文件自动保持同步，主要考虑Windows下（没错，就是像Onedrive那样的）。
+稍微考虑一下后，试着做了一个粗劣版本出来，感觉不是很满意，又搜索一下相关解决方案，结果发现已经有老美公司把它作为成熟产品推广了，真是感慨为啥想做个什么都是慢别人几年呢。
+虽然找到了其他可行的替代方案，就是直接用winscp连接到AWS S3，可以更方便的上传下载，但还是将这次的想法记录下来吧。
+Windows下将S3作为文件服务器的实现构想    最容易想到的便是，针对每次文件的变更操作创建一个S3的同期请求。
+但Windows下如何获取文件的变更操作，是否有一些文件操作的触发器之类的东西?
+一头雾水的我埋入搜索的海洋，发现了还真有针对文件的监听接口，为了方便同时使用AWS CLI，我选择了powershell进行实现这次的构想。
+详细实现介绍    Powershell中可以使用FileSystemWatcher对文件夹进行动作监听，动作分类为 Created，Changed，Deleted，Renamed，所以我在各个动作中进行各自的S3文件同期操作。
+由于担心不小心删除本地同期文件夹，S3上的所有文件也被删除了的情况，所以在Deleted动作中，会先把要删除的文件备份到其他bucket中。
+代码中将下面必要的项目作为参数传入了，当然你也可以直接写进代码中。
+watchPath： 同期的文件夹
+watchBucket： 同期S3的bucket名
+backupBucket： 备份S3的bucket名
+下面代码可以直接使用，建议在必要处用Write-Host加入调试输出。
+Powershell文件启动    1  PowerShell -ExecutionPolicy RemoteSigned D:\watch.ps1 &amp;#34;D:\s3-sync-test&amp;#34; &amp;#34;s3-sync-test&amp;#34; &amp;#34;s3-sync-test-backup&amp;#34;   Powershell实现代码    1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78  Param( [String]$watchPath, [String]$watchBucket, [String]$backupBucket ) try { $watcher = New-Object System.</description>
+    </item>
+    
+    <item>
+      <title>使用AWS的S3服务来保存Mastodon的媒体文件</title>
+      <link>https://www.duandahai.com/zh-cn/posts/zh/20221205-mastodon-s3.zh-cn/</link>
+      <pubDate>Mon, 05 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.duandahai.com/zh-cn/posts/zh/20221205-mastodon-s3.zh-cn/</guid>
+      <description>概要    本文为基于云服务的Mastodon站点搭建的关于使用AWS的S3来保存媒体文件的扩展介绍。
+IAM User     创建User，并为User增加你存放文件bucket的访问权限如下。  1 2 3 4 5 6 7 8 9 10 11  { &amp;#34;Version&amp;#34;: &amp;#34;2012-10-17&amp;#34;, &amp;#34;Statement&amp;#34;: [ { &amp;#34;Sid&amp;#34;: &amp;#34;VisualEditor1&amp;#34;, &amp;#34;Effect&amp;#34;: &amp;#34;Allow&amp;#34;, &amp;#34;Action&amp;#34;: &amp;#34;s3:*&amp;#34;, &amp;#34;Resource&amp;#34;: &amp;#34;arn:aws:s3:::这里放你的文件的bucket名/*&amp;#34; } ] }    生成该User的access Key  S3的访问权限设置    设置bucket的访问权限为允许ACL访问，否则会出现访问被拒的Error。 下图设置后的样子。
+Mastodon配置文件更新（.env.production）    如果你是按照官方教程配置的话，你的.env.production在/home/mastodon/live下面放着。
+更新.env.production里面关于文件存储的以下设置。
+   参数名 设定值     S3_ENABLED true   S3_PROTOCOL https   S3_BUCKET 你存放文件的bucket名，例：files.</description>
+    </item>
+    
+    <item>
+      <title>使用AWS的SES作为Mastodon的邮件送信服务</title>
+      <link>https://www.duandahai.com/zh-cn/posts/zh/20221130-mastodon-ses-dns.zh-cn/</link>
+      <pubDate>Wed, 30 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.duandahai.com/zh-cn/posts/zh/20221130-mastodon-ses-dns.zh-cn/</guid>
+      <description>概要    本文为基于云服务的Mastodon站点搭建的关于使用AWS的SES来发送邮件的扩展介绍。
+IAM User     创建User，并为User增加SES的送信权限。
+我的AWS账户中只有一个SES服务，下面的权限设置中没有区分Resource。  1 2 3 4 5 6 7 8 9 10  { &amp;#34;Version&amp;#34;: &amp;#34;2012-10-17&amp;#34;, &amp;#34;Statement&amp;#34;: [ { &amp;#34;Effect&amp;#34;: &amp;#34;Allow&amp;#34;, &amp;#34;Action&amp;#34;: &amp;#34;ses:SendRawEmail&amp;#34;, &amp;#34;Resource&amp;#34;: &amp;#34;*&amp;#34; } ] }    为创建User增加access key，随后作为SMTP认证用  创建SES的Identity      创建identity，设置Domain为你的域名
+  设置你送信用的邮箱地址
+  设置identity的类型
+  将生成的CNAME记录，追加到你域名的DNS记录中
+  将生成的MX和TXT记录，追加到你域名的DNS记录中
+  追加后的DNS记录里面，CNAME,MX和TXT记录如下
+  申请解除SES的送信限制    在上面的Identity验证成功的基础上，向AWS support发送增加送信次数的申请申请。</description>
+    </item>
+    
+    <item>
+      <title>基于云服务的Mastodon站点搭建</title>
+      <link>https://www.duandahai.com/zh-cn/posts/zh/20221125-mastodon-site-create.zh-cn/</link>
+      <pubDate>Fri, 25 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.duandahai.com/zh-cn/posts/zh/20221125-mastodon-site-create.zh-cn/</guid>
+      <description>Mastodon简介    一言蔽之就是一个去中心化的开源社交媒体。 详细内容请参看mastodon官方介绍。
+能够看到这篇文章的人，我相信已经对Mastodon有了一定的了解，我就直入主题，讲讲我是如何搭建Mastodon站点的，过程中遇到的那些坑以及我会给打算尝试朋友的一些建议。
+Mastodon的搭建教程    Mastodon的instance搭建教程都是放在官方的documentation里面，搭建教程主要是以下章节。
+ Running your own server Preparing your machine Installing from source  注意：由于所有的文档都是Mastodon社区维护的，虽然有中文的版本，但可能不是最新的。建议中文和英文的都先浏览一遍，最后按照英文的文档实施。
+Running your own server    这个章节是告诉你，要搭建Mastodon站点需要准备的内容。 它列出了可以提供一条龙托管服务的网站，以及一键安装的镜像文件，
+当然，既然你来到这里，肯定是希望自己动手从头尝试的，那么请继续看下面。
+  域名(A domain name)
+我选择的是onamae，当然你也可以选择像godaddy等其他的域名服务商。
+不过既然是基于云服务的，我建议你选择你所用云服务商的域名服务，因为在随后的一些设置中会方便很多，管理上也会很方便。
+当然，如果你像我一样，已经有很多域名托管在某个服务商那里的话，不妨集中在那里管理也可以。
+  主机(A VPS)
+我选择使用AWS的EC2, 主机大小是双核4G，100G存储，目标支撑2000日活用户。
+不建议选择很便宜的VPS，因为一份价钱一分货，从我使用VPS的经验来看，共用的主机的VPS被攻击，中毒，宕机，访问慢等各种问题太多了，使用感很差，但就是便宜。
+  邮件服务(An e-mail provider)
+我用的是AWS的云服务，当然选择AWS里面的邮件服务SES。
+你可以选择其他的专门邮件服务商，因为管理各种账号太麻烦，而且云服务的邮件服务免费额度也很大，扩展性更不用说，所以我首先使用云服务商的邮件服务。
+但是，AWS的SES默认是有送信限制，以及需要事前登录被送信者邮箱地址的，这根本不符合需求啊，但是请记住，AWS的SES是可以申请解除该限制的。
+关于如何解除该限制，我会在下面的一篇文章中介绍。
+《使用AWS的SES作为Mastodon的邮件送信服务》
+  存储服务(Object storage provider)
+我这边就直接使用AWS S3的存储服务了。
+不建议将文件的存储放在主机上。
+在设定AWS S3时，会出现访问S3被拒的问题，解决方法我放在下面一篇文章中介绍了。</description>
+    </item>
+    
+  </channel>
+</rss>

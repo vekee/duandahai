@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta name="color-scheme" content="light dark">
+
+    
+      <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; block-all-mixed-content; default-src 'self'; child-src 'self'; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net/; form-action 'self'; frame-src 'self'; img-src 'self'; object-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com/ https://cdn.jsdelivr.net/; script-src 'self' 'unsafe-inline' https://www.google-analytics.com; prefetch-src 'self'; connect-src 'self' https://www.google-analytics.com;">
+
+    
+
+    <meta name="author" content="DUAN DAHAI">
+    <meta name="description" content="基于云服务的Mastodon站点搭建">
+    <meta name="keywords" content="blog,developer,personal">
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="基于云服务的Mastodon站点搭建"/>
+<meta name="twitter:description" content="基于云服务的Mastodon站点搭建"/>
+
+    <meta property="og:title" content="基于云服务的Mastodon站点搭建" />
+<meta property="og:description" content="基于云服务的Mastodon站点搭建" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.duandahai.com/zh-cn/posts/zh/20221125-mastodon-site-create.zh-cn/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-11-25T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-11-25T00:00:00+00:00" /><meta property="og:site_name" content="段大海" />
+
+
+
+    <title>
+  基于云服务的Mastodon站点搭建 · 段大海
+</title>
+
+    
+      <link rel="canonical" href="https://www.duandahai.com/zh-cn/posts/zh/20221125-mastodon-site-create.zh-cn/">
+    
+
+    <link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.708686f8ab8176e91d44fcbe488a0fe0333b94f405cf18a52383d67ba22f0ccb.css" integrity="sha256-cIaG&#43;KuBdukdRPy&#43;SIoP4DM7lPQFzxilI4PWe6IvDMs=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+    
+
+    <meta name="generator" content="Hugo 0.88.1" />
+  </head>
+
+  
+  
+  <body class="preload-transitions colorscheme-light"
+        onload=""
+  >
+    
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/zh-cn">
+      段大海
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/zh-cn/about/">主页</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/zh-cn/posts/">文章</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/zh-cn/projects/">项目</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/zh-cn/contact/">关于</a>
+            </li>
+          
+        
+        
+          
+          
+          
+            
+              
+                <li class="navigation-item menu-separator">
+                  <span>|</span>
+                </li>
+                
+              
+              <li class="navigation-item">
+                <a href="https://www.duandahai.com/ja/">🇯🇵</a>
+              </li>
+            
+          
+            
+          
+            
+              
+              <li class="navigation-item">
+                <a href="https://www.duandahai.com/">🇬🇧</a>
+              </li>
+            
+          
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://www.duandahai.com/zh-cn/posts/zh/20221125-mastodon-site-create.zh-cn/">
+              基于云服务的Mastodon站点搭建
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime='2022-11-25T00:00:00Z'>
+                2022/11/25
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              阅读时间：1 分钟
+            </span>
+          </div>
+          
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/zh-cn/categories/mastodon/">Mastodon</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/zh-cn/tags/aws/">AWS</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/zh-cn/tags/mastodon/">Mastodon</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <h4 id="mastodon简介">
+  Mastodon简介
+  <a class="heading-link" href="#mastodon%e7%ae%80%e4%bb%8b">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>一言蔽之就是一个去中心化的开源社交媒体。
+详细内容请参看<a href="https://github.com/mastodon/mastodon" >mastodon</a>官方介绍。</p>
+<p>能够看到这篇文章的人，我相信已经对Mastodon有了一定的了解，我就直入主题，讲讲我是如何搭建Mastodon站点的，过程中遇到的那些坑以及我会给打算尝试朋友的一些建议。</p>
+<h4 id="mastodon的搭建教程">
+  Mastodon的搭建教程
+  <a class="heading-link" href="#mastodon%e7%9a%84%e6%90%ad%e5%bb%ba%e6%95%99%e7%a8%8b">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>Mastodon的instance搭建教程都是放在官方的<a href="https://docs.joinmastodon.org" >documentation</a>里面，搭建教程主要是以下章节。</p>
+<ul>
+<li><a href="https://docs.joinmastodon.org/user/run-your-own/" >Running your own server</a></li>
+<li><a href="https://docs.joinmastodon.org/admin/prerequisites/" >Preparing your machine</a></li>
+<li><a href="https://docs.joinmastodon.org/admin/install/" >Installing from source</a></li>
+</ul>
+<p>注意：由于所有的文档都是Mastodon社区维护的，虽然有中文的版本，但可能不是最新的。建议中文和英文的都先浏览一遍，最后按照英文的文档实施。</p>
+<h4 id="a-hrefhttpsdocsjoinmastodonorguserrun-your-own-running-your-own-servera">
+  <a href="https://docs.joinmastodon.org/user/run-your-own/" >Running your own server</a>
+  <a class="heading-link" href="#a-hrefhttpsdocsjoinmastodonorguserrun-your-own-running-your-own-servera">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>这个章节是告诉你，要搭建Mastodon站点需要准备的内容。
+它列出了可以提供一条龙托管服务的网站，以及一键安装的镜像文件，<br>
+当然，既然你来到这里，肯定是希望自己动手从头尝试的，那么请继续看下面。</p>
+<ul>
+<li>
+<p>域名(A domain name)</p>
+<p>我选择的是<a href="https://www.onamae.com/" >onamae</a>，当然你也可以选择像<a href="https://www.godaddy.com/" >godaddy</a>等其他的域名服务商。<br>
+不过既然是基于云服务的，我建议你选择你所用云服务商的域名服务，因为在随后的一些设置中会方便很多，管理上也会很方便。<br>
+当然，如果你像我一样，已经有很多域名托管在某个服务商那里的话，不妨集中在那里管理也可以。</p>
+</li>
+<li>
+<p>主机(A VPS)</p>
+<p>我选择使用AWS的EC2, 主机大小是双核4G，100G存储，目标支撑2000日活用户。<br>
+不建议选择很便宜的VPS，因为一份价钱一分货，从我使用VPS的经验来看，共用的主机的VPS被攻击，中毒，宕机，访问慢等各种问题太多了，使用感很差，但就是便宜。</p>
+</li>
+<li>
+<p>邮件服务(An e-mail provider)</p>
+<p>我用的是AWS的云服务，当然选择AWS里面的邮件服务SES。<br>
+你可以选择其他的专门邮件服务商，因为管理各种账号太麻烦，而且云服务的邮件服务免费额度也很大，扩展性更不用说，所以我首先使用云服务商的邮件服务。<br>
+但是，AWS的SES默认是有送信限制，以及需要事前登录被送信者邮箱地址的，这根本不符合需求啊，但是请记住，AWS的SES是可以申请解除该限制的。<br>
+关于如何解除该限制，我会在下面的一篇文章中介绍。<br>
+<a href="https://duandahai.com/zh-cn/posts/zh/20221130-mastodon-ses-dns.zh-cn/">《使用AWS的SES作为Mastodon的邮件送信服务》</a></p>
+</li>
+<li>
+<p>存储服务(Object storage provider)</p>
+<p>我这边就直接使用AWS S3的存储服务了。<br>
+不建议将文件的存储放在主机上。<br>
+在设定AWS S3时，会出现访问S3被拒的问题，解决方法我放在下面一篇文章中介绍了。<br>
+<a href="https://duandahai.com/zh-cn/posts/zh/20221205-mastodon-s3.zh-cn/">《使用AWS的S3服务来保存Mastodon的媒体文件》</a></p>
+</li>
+</ul>
+<h4 id="preparing-your-machinehttpsdocsjoinmastodonorgadminprerequisites">
+  <a href="https://docs.joinmastodon.org/admin/prerequisites/">Preparing your machine</a>
+  <a class="heading-link" href="#preparing-your-machinehttpsdocsjoinmastodonorgadminprerequisites">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>这个章节中主要是准备你的主机，建议准备官方教程指定的OS版本（2022年12月为Ubuntu 20.04），这个章节基本上没有问题。</p>
+<p>因为我使用的是AWS的EC2, 所以我可以在AWS上对主机额外再设置一份访问限制。
+你如果也要这样做的话，注意不要把应该要有的访问给限制了。</p>
+<h4 id="installing-from-sourcehttpsdocsjoinmastodonorgadmininstall">
+  <a href="https://docs.joinmastodon.org/admin/install/">Installing from source</a>
+  <a class="heading-link" href="#installing-from-sourcehttpsdocsjoinmastodonorgadmininstall">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>经验总结</p>
+<ol>
+<li>这个章节中会出现一些问题，一定要通篇浏览教程后，严格按照教程走，不然出现问题不太好分析原因。</li>
+<li>设置过程中，出现的各类问题最好都能随时保存下来，为随后自己学习也为Mastodon社区的发展更新贡献一份力。</li>
+<li>各种密码以及账号，一定要随时设置随时记录保存下来。</li>
+<li>一些source的版本随后可能需要随着Mastodon的版本更新而再更新，但是不用担心，现在只需要按照官方教程的版本走就没有问题。</li>
+<li>官方教程的数据库是没有和主机分离的，对于最初的你来说，不是什么大问题而且会节省不少费用，如果你的主机人数达到很多的时候，再考虑将数据库单独移出来也并不麻烦。</li>
+</ol>
+<p>可能发生的问题汇总</p>
+<ol>
+<li>
+<p>获取SSL certificate失败，或者因为定义的ssl_certificate不存在导致Nginx启动失败</p>
+<ul>
+<li>解决方法请参照我在Github上关于该Issue的<a href="https://github.com/mastodon/documentation/issues/857#issuecomment-1315281894">回答</a></li>
+</ul>
+</li>
+<li>
+<p>首页的CSS以及Javascript不起作用</p>
+<ul>
+<li>确认WebLog命令：journalctl -eu mastodon-web</li>
+<li>原因推测：应该是一些CSS文件或者JS文件执行权限受限制了</li>
+<li>解决方法请参照我在Github上的回答<a href="https://github.com/mastodon/mastodon/discussions/17221#discussioncomment-4151966">All CSS / JS Not Being Passed Client Side</a></li>
+</ul>
+</li>
+<li>
+<p>邮件无法送信</p>
+<ul>
+<li>可以在你站点的以下管理页面中确认发送失败的log<br>
+<a href="https://example.com/sidekiq/retries">https://example.com/sidekiq/retries</a></li>
+<li>原因推测：各人利用的服务不同，原因太多，不好推测</li>
+</ul>
+</li>
+<li>
+<p>即使设置了可www访问的DNS设置，也无法访问www站点</p>
+<ul>
+<li>原因推测：Nginx未对应www访问</li>
+<li>可增加www访问的www重定向，还没有尝试。如果有尝试成功的朋友请分享以下。</li>
+</ul>
+</li>
+</ol>
+<h4 id="mastodon的版本升级">
+  Mastodon的版本升级
+  <a class="heading-link" href="#mastodon%e7%9a%84%e7%89%88%e6%9c%ac%e5%8d%87%e7%ba%a7">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<p>网上有各种关于Mastodon的版本升级介绍，我要告诉你的是一定✖️3要去官方Github上查看各个版本<a href="https://github.com/mastodon/mastodon/tags">Release记录</a>，里面会有关于版本升级的详细内容。<br>
+如果要跨多个版本升级的话，你最好逐个确认各个版本间有没有需要特别处理的地方，是否可以跨版本直接升级到最新版本。</p>
+<h4 id="其他">
+  其他
+  <a class="heading-link" href="#%e5%85%b6%e4%bb%96">
+    <i class="fa fa-link" aria-hidden="true"></i>
+  </a>
+</h4>
+<ol>
+<li>将你的SSL证书更新设置为自动更新</li>
+<li>将你的数据库和source，定期打包备份到S3</li>
+</ol>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+      
+        ©
+        
+          2021 -
+        
+        2023
+         DUAN DAHAI 
+      
+      
+         · 
+        技术支持 <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+      
+      
+        
+      
+    </section>
+  </footer>
+
+
+    </main>
+
+    
+      
+      <script src="/js/coder.min.03b17769f4f91ae35667e1f2a1ca8c16f50562576cf90ff32b3179926914daa5.js" integrity="sha256-A7F3afT5GuNWZ&#43;HyocqMFvUFYlds&#43;Q/zKzF5kmkU2qU="></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+  </body>
+
+</html>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>solution on DUAN DAHAI</title>
+    <link>https://www.duandahai.com/categories/solution/</link>
+    <description>Recent content in solution on DUAN DAHAI</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 16 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.duandahai.com/categories/solution/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to send html form via email</title>
+      <link>https://www.duandahai.com/posts/en/20220616-send-html-via-email/</link>
+      <pubDate>Thu, 16 Jun 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.duandahai.com/posts/en/20220616-send-html-via-email/</guid>
+      <description>Use API for send html form via email.    For an online html site, in some case ,it has no hosted server or just want to get the information submitted in the form via email without backend program.
+This post introduce one API that can help you make it simple and easily.
+You can just set your form action like this:
+1 2 3  &amp;lt;form action=&amp;#34;https://formsendbox.com/sendto/duandahai66@gmail.com&amp;#34; method=&amp;#34;post&amp;#34;&amp;gt; some input contents &amp;lt;/from&amp;gt;   When one submit was on this form, the API will send the input information to your setted email.</description>
+    </item>
+    
+  </channel>
+</rss>

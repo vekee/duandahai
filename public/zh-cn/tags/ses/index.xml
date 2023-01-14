@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SES on 段大海</title>
+    <link>https://www.duandahai.com/zh-cn/tags/ses/</link>
+    <description>Recent content in SES on 段大海</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 30 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.duandahai.com/zh-cn/tags/ses/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用AWS的SES作为Mastodon的邮件送信服务</title>
+      <link>https://www.duandahai.com/zh-cn/posts/zh/20221130-mastodon-ses-dns.zh-cn/</link>
+      <pubDate>Wed, 30 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.duandahai.com/zh-cn/posts/zh/20221130-mastodon-ses-dns.zh-cn/</guid>
+      <description>概要    本文为基于云服务的Mastodon站点搭建的关于使用AWS的SES来发送邮件的扩展介绍。
+IAM User     创建User，并为User增加SES的送信权限。
+我的AWS账户中只有一个SES服务，下面的权限设置中没有区分Resource。  1 2 3 4 5 6 7 8 9 10  { &amp;#34;Version&amp;#34;: &amp;#34;2012-10-17&amp;#34;, &amp;#34;Statement&amp;#34;: [ { &amp;#34;Effect&amp;#34;: &amp;#34;Allow&amp;#34;, &amp;#34;Action&amp;#34;: &amp;#34;ses:SendRawEmail&amp;#34;, &amp;#34;Resource&amp;#34;: &amp;#34;*&amp;#34; } ] }    为创建User增加access key，随后作为SMTP认证用  创建SES的Identity      创建identity，设置Domain为你的域名
+  设置你送信用的邮箱地址
+  设置identity的类型
+  将生成的CNAME记录，追加到你域名的DNS记录中
+  将生成的MX和TXT记录，追加到你域名的DNS记录中
+  追加后的DNS记录里面，CNAME,MX和TXT记录如下
+  申请解除SES的送信限制    在上面的Identity验证成功的基础上，向AWS support发送增加送信次数的申请申请。</description>
+    </item>
+    
+  </channel>
+</rss>
