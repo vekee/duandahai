@@ -3,6 +3,10 @@ title = "项目"
 slug = "projects"
 +++
 
+##### [win-spark-env](https://github.com/vekee/win-spark-env)
+
+> Simple spark environment setup in windows OS.
+
 
 ##### [DBMerge](https://github.com/vekee/DBMerge)
 

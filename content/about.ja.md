@@ -10,9 +10,10 @@ author = "段大海"
 
 お薦め文章：
 
+* [Simply setup spark in windows OS](https://duandahai.com/posts/en/20221028-setup-spark-in-windows/)
 * [Database monitoring system](https://duandahai.com/posts/en/20210607-real-time-monitoring-db/)
 * [StepFunctionsにLambda動的並列実行](https://duandahai.com/ja/posts/jp/20211027-aws-stepfunctions-map-state/)
-* [Simple setup spark in windows OS](https://duandahai.com/posts/en/20221028-setup-spark-in-windows/)
+* [基于云服务的Mastodon站点搭建](https://duandahai.com/zh-cn/posts/zh/20221125-mastodon-site-create.zh-cn/)
 
 
 私のプロジェクトに趣味があれば、またもっと知りたいであれば、[GitHub](https://github.com/vekee)をご覧ください

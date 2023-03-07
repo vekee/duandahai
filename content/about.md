@@ -6,13 +6,14 @@ aliases = ["about-us", "about-hugo", "contact"]
 author = "DUAN DAHAI"
 +++
 
-This is about Dan's multilingual blog, record problems and solutions in my tech grow process , and share my stories saved in my note book. If you like it, please click RSS in home page.
+This is about Dan's multilingual blog, record issues and solutions in my growth of technic , also share some my own stories saved in my note. If you like it, please click RSS in home page.
 
 The blogs of recommendation:
 
+* [Simply setup spark in windows OS](https://duandahai.com/posts/en/20221028-setup-spark-in-windows/)
 * [Database monitoring system](https://duandahai.com/posts/en/20210607-real-time-monitoring-db/)
 * [StepFunctionsにLambda動的並列実行](https://duandahai.com/ja/posts/jp/20211027-aws-stepfunctions-map-state/)
-* [Simple setup spark in windows OS](https://duandahai.com/posts/en/20221028-setup-spark-in-windows/)
+* [基于云服务的Mastodon站点搭建](https://duandahai.com/zh-cn/posts/zh/20221125-mastodon-site-create.zh-cn/)
 
 
-If you are interesting in my project or want to know more, see at my [GitHub](https://github.com/vekee).
+If you are interesting in my projects or want to know more, see at my [GitHub](https://github.com/vekee).

@@ -10,10 +10,10 @@ author = "段大海"
 
 下面是我为您推荐的一些文章：
 
+* [Simply setup spark in windows OS](https://duandahai.com/posts/en/20221028-setup-spark-in-windows/)
 * [Database monitoring system](https://duandahai.com/posts/en/20210607-real-time-monitoring-db/)
 * [StepFunctionsにLambda動的並列実行](https://duandahai.com/ja/posts/jp/20211027-aws-stepfunctions-map-state/)
-* [Simple setup spark in windows OS](https://duandahai.com/posts/en/20221028-setup-spark-in-windows/)
-* [Workflow在Cloud服务中的应用场景小结](https://duandahai.com/zh-cn/posts/zh/20211106-workflow-actions/)
+* [基于云服务的Mastodon站点搭建](https://duandahai.com/zh-cn/posts/zh/20221125-mastodon-site-create.zh-cn/)
 
 
 如果您对我的项目感兴趣并想了解更多，请关注我的[GitHub](https://github.com/vekee)。
