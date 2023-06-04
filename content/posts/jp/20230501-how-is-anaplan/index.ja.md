@@ -1,8 +1,8 @@
 +++
 author = "DUAN DAHAI"
-title = "Anaplan実利用間感想"
+title = "Anaplan利用感想"
 date = "2023-05-01"
-description = "Anaplan実利用間感想"
+description = "Anaplan利用感想"
 tags = [
     "DX",
     "Anaplan"
