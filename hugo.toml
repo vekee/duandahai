@@ -168,7 +168,7 @@ title = "DUAN DAHAI"
 
 [languages.ja.params]
 author = "段大海"
-info = "IT技術者"
+info = "じんしが初めてしゃべった英語はI'm here!です。半年間英語クラスに通った価値があって感動でした。じんしがんばれ！"
 description = "私のブログです。"
 keywords = "blog,desenvolvedor,pessoal"
 footerContent = "よこそ!"
@@ -195,7 +195,7 @@ url = "contact/"
 
 [languages.zh-cn.params]
 author = "段大海"
-info = "全栈开发者"
+info = "重剑无锋，大巧不工"
 description = "我的博客"
 keywords = "blog,desenvolvedor,pessoal"
 footerContent = "欢迎来到我的博客!"

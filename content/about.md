@@ -6,8 +6,7 @@ aliases = ["about-us", "about-hugo", "contact"]
 author = "DUAN DAHAI"
 +++
 
-This is about Dan's multilingual blog, record issues and solutions in my growth of technic , also share some my own stories saved in my note. If you like it, please click RSS in home page.
-
+This is Dan's multilingual blog, recording project issues or solutions, also sharing some stories about myself. Wish you like it.
 The blogs of recommendation:
 
 * [Simply setup spark in windows OS](https://duandahai.com/posts/en/20221028-setup-spark-in-windows/)
@@ -16,4 +15,4 @@ The blogs of recommendation:
 * [基于云服务的Mastodon站点搭建](https://duandahai.com/zh-cn/posts/zh/20221125-mastodon-site-create.zh-cn/)
 
 
-If you are interesting in my projects or want to know more, see at my [GitHub](https://github.com/vekee).
+If you are interesting in my projects or want to know more details, move to my [GitHub](https://github.com/vekee).
