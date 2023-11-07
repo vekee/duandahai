@@ -6,7 +6,9 @@ aliases = ["about-us", "about-hugo", "contact"]
 author = "DUAN DAHAI"
 +++
 
-This is Dan's multilingual blog, recording project issues or solutions, also sharing some stories about myself. Wish you like it.
+This is Dan's multilingual blog, recording project issues or solutions, also sharing some stories about myself. I hope you will like it. 
+
+
 The blogs of recommendation:
 
 * [Simply setup spark in windows OS](https://duandahai.com/posts/en/20221028-setup-spark-in-windows/)
