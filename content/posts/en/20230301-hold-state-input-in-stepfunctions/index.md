@@ -27,11 +27,11 @@ But I found another way can pass the state input through the lambda one by one.
 ```json
 "ResultPath": "$.dispatcher_result",
 ```
-+ use `InputPath` to set all the result at next lambda.
++ use `InputPath` to pass all the result to next lambda.
 ```json
       "InputPath": "$",
 ```
-use this solution, the state input will be passed through the lambda one by one.   
+use this solution, the state input will be pass through the lambda one by one.   
 If you want to get a part of result to next state lambda, you can also use the `Parameters` or `InputPath` to select the neccessary input.
 
 #### all statemachine code
