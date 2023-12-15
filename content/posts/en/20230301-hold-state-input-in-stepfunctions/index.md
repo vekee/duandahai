@@ -4,8 +4,8 @@ title = "Hold state input in StepFunctions"
 date = "2023-03-01"
 description = "Hold state input in StepFunctions"
 tags = [
-    "VBA",
-    "Powershell"
+    "AWS",
+    "Stepfunctions"
 ]
 categories = [
     "solutions"
