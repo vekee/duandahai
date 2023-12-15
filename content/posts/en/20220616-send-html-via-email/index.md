@@ -23,17 +23,15 @@ This post introduce one API that can help you make it simple and easily.
 You can just set your form action like this:
 
 ```
-<form action="https://formsendbox.com/sendto/duandahai66@gmail.com" method="post">
+<form action="https://formsendbox.com/sendto/[set your receive email at here]" method="post">
 some input contents
 </from>
 ```
 
-When one submit was on this form, the API will send the input information to your setted email.
-
-In this example, it will be send to `duandahai66@gmail.com`.
+When one submit this form, the API will send the input form to your email.
 
 
-#### This API can also be used in other ways.
+#### This API can also be used in Ajax.
 
 + Send text email API URL
 
@@ -73,6 +71,13 @@ You need to set the necessary JSON Arguments that to send your email by javascri
     - the bytes of attachment file.
     - if an attach file will be send ,this parameter must be set.
 
++ formsendbox_id
+    - certification id.
+    - a free public id `b309590d3bb80e140873d729be7c8d6d`.
+
++ formsendbox_key
+    - certification key.
+    - a free public key `2b2731af96cc3d862395993a7ba1188d`.
 
 #### Reference
 You can find more information on <a href="https://formsendbox.com" >their site.</a>
