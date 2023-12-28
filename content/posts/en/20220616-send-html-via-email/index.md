@@ -39,7 +39,7 @@ When one submit this form, the API will send the input form to your email.
 
 + Send text email with a attach file API URL
 
-    `https://formsendbox.com/sendSimpleMailWtihAttachment`
+    `https://formsendbox.com/sendSimpleMailWithAttachment`
 
 
 You need to set the necessary JSON Arguments that to send your email by javascript or other program.
