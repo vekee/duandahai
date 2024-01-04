@@ -15,7 +15,7 @@ categories = [
 ChatGPTが爆発した2023年最後の日、やっとChatGPTのAPIをトライしました。
 アカウント作成は[openai](https://openai.com/)サイトで特に制限がなしで作成しました。
 
-ChatGPTのAPIを利用するため、ポータルでAPIキーを作成します。
+ChatGPTのAPIを利用するため、ポータルでAPIキーを作成します。   
 ![APIキー](apikeys.png)
 
 利用できるAPIサービスは以下です。   
@@ -35,9 +35,9 @@ virtualenv openai-env
 .\openai-env\Scripts\activate
 ```
 
-- VSCodeに作成したvirtualenv環境を利用するため、`ctrl + shift + p`で、`Python: Select Interpreter`を開いて、作成したopenai-env環境にpython.exeが存在するフォルダーを設定する必要があります。
+- VSCodeに作成したvirtualenv環境を利用するために、`ctrl + shift + p`で、`Python: Select Interpreter`を開いて、作成したopenai-env環境にpython.exeが存在するフォルダーを設定する必要があります。
 
-- win11pro環境に、powershell実行権限エラーが発生するので、一応解消コマンドも共有します。   
+- win11pro環境に、powershell実行権限エラーが発生したので、解消コマンドも共有します。   
 `このシステムではスクリプトの実行が無効になっているため、ファイル C:\Users\duandahai\openai-env\Scripts\Activate.ps1 を読み込むことができません。`
 ```
 Get-ExecutionPolicy
