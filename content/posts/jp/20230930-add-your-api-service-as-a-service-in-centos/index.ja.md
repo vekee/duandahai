@@ -23,7 +23,7 @@ Linux環境でAPIアプリケーションを運用する際、システムの起
 ##### サービスファイルの作成
 まず、サービスファイルを作成します。このファイルには、サービスの起動方法や動作設定を記述します。
 ```
-sudo nano /etc/systemd/system/sendMarketingEmail.service
+sudo nano /etc/systemd/system/yourapp.service
 ```
 
 以下の内容をサービスファイルに記述します：
@@ -51,14 +51,14 @@ WantedBy=multi-user.target
 サービスファイルを作成したら、systemdに新しいサービスを認識させ、サービスを起動します。
 ```
 sudo systemctl daemon-reload  # systemdの設定をリロード
-sudo systemctl start sendMarketingEmail.service  # サービスを起動
-sudo systemctl enable sendMarketingEmail.service  # サービスを自動起動に設定
+sudo systemctl start yourapp.service  # サービスを起動
+sudo systemctl enable yourapp.service  # サービスを自動起動に設定
 ```
 
 ##### サービスの状態確認
 サービスの状態を確認して、正常に動作しているかどうかを確認します。
 ```
-sudo systemctl status sendMarketingEmail.service
+sudo systemctl status yourapp.service
 ```
 
 ##### 最後
