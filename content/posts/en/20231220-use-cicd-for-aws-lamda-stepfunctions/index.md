@@ -15,7 +15,7 @@ categories = [
 +++
  
 In this case, I will share some points about use AWS SAM to deploy serverless applications on AWS.   
-If you want to know the details or the base knowledge about CI/CD/SAM, you can ask ChatGPT or Goole to get more professional answers.   
+If you want to know the details or the base knowledge about CI/CD/SAM, you can ask ChatGPT or Google to get more professional answers.   
 
 When you want to start with this blog, you need to prepared for this:   
 * IAM role
