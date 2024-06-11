@@ -12,5 +12,4 @@ slug = "contact"
 [銀山平公園キャンプ場](https://www.city.nikko.lg.jp/asiokankou/kankou/ashio/shukuhaku/ginzan.html)   
 
 
-私のブログ、プロジェクトにご趣味があれば、遠慮せずご連絡ください。   
-duandahai66@gmail.com
+私のブログ、プロジェクトにご趣味があれば、遠慮せず[ご連絡](<mailto:duandahai66@gmail.com>)ください。   
