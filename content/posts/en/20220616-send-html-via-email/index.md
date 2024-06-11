@@ -73,11 +73,11 @@ You need to set the necessary JSON Arguments that to send your email by javascri
 
 + formsendbox_id
     - certification id.
-    - a free public id `b309590d3bb80e140873d729be7c8d6d`.
+    - a free public formsendbox_id `b309590d3bb80e140873d729be7c8d6d`.
 
 + formsendbox_key
     - certification key.
-    - a free public key `2b2731af96cc3d862395993a7ba1188d`.
+    - a free public formsendbox_key `2b2731af96cc3d862395993a7ba1188d`.
 
 #### Reference
 You can find more information on <a href="https://formsendbox.com" >their site.</a>
