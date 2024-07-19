@@ -11,29 +11,29 @@ categories = [
 ]
 +++
 
-### Rufusを使って、UbuntuのライブブートUSBを作成する
+#### Rufusを使って、UbuntuのライブブートUSBを作成する
 
 [作成方法⇒Create a bootable USB stick with Rufus on Windows](https://ubuntu.com/tutorials/create-a-usb-stick-on-windows#1-overview)
 
 
-### Ubuntu Serverをインストールする手順を以下のページを参考しました。
+#### Ubuntu Serverをインストールする手順を以下のページを参考しました。
 [古いWindowsノートPCにUbuntu Serverをインストールするまでの記録](https://www.iehohs.com/ubuntu-server-install/)
 
-###  アップデートとアップグレード
+####  アップデートとアップグレード
 * インストール後、まずシステムを最新の状態にする
 ```bash
 sudo apt update
 sudo apt upgrade -y
 ```
 
-###  タイムゾーンの設定
+####  タイムゾーンの設定
 * サーバーのタイムゾーンを日本東京に設定します
 ```bash
 sudo timedatectl set-timezone Asia/Tokyo
 sudo timedatectl
 ```
 
-### Wifiが利用できるように設定
+#### Wifiが利用できるように設定
 * WiFiインターフェースの名前（例：wlp3s0）を確認する
 ```bash
 sudo lshw -C network
@@ -69,7 +69,7 @@ sudo netplan apply
 ip a
 ```
 
-### ノートPCのカバーを閉じてもシステムをオンのままにする
+#### ノートPCのカバーを閉じてもシステムをオンのままにする
 * 電源設定ファイルを編集する
 ```bash
 sudo cp /etc/systemd/logind.conf /etc/systemd/logind.conf.original
@@ -84,22 +84,7 @@ HandleLidSwitchDocked=ignore
 sudo systemctl restart systemd-logind
 ```
 
-### ノートPCのカバーを閉じてもシステムをオンのままにする
-* 電源設定ファイルを編集する
-```bash
-sudo cp /etc/systemd/logind.conf /etc/systemd/logind.conf.original
-```
-* ファイル内に以下の行があるはずです。コメントアウトされている場合はコメントを外し、値を以下のように変更する。
-```
-HandleLidSwitch=ignore
-HandleLidSwitchDocked=ignore
-```
-* ファイルを保存して閉じた後、以下のコマンドを実行して設定を反映させます
-```bash
-sudo systemctl restart systemd-logind
-```
-
-### Tera Termマクロスクリプトを作成し、Ubuntu Serverを接続する
+#### Tera Termマクロスクリプトを作成し、Ubuntu Serverを接続する
 * 新しいテキストファイルを作成し、以下の内容を記述します。これを.ttlファイルとして保存する（例: connect_ubuntu_server.ttl）。
 ```
 ;=====================================================================
@@ -136,7 +121,7 @@ sendln 'ls -la'
 end
 ```
 
-### docker composeインストール
+#### docker composeインストール
 * 必要なパッケージをインストール
 ```bash
 sudo apt install apt-transport-https ca-certificates curl software-properties-common gnupg lsb-release
@@ -179,7 +164,7 @@ docker run hello-world
 docker compose version
 ```
 
-### ファイルシステムの監視設定変更
+#### ファイルシステムの監視設定変更
 * ファイルシステムの監視設定ファイルの編集
 ```bash
 sudo vi /etc/sysctl.conf
@@ -195,7 +180,7 @@ fs.inotify.max_user_watches = 524288
 sudo sysctl -p
 ```
 
-### odooインストール
+#### odooインストール
 
 [参考資料](https://github.com/minhng92/odoo-17-docker-compose/tree/master)
 
@@ -231,7 +216,7 @@ docker ps
 docker rm <コンテナIDまたは名前>
 ```
 
-### ログ監視
+#### ログ監視
 * リアルタイムのアクセスログ監視
 ```bash
 # リアルタイムのアクセスログを確認
@@ -239,8 +224,6 @@ tail -f odoo-server.log
 # 最後から3行を表示する
 tail odoo-server.log -n 100
 ```
-
-### Nginx設定
 
 
 
