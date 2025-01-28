@@ -1,6 +1,6 @@
 +++
 author = "DUAN DAHAI"
-title = "DeepSeek vs ChatGPT：谁最真香之王"
+title = "DeepSeek vs ChatGPT：谁是真香？"
 date = "2025-01-28"
 description = "DeepSeek和ChatGPT的使用体验对比，以及个人对AI革命的思考"
 tags = [
