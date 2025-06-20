@@ -13,4 +13,4 @@ slug = "contact"
 
 
 私のブログ、プロジェクトにご趣味があれば、遠慮せず[ご連絡](<mailto:duandahai66@gmail.com>)ください。   
-<img src="/images/line.jpg" alt="line" width="200">
+<img src="images/line.jpg" alt="line" width="200">
