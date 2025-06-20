@@ -7,3 +7,4 @@ I'm a software engineer also a small company director living in Japan with my fa
 I like reading, music, cycle and nature. 
 
 If you are interesting about my bolgs or projects, please [contact me](<mailto:duandahai66@gmail.com>).
+<img src="/line.jpg" alt="line" width="200">
